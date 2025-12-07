@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>Ashes and Echoes – Mycal</title>
+  <meta property="og:title" content="Ashes and Echoes by Mycal" />
+  <meta property="og:description" content="Songs from the Playa. Mycal's Stories from Fire and Steel." />
+  <meta property="og:image" content="https://music.mycal.net/assets/ashes-and-echoes-cover.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="A multi-genre album from the dust of Burning Man, blending roots-folk, EDM, and playa storytelling. Created by Mycal, builder, Burner, and sound tinkerer." />
+  <meta name="author" content="Mycal" />
+
+<script defer src="https://analytics.mycal.net/script.js" data-website-id="875131dd-45c8-4045-a25e-d7e326dbf431"></script>
+
+<script>
+  console.log("✅ Custom tracking script loaded");
+
+  function sendUmamiEvents() {
+    if (typeof umami === "function") {
+      console.log("✅ umami is a function, sending events");
+
+      umami.track("full-url", { url: window.location.href });
+
+      if (document.referrer) {
+        umami.track("full-referrer", { ref: document.referrer });
+      }
+    } else {
+      console.warn("❌ umami is not a function:", typeof umami);
+    }
+  }
+
+  // Try both methods for guaranteed firing
+  window.addEventListener("load", sendUmamiEvents);
+  document.addEventListener("DOMContentLoaded", sendUmamiEvents);
+</script>
+
+
+
+
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0a0a0a;
+      color: #eee;
+      text-align: center;
+      padding: 2rem;
+    }
+    a {
+      color: #ffa733;
+      text-decoration: none;
+    }
+    .cover {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 0 0 40px #ff4400aa;
+    }
+    <!-- <img src="assets/ashes-and-echoes-cover.jpg" style="max-width: 100%; height: auto;" alt="Ten Principles, One Heart">  -->
+    <img src="assets/ashes-and-echoes-cover.jpg" style="width: 400px; height: auto;" alt="Ten Principles, One Heart"> 
+  
+  </style>
+</head>
+<body>
+  <h1>Ashes and Echoes</h1>
+  <h2><em>Songs from the Playa. Mycal's Stories from Fire and Steel.</em></h2>
+  <img src="assets/ashes-and-echoes-cover.jpg" style="width: 500px; height: auto;" alt="Ashes and Echoes cover" class="cover" />
+  <p><strong>by Mycal</strong> – <a href="https://mycalmusic.bandcamp.com">Listen on Bandcamp</a></p>
+
+  <!-- Replace ALBUM_ID with actual Bandcamp embed ID when available -->
+  <iframe style="border: 0; width: 70%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=ALBUM_ID/size=large/bgcol=333333/linkcol=ffffff/transparent=true/" seamless><a href="https://mycalmusic.bandcamp.com/album/ashes-and-echoes">Ashes and Echoes by Mycal</a></iframe>
+
+  <p>
+    <a href="https://www.youtube.com/">YouTube</a> |
+    <a href="https://www.instagram.com/">Instagram</a> |
+    <a href="https://blog.mycal.net">Blog</a>
+  </p>
+
+  <p style="max-width: 600px; margin: auto; padding-top: 2rem;">
+    Ashes and Echoes is a love letter to the dust — a multi-genre, multi-spirit album forged from the fire-lit chaos of Burning Man...
+  </p>
+</body>
+</html>
+
+
+
