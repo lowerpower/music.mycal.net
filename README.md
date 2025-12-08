@@ -127,8 +127,8 @@ Template:
   "name": "Ashes and Echoes",
   "alternateName": "Ashes and Echoes – Songs from the Playa",
   "byArtist": {
-    "@type": "MusicGroup",
-    "name": "Mycal"
+    "@type": "Person",
+    "@id": "https://music.mycal.net/#mycal"
   },
   "genre": ["Folk", "EDM", "Burning Man"],
   "datePublished": "2025-08-15",
@@ -166,8 +166,8 @@ Example template:
   "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart",
   "name": "Ten Principles, One Heart",
   "byArtist": {
-    "@type": "MusicGroup",
-    "name": "Mycal"
+    "@type": "Person",
+    "@id": "https://music.mycal.net/#mycal"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
