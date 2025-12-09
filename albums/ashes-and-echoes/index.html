@@ -11,38 +11,108 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script type="application/ld+json">
+<!-- MusicAlbum with Complete Metadata -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicAlbum",
   "@id": "https://music.mycal.net/albums/ashes-and-echoes",
   "name": "Ashes and Echoes — Songs from the Playa",
-  "alternateName": "Ashes and Echoes",
+  "alternateName": ["Ashes and Echoes", "Songs from the Playa"],
+  "description": "Stories from Fire and Steel. Folk x Fire x EDM for art cars, sunrise sails, and Temple nights. Recorded in the glow of Black Rock City, this album blends roots-folk guitars, sunrise electronics, and spoken-word fragments from the playa.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Ashes and Echoes album cover art featuring fire-lit desert imagery from Burning Man"
+  },
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://music.mycal.net/#mycal",
+    "name": "Mycal",
+    "url": "https://music.mycal.net/#mycal"
+  },
+  "recordLabel": {
+    "@type": "MusicGroup",
+    "@id": "https://music.mycal.net/#mycal-music",
+    "name": "Mycal Music",
+    "url": "https://music.mycal.net/"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://music.mycal.net/#mycal",
+    "name": "Mycal"
   },
   "genre": [
     "Folk",
     "Electronic",
-    "Burning Man"
+    "Burning Man",
+    "Folk-Electronic Fusion",
+    "Story Songs",
+    "Playa Music",
+    "Cinematic Electronic",
+    "Roots Folk"
   ],
-  "inLanguage": "en",
+  "keywords": [
+    "Burning Man",
+    "Black Rock City",
+    "fire art",
+    "playa music",
+    "Reared in Steel",
+    "art cars",
+    "Temple",
+    "transformation",
+    "folk electronic",
+    "radical inclusion",
+    "ten principles",
+    "desert music",
+    "Cronosonics"
+  ],
+  "inLanguage": "en-US",
   "datePublished": "2025-08-15",
+  "dateCreated": "2024",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://music.mycal.net/#mycal"
+  },
+  "creditText": "All songs written, performed, and produced by Mycal",
+  "albumProductionType": "http://schema.org/StudioAlbum",
+  "albumReleaseType": "http://schema.org/AlbumRelease",
   "numTracks": 14,
-  "image": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+  "duration": "PT56M46S",
   "url": "https://music.mycal.net/albums/ashes-and-echoes",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+  },
   "track": [
     {
       "@type": "MusicRecording",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire",
       "name": "We Did Start the Fire (Burning Man History Jam)",
+      "alternateName": "We Did Start the Fire",
       "position": 1,
       "duration": "PT6M29S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "We Did Start the Fire (Burning Man History Jam)",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Story Song", "Educational"],
+      "keywords": ["Burning Man history", "Baker Beach", "Larry Harvey", "chronology"],
+      "description": "A musical chronicle of Burning Man's evolution from Baker Beach in 1986 to Black Rock City's modern era, capturing the movement's transformation and cultural impact"
     },
     {
       "@type": "MusicRecording",
@@ -51,9 +121,25 @@
       "position": 2,
       "duration": "PT3M45S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/i-was-meant-to-burn",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "I was Meant to Burn",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Personal"],
+      "keywords": ["transformation", "personal journey", "fire", "destiny"],
+      "description": "Personal anthem about finding one's place on the playa and embracing transformative fire"
     },
     {
       "@type": "MusicRecording",
@@ -62,9 +148,25 @@
       "position": 3,
       "duration": "PT4M",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/burner-girl",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Burner Girl",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Electronic", "Love Song"],
+      "keywords": ["Burner culture", "love", "playa romance", "community"],
+      "description": "Love song celebrating the transformative spirit and radical self-expression of Burner culture"
     },
     {
       "@type": "MusicRecording",
@@ -73,8 +175,29 @@
       "position": 4,
       "duration": "PT2M59S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Ten Principles, One Heart",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Educational", "Anthem"],
+      "keywords": ["ten principles", "radical inclusion", "self-reliance", "gifting", "leave no trace"],
+      "description": "Musical embodiment of Burning Man's Ten Principles: Radical Inclusion, Gifting, Decommodification, Radical Self-reliance, Radical Self-expression, Communal Effort, Civic Responsibility, Leaving No Trace, Participation, and Immediacy",
+      "about": {
+        "@type": "Thing",
+        "name": "Burning Man Ten Principles",
+        "description": "Core values guiding Burning Man culture and community"
       }
     },
     {
@@ -84,9 +207,25 @@
       "position": 5,
       "duration": "PT3M43S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Speak Burner to Me",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Electronic", "Humorous"],
+      "keywords": ["Burner slang", "playa language", "community culture"],
+      "description": "Playful exploration of Burner vernacular and the unique language of Black Rock City"
     },
     {
       "@type": "MusicRecording",
@@ -95,20 +234,58 @@
       "position": 6,
       "duration": "PT3M42S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Weird Steel",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Electronic", "Industrial", "Anthem"],
+      "keywords": ["Reared in Steel", "fire art", "welding", "metal work", "camp anthem"],
+      "description": "Anthem for Reared in Steel fire art camp, celebrating the marriage of metal fabrication and flame in large-scale playa installations",
+      "about": {
+        "@type": "Organization",
+        "name": "Reared in Steel",
+        "description": "Burning Man fire art collective specializing in large-scale metal and flame installations"
       }
     },
     {
       "@type": "MusicRecording",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust",
       "name": "Dust to Dust (The Playa Sucks)",
+      "alternateName": "Dust to Dust",
       "position": 7,
       "duration": "PT3M51S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Dust to Dust (The Playa Sucks)",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Humorous", "Blues"],
+      "keywords": ["playa dust", "alkaline lake bed", "survival", "humor"],
+      "description": "Darkly humorous take on the harsh realities of playa dust, heat, and the beautiful suffering that is part of the Burn"
     },
     {
       "@type": "MusicRecording",
@@ -117,30 +294,85 @@
       "position": 8,
       "duration": "PT3M8S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Sparkle Pony",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Electronic", "Dance", "Satire"],
+      "keywords": ["sparkle pony", "Burner archetypes", "radical self-reliance", "satire"],
+      "description": "Affectionate satire of the 'sparkle pony' archetype - those who arrive fabulous but unprepared for the harsh realities of the playa"
     },
     {
       "@type": "MusicRecording",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song",
       "name": "The Buck Bandersnatch Song (Playa Dreams)",
+      "alternateName": "The Buck Bandersnatch Song",
       "position": 9,
       "duration": "PT3M14S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "The Buck Bandersnatch Song (Playa Dreams)",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Surreal", "Story Song"],
+      "keywords": ["Buck Bandersnatch", "playa dreams", "surrealism", "desert hallucination"],
+      "description": "Surreal tale of Buck Bandersnatch, embodying the dreamlike and hallucinatory quality of desert experiences"
     },
     {
       "@type": "MusicRecording",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ash-and-echoes",
       "name": "Ash and Echoes (The Temple Song)",
+      "alternateName": "Ash and Echoes",
       "position": 10,
       "duration": "PT3M43S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ash-and-echoes",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Ash and Echoes (The Temple Song)",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Ambient", "Spiritual"],
+      "keywords": ["Temple", "grief", "release", "transformation", "sacred space"],
+      "description": "Meditative reflection on the Temple - Burning Man's sacred space for grief, loss, healing, and transformation. Title track capturing the essence of letting go through fire",
+      "about": {
+        "@type": "Place",
+        "name": "The Temple",
+        "description": "Burning Man's sacred structure for contemplation, remembrance, and release"
       }
     },
     {
@@ -150,9 +382,25 @@
       "position": 11,
       "duration": "PT6M44S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/overheard-at-burning-man",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Overheard at Burning Man",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Spoken Word", "Sound Collage", "Documentary"],
+      "keywords": ["field recordings", "conversations", "playa voices", "community"],
+      "description": "Extended spoken-word sound collage weaving together real fragments and imagined conversations from the playa, capturing the voice of the community"
     },
     {
       "@type": "MusicRecording",
@@ -161,9 +409,25 @@
       "position": 12,
       "duration": "PT2M59S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Fighting Wasn't Working",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Reflective"],
+      "keywords": ["conflict resolution", "radical inclusion", "community", "healing"],
+      "description": "Reflection on conflict, community, and the principle that fighting ultimately prevents the connection we seek"
     },
     {
       "@type": "MusicRecording",
@@ -172,9 +436,25 @@
       "position": 13,
       "duration": "PT2M41S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/no-authority-night-crew",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-      }
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "No Authority Night Crew",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Electronic", "Techno", "Anthem"],
+      "keywords": ["night crew", "volunteers", "radical self-organization", "communal effort"],
+      "description": "Tribute to the night shift volunteers who keep Black Rock City running through radical self-organization and communal effort"
     },
     {
       "@type": "MusicRecording",
@@ -183,13 +463,137 @@
       "position": 14,
       "duration": "PT5M49S",
       "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
       "inAlbum": {
+        "@type": "MusicAlbum",
         "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+      },
+      "recordingOf": {
+        "@type": "MusicComposition",
+        "name": "Petaluma Chicken Scratch",
+        "composer": {
+          "@type": "Person",
+          "@id": "https://music.mycal.net/#mycal"
+        }
+      },
+      "genre": ["Folk", "Instrumental", "Americana"],
+      "keywords": ["Petaluma", "home", "roots", "return", "integration"],
+      "description": "Extended instrumental piece reflecting the journey home to Petaluma after the Burn - integrating playa experiences back into default world life",
+      "about": {
+        "@type": "Place",
+        "name": "Petaluma, California",
+        "description": "Artist's hometown, representing the default world and integration after Burning Man"
       }
+    }
+  ],
+  "isPartOf": {
+    "@type": "CreativeWorkSeries",
+    "name": "Cronosonics",
+    "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://music.mycal.net/#mycal"
+    }
+  },
+  "about": [
+    {
+      "@type": "Event",
+      "name": "Burning Man",
+      "description": "Annual gathering in Black Rock City, Nevada dedicated to community, art, self-expression, and self-reliance",
+      "location": {
+        "@type": "Place",
+        "name": "Black Rock City",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "NV",
+          "addressCountry": "US"
+        }
+      }
+    },
+    {
+      "@type": "Thing",
+      "name": "Fire Art",
+      "description": "Large-scale fire installations and performances combining metal fabrication with flame effects"
+    },
+    {
+      "@type": "Thing",
+      "name": "Transformation",
+      "description": "Personal and communal transformation through art, fire, community, and radical self-expression"
+    },
+    {
+      "@type": "Thing",
+      "name": "Playa Culture",
+      "description": "The unique culture, language, and practices of Black Rock City's temporary community"
+    }
+  ],
+  "offers": [
+    {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "price": "0",
+      "priceCurrency": "USD",
+      "url": "https://mycalmusic.bandcamp.com/album/ashes-and-echoes",
+      "seller": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
+      "availableAtOrFrom": {
+        "@type": "Organization",
+        "name": "Bandcamp"
+      }
+    },
+    {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "url": "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
+      "seller": {
+        "@type": "Person",
+        "@id": "https://music.mycal.net/#mycal"
+      },
+      "availableAtOrFrom": {
+        "@type": "Organization",
+        "name": "Multiple Streaming Platforms"
+      }
+    }
+  ],
+  "sameAs": [
+    "https://mycalmusic.bandcamp.com/album/ashes-and-echoes",
+    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel"
+  ]
+}
+</script>
+
+<!-- WebPage/BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
     }
   ]
 }
-  </script>
+</script>
+
 </head>
 <body>
   <header>
