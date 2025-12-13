@@ -11,29 +11,358 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/style.css">
-  <script type="application/ld+json">
+  
+  <!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html",
   "name": "We Did Start the Fire (Burning Man History Jam)",
+  "alternateName": "We Did Start the Fire",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html",
   "duration": "PT6M29S",
-  "inLanguage": "en",
+  "position": 1,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "genre": ["Folk", "Electronic", "Burning Man", "History Jam"],
-  "position": 1,
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/start-a-fire-image.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html",
-  "description": ""We Did Start the Fire (Burning Man History Jam)" is a rhythmic ritual, a timeline-in-flames, and a campfire chant for the dust-born. Tracing Burning Man's evolution from a rope on Baker Beach to towering temples and art cars in the void, the song weaves names, myths, and moments into a lyrical memory loop — part oral history, part glitch-folk gospel, and a wink to the firestarter in all of us.",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "We Did Start the Fire (Burning Man History Jam)",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "History Jam", "Story Song", "Educational"],
+  "keywords": [
+    "Burning Man history",
+    "Baker Beach",
+    "Larry Harvey",
+    "Black Rock City",
+    "chronology",
+    "Cacophony Society",
+    "playa evolution",
+    "cultural timeline",
+    "Zone Trip",
+    "Danger Ranger",
+    "John Law",
+    "DPW",
+    "Leave No Trace",
+    "art cars",
+    "Temple"
+  ],
+  "description": "\"We Did Start the Fire (Burning Man History Jam)\" is a rhythmic ritual, a timeline-in-flames, and a campfire chant for the dust-born. Tracing Burning Man's evolution from a rope on Baker Beach to towering temples and art cars in the void, the song weaves names, myths, and moments into a lyrical memory loop — part oral history, part glitch-folk gospel, and a wink to the firestarter in all of us.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/start-a-fire-image.jpg",
+    "caption": "We Did Start the Fire - Burning Man History Jam artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Event",
+      "@id": "https://music.mycal.net/#burning-man-event",
+      "name": "Burning Man",
+      "description": "Annual gathering in Black Rock City from 1986 to present"
+    },
+    {
+      "@type": "Person",
+      "name": "Larry Harvey",
+      "description": "Founder of Burning Man, initiated the first burn on Baker Beach in 1986"
+    },
+    {
+      "@type": "Organization",
+      "name": "Cacophony Society",
+      "description": "San Francisco-based arts collective that influenced early Burning Man culture"
+    },
+    {
+      "@type": "Place",
+      "name": "Baker Beach",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San Francisco",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "description": "Original location of the first Burning Man events, 1986-1990"
+    },
+    {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.7864",
+        "longitude": "-119.2065"
+      },
+      "description": "Temporary city in Nevada desert, home to Burning Man since 1991"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "Article",
+    "name": "Burning Man Historical Timeline and Oral History",
+    "description": "Documented Burning Man history from 1986 onwards, drawing from official timelines, community archives, and oral tradition"
+  },
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Burning Man History",
+      "description": "Chronological evolution from Baker Beach origins (1986) through Zone Trips, Black Rock Desert moves, organizational development, and cultural transformation to modern Black Rock City"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Burning Man Cultural Figures",
+      "description": "Key people in Burning Man's development: Larry Harvey (founder), John Law (co-founder), Danger Ranger (safety), Crimson Rose (culture), and others who shaped the event"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Burning Man Infrastructure",
+      "description": "Evolution of event infrastructure: DPW (Department of Public Works), Rangers, theme camps, art cars, Temple tradition, and Leave No Trace principles"
+    }
+  ],
+  "educationalUse": "Cultural education about Burning Man's historical development, key figures, and transformation from a beach bonfire to a major cultural event",
+  "temporalCoverage": "1986/2025",
+  "contentReferenceTime": "2024",
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "\"Before the apps… before the wristbands…\nbefore the permits and the sparkle Ponies…\nthere was Baker Beach… a bonfire… a rope…\nand an idea passed between friends.\"\n(beat)\n\"That idea found dust… and space…\nand the Playa gave it room to grow.\"\n\nBaker Beach, Zone Trip Four Cacophony kicks the door,\nHarvey, James and TAZ, black suits, jazz and desert daze.\nDanger Ranger, Peter Pan, code 007 man,\nMarian's Seventy-Eight Olds, Larry's dream, the story unfolds. , (humming \"mmm-hmm\")\nChristmas Camp, Turbo Ted, Stagger Sisters, raver heads,\nGoa Gil, John Law's Doghead show,\n3-Day Stubble, let it go!\nPull the rope, raise the Man,\nNothing was yet pre-planned,\nTrash fence, lamps lit, Center Camp misfits\n\nWe did start the fire!\nLit it on the Playa, and it's getting higher!\nWe did start the fire!\nRangers on patrol now, never gonna tire.\n\nPapa Satan, Hellco crew, Techno Ghetto breaks right through,\nRegulations rolling in, John Law's departure begins.\nHualapai and Fly Ranch, LNT in every branch,\nRod Garrett draws the plan, theme camps sprawl across the land.\nPier to Pier, Temple Flux, Mantfarm, mutant art trucks,\nBliss Dance, Rites of Passage, Trojan Horse, DPW's wreckage.\nTV Free and Big Rig's roar,\nJiffy Lube and camel corps,\nSpace Whale, Light House, drones, drones, drones!\nAaron's hat and shattered bones.\n(Woooohhh)\n\nWe did start the fire!\nOn the open Playa, glowing in the wire.\nWe did start the fire!\nEven when it's gone, the myth keeps burning higher.\n\nRangers in the dust at dawn,\nCode Double Oh then he's gone.\nExploding Man in '98,\nEviction seals a dusty fate.\nMowers parked out in the void,\nAbsurdity we all enjoyed.\nSergey camps, BLM heat, DPW won't face defeat,\nArt cars, stilt stars, Aaron's clock and hexed guitars.\nWhite Ocean, Catacombs,\nBank of Un-America loans,\nChurch Trap's got no grace,\nTemple's fire lights your face.\nRobots walk, Nixon's law,\nHexatron draws the awe.\nTenner bikes, burner rites,\nWelcome home on desert nights.\nNo minivan, no glam parade,\nJust boot prints where the dream was made. (aaaaya)\nWe did start the fire!\nBurned it all to ashes, made a spire higher.\nWe did start the fire!\nNow we're dust and legends, riding out the wire.\n\"They say we leave no trace.\nBut look closer…\nThere's footprints under the dust.\nSignals in the static.\nAnd echoes from a campfire…\nthat burned before the map had names\n\"Mycal, You just had to be there.\"\n\nWe did start the fire!\nOn the open Playa, glowing in the wire.\nWe did start the fire!\nEven when it's gone, the myth keeps burning higher.\n\nRangers in the dust at dawn,\nCode 007 — then he's gone.\nExploding Man in '98,\nEviction seals a dusty fate.\nMowers parked out in the void,\nAbsurdity we all enjoyed.\nSergey camps, BLM heat, DPW won't face defeat,\nArt cars, stilt stars, Aaron's clock and hexed guitars.\nWhite Ocean, Catacombs,\nBank of Un-America loans,\nChurch Trap's got no grace,\nTemple's fire lights your face.\nRobots walk, Nixon's law,\nHexatron draws the awe.\nTenner bikes, burner rites,\nWelcome home on desert nights.\nNo minivan, no glam parade,\nJust boot prints where the dream was made. We did start the fire!\nBurned it all to ashes, made a spire higher.\nWe did start the fire!\nNow we're dust and legends, riding out the wire.\n\"They say we leave no trace.\nBut look closer…\nThere's footprints under the dust.\nSignals in the static.\nAnd echoes from a campfire…\nthat burned before the map had names",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://open.spotify.com/track/5kwG3KQd5VSHvplsADglYI",
@@ -43,12 +372,55 @@
     "https://www.pandora.com/artist/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel/we-did-start-the-fire-burning-man-history-jam/TRwlmtl6ZvlbVbw",
     "https://www.youtube.com/watch?v=GwN_0t5cip4"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "\"Before the apps… before the wristbands…\nbefore the permits and the sparkle Ponies…\nthere was Baker Beach… a bonfire… a rope…\nand an idea passed between friends.\"\n(beat)\n\"That idea found dust… and space…\nand the Playa gave it room to grow.\"\n\nBaker Beach, Zone Trip Four Cacophony kicks the door,\nHarvey, James and TAZ, black suits, jazz and desert daze.\nDanger Ranger, Peter Pan, code 007 man,\nMarian's Seventy-Eight Olds, Larry's dream, the story unfolds. , (humming \"mmm-hmm\")\nChristmas Camp, Turbo Ted, Stagger Sisters, raver heads,\nGoa Gil, John Law's Doghead show,\n3-Day Stubble, let it go!\nPull the rope, raise the Man,\nNothing was yet pre-planned,\nTrash fence, lamps lit, Center Camp misfits\n\nWe did start the fire!\nLit it on the Playa, and it's getting higher!\nWe did start the fire!\nRangers on patrol now, never gonna tire.\n\nPapa Satan, Hellco crew, Techno Ghetto breaks right through,\nRegulations rolling in, John Law's departure begins.\nHualapai and Fly Ranch, LNT in every branch,\nRod Garrett draws the plan, theme camps sprawl across the land.\nPier to Pier, Temple Flux, Mantfarm, mutant art trucks,\nBliss Dance, Rites of Passage, Trojan Horse, DPW's wreckage.\nTV Free and Big Rig's roar,\nJiffy Lube and camel corps,\nSpace Whale, Light House, drones, drones, drones!\nAaron's hat and shattered bones.\n(Woooohhh)\n\nWe did start the fire!\nOn the open Playa, glowing in the wire.\nWe did start the fire!\nEven when it's gone, the myth keeps burning higher.\n\nRangers in the dust at dawn,\nCode Double Oh then he's gone.\nExploding Man in '98,\nEviction seals a dusty fate.\nMowers parked out in the void,\nAbsurdity we all enjoyed.\nSergey camps, BLM heat, DPW won't face defeat,\nArt cars, stilt stars, Aaron's clock and hexed guitars.\nWhite Ocean, Catacombs,\nBank of Un-America loans,\nChurch Trap's got no grace,\nTemple's fire lights your face.\nRobots walk, Nixon's law,\nHexatron draws the awe.\nTenner bikes, burner rites,\nWelcome home on desert nights.\nNo minivan, no glam parade,\nJust boot prints where the dream was made. (aaaaya)\nWe did start the fire!\nBurned it all to ashes, made a spire higher.\nWe did start the fire!\nNow we're dust and legends, riding out the wire.\n\"They say we leave no trace.\nBut look closer…\nThere's footprints under the dust.\nSignals in the static.\nAnd echoes from a campfire…\nthat burned before the map had names\n\"Mycal, You just had to be there.\"\n\nWe did start the fire!\nOn the open Playa, glowing in the wire.\nWe did start the fire!\nEven when it's gone, the myth keeps burning higher.\n\nRangers in the dust at dawn,\nCode 007 — then he's gone.\nExploding Man in '98,\nEviction seals a dusty fate.\nMowers parked out in the void,\nAbsurdity we all enjoyed.\nSergey camps, BLM heat, DPW won't face defeat,\nArt cars, stilt stars, Aaron's clock and hexed guitars.\nWhite Ocean, Catacombs,\nBank of Un-America loans,\nChurch Trap's got no grace,\nTemple's fire lights your face.\nRobots walk, Nixon's law,\nHexatron draws the awe.\nTenner bikes, burner rites,\nWelcome home on desert nights.\nNo minivan, no glam parade,\nJust boot prints where the dream was made. We did start the fire!\nBurned it all to ashes, made a spire higher.\nWe did start the fire!\nNow we're dust and legends, riding out the wire.\n\"They say we leave no trace.\nBut look closer…\nThere's footprints under the dust.\nSignals in the static.\nAnd echoes from a campfire…\nthat burned before the map had names"
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/we-did-start-the-fire-burning-man-history-jam",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>  
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "We Did Start the Fire (Burning Man History Jam)",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html"
+    }
+  ]
+}
+</script>
+  
+
 </head>
 <body>
   <header>

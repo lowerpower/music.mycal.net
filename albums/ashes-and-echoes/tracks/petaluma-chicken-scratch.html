@@ -5,30 +5,419 @@
   <title>Petaluma Chicken Scratch – Mycal</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- JSON-LD for this track -->
-  <script type="application/ld+json">
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch.html",
   "name": "Petaluma Chicken Scratch",
+  "alternateName": "Petaluma Chicken Scratch (Bonus Track)",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch.html",
+  "duration": "PT5M49S",
+  "position": 14,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "duration": "PT5M49S",
-  "position": 14,
-  "genre": ["Folk", "Roots", "Storytelling", "Petaluma"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/petaluma-chicken-scratch.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Petaluma Chicken Scratch",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Roots", "Storytelling", "Americana", "Instrumental", "Petaluma"],
+  "keywords": [
+    "Petaluma",
+    "hometown",
+    "cannabis breeding",
+    "Girl Scout Cookie",
+    "Guava Cookie",
+    "Snicker Doodle",
+    "gift economy",
+    "local legend",
+    "strain documentation",
+    "backyard cultivation",
+    "chicken coop compost",
+    "pheno hunting",
+    "Burning Man gifting",
+    "integration",
+    "returning home"
+  ],
   "description": "\"Petaluma Chicken Scratch\" is a hometown legend documenting the multi-generation breeding journey from Girl Scout Cookie clones and a Guava male through Chili-G Cookie to the final Snicker Doodle cross. Born in backyard gardens, powered by chicken-coop compost, and shared through Burning Man's gift economy, it's a celebration of pheno hunting, local pride, and keeping strain stories alive through starts passed hand to hand.",
-    "sameAs": [
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/petaluma-chicken-scratch.jpg",
+    "caption": "Petaluma Chicken Scratch - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Place",
+      "name": "Petaluma, California",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Petaluma",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "description": "Hometown and site of the backyard breeding project, historically known as the 'Chicken Capital of the World'"
+    },
+    {
+      "@type": "Thing",
+      "name": "Cannabis Breeding and Cultivation",
+      "description": "Multi-generational plant breeding project from Girl Scout Cookie clones through Guava Cookie and Chili-G Cookie to Snicker Doodle"
+    },
+    {
+      "@type": "Thing",
+      "name": "Gift Economy",
+      "description": "Burning Man's principle of gifting without expectation of return, applied to sharing plant starts and maintaining strain lineage"
+    },
+    {
+      "@type": "Thing",
+      "name": "Local Agriculture",
+      "description": "Backyard cultivation using sustainable practices including chicken coop compost"
+    },
+    {
+      "@type": "Thing",
+      "name": "Strain Documentation",
+      "description": "Preserving and sharing the genetic lineage and breeding history of cannabis strains"
+    },
+    {
+      "@type": "Thing",
+      "name": "Integration and Homecoming",
+      "description": "Returning to the default world and Petaluma after Burning Man experiences, bringing playa principles home"
+    }
+  ],
+  "associatedArticle": {
+    "@type": "Article",
+    "name": "Petaluma Chicken Scratch Documentation",
+    "url": "https://archive.mycal.net/pcs/",
+    "description": "Detailed documentation of the Petaluma Chicken Scratch breeding project and strain history"
+  },
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Personal Cannabis Breeding Project",
+    "description": "Multi-year backyard breeding project in Petaluma documenting strain development from Girl Scout Cookie through multiple generations"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Hometown Pride and Agricultural Tradition",
+    "description": "Celebration of local agriculture, DIY cultivation, and the integration of Burning Man gift economy principles into daily life"
+  },
+  "musicalKey": "Major",
+  "tempo": "Moderate",
+  "mood": [
+    "Celebratory",
+    "Nostalgic",
+    "Proud",
+    "Earthy",
+    "Communal"
+  ],
+  "temporalCoverage": "2015/2024",
+  "contentReferenceTime": "2024",
+  "spatialCoverage": {
+    "@type": "Place",
+    "name": "Petaluma",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Petaluma",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "38.2324",
+      "longitude": "-122.6367"
+    }
+  },
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Girl Scout Cookie",
+      "description": "Original clone strain used as foundation for breeding project"
+    },
+    {
+      "@type": "Thing",
+      "name": "Guava Cookie",
+      "description": "First generation cross from Girl Scout Cookie clone and Guava male"
+    },
+    {
+      "@type": "Thing",
+      "name": "Chili-G Cookie",
+      "description": "Second generation strain developed during Clearlake fires"
+    },
+    {
+      "@type": "Thing",
+      "name": "Snicker Doodle",
+      "description": "Final generation strain that became popular among Burning Man community"
+    },
+    {
+      "@type": "Thing",
+      "name": "Chicken Coop Compost",
+      "description": "Sustainable fertilizer source from backyard chickens, referencing Petaluma's chicken heritage"
+    }
+  ],
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Cannabis Breeding Basics",
+      "description": "Understanding selective breeding, pheno hunting, and multi-generation strain development"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Gift Economy in Practice",
+      "description": "Applying Burning Man's gifting principles to agricultural sharing and community building"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Strain Documentation",
+      "description": "Importance of documenting genetic lineage and breeding history to preserve agricultural knowledge"
+    }
+  ],
+  "educationalUse": "Understanding cannabis breeding methodology, gift economy principles, and agricultural documentation practices",
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "🐔 Petaluma Chicken Scratch: A Local Legend 🌱❤️\n\nIt started out with a cookie clone,\nGuava wind and garden stone.\nBrother-in-law with a backyard plan,\nDirt on our hands, and a sunburn tan.\nSeeds took root and the flavors bloomed,\nGuava Cookie in a smokey room.\nNext year came with a chili kick,\nClearlake fire made the cross stick.\n\nScratch that ground, Petaluma pride,\nSativa dreams on a compost ride.\nStarts in hand, we pass it back,\nBorn from soil and a chicken shack.\nOh, Petaluma Chicken Scratch —\nThe legend grows, you can't match that!\nThe legend grows, you can't match that!\n\nBurning Man crew said, \"Turn it up!\"\nSnicker Doodle made the flowers erupt.\nWe fed the beds with coop-born gold,\nThe buds got loud, the highs got bold.\nFour pounds deep from just six green,\nStill the folks lined up, sight unseen.\nNot for sale, this gift we grow,\nEach new start makes the story glow.\n\nScratch that ground, Petaluma pride,\nSativa dreams on a compost ride.\nStarts in hand, we pass it back,\nBorn from soil and a chicken shack.\nOh, Petaluma Chicken Scratch —\nThe legend grows, you can't match that!\n\nIf you get a male, don't throw it away,\nPair it right, let the garden play.\nSave the seeds, keep the flame,\nWrite your chapter in the strain's name.\n\nScratch that ground, make your mark,\nPetaluma nights and backyard spark.\nStart to seed, pass it on,\nIn our town, this legend's strong.\nThe roots run deep, and the vibe's intact!\nThe roots run deep, and the vibe's intact!\n\nBurning Man crew said, \"Turn it up!\"\nSnicker Doodle made the flowers erupt.\nWe fed the beds with coop-born gold,\nThe buds got loud, the highs got bold.\nFour pounds deep from just six green,\nStill the folks lined up, sight unseen.\nNot for sale, this gift we grow,\nEach new start makes the story glow.\n\nIf you get a male, don't throw it away,\nPair it right, let the garden play.\nSave the seeds, keep the flame,\nWrite your chapter in the strain's name.",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
+  "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://archive.mycal.net/pcs/",
     "https://mycalmusic.bandcamp.com/track/petaluma-chicken-scratch",
@@ -37,12 +426,54 @@
     "https://www.pandora.com/artist/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel/petaluma-chicken-scratch-bonus-track/TRdZXZ2X3ZJKdX4",
     "https://music.amazon.com/albums/B0FL13GHC2?marketplaceId=ATVPDKIKX0DER&trackAsin=B0FL14KKGZ"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "🐔 Petaluma Chicken Scratch: A Local Legend 🌱❤️\n\nIt started out with a cookie clone,\nGuava wind and garden stone.\nBrother-in-law with a backyard plan,\nDirt on our hands, and a sunburn tan.\nSeeds took root and the flavors bloomed,\nGuava Cookie in a smokey room.\nNext year came with a chili kick,\nClearlake fire made the cross stick.\n\nScratch that ground, Petaluma pride,\nSativa dreams on a compost ride.\nStarts in hand, we pass it back,\nBorn from soil and a chicken shack.\nOh, Petaluma Chicken Scratch —\nThe legend grows, you can't match that!\nThe legend grows, you can't match that!\n\nBurning Man crew said, \"Turn it up!\"\nSnicker Doodle made the flowers erupt.\nWe fed the beds with coop-born gold,\nThe buds got loud, the highs got bold.\nFour pounds deep from just six green,\nStill the folks lined up, sight unseen.\nNot for sale, this gift we grow,\nEach new start makes the story glow.\n\nScratch that ground, Petaluma pride,\nSativa dreams on a compost ride.\nStarts in hand, we pass it back,\nBorn from soil and a chicken shack.\nOh, Petaluma Chicken Scratch —\nThe legend grows, you can't match that!\n\nIf you get a male, don't throw it away,\nPair it right, let the garden play.\nSave the seeds, keep the flame,\nWrite your chapter in the strain's name.\n\nScratch that ground, make your mark,\nPetaluma nights and backyard spark.\nStart to seed, pass it on,\nIn our town, this legend's strong.\nThe roots run deep, and the vibe's intact!\nThe roots run deep, and the vibe's intact!\n\nBurning Man crew said, \"Turn it up!\"\nSnicker Doodle made the flowers erupt.\nWe fed the beds with coop-born gold,\nThe buds got loud, the highs got bold.\nFour pounds deep from just six green,\nStill the folks lined up, sight unseen.\nNot for sale, this gift we grow,\nEach new start makes the story glow.\n\nIf you get a male, don't throw it away,\nPair it right, let the garden play.\nSave the seeds, keep the flame,\nWrite your chapter in the strain's name."
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/petaluma-chicken-scratch",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Petaluma Chicken Scratch",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/petaluma-chicken-scratch.html"
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
     <main class="track-page">

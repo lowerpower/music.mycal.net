@@ -12,29 +12,385 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/style.css">
 
- <script type="application/ld+json">
- {
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust.html",
   "name": "Dust to Dust (The Playa Sucks)",
+  "alternateName": "Dust to Dust",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust.html",
   "duration": "PT3M51S",
   "position": 7,
-  "inLanguage": "en",
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "genre": ["Folk", "Electronic", "Burning Man", "Satire"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/dust-to-dust.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Dust to Dust (The Playa Sucks)",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Satire", "Humorous", "Social Commentary"],
+  "keywords": [
+    "Burning Man satire",
+    "influencer culture",
+    "plug-and-play camps",
+    "commercialization",
+    "playa dust",
+    "Instagram culture",
+    "tech bros",
+    "wellness culture",
+    "VIP camps",
+    "decommodification",
+    "radical inclusion critique",
+    "Fyre Festival",
+    "cultural criticism",
+    "better last year",
+    "burner humor"
+  ],
   "description": "\"Dust to Dust (The Playa Sucks)\" is a sharp-edged roast of influencer culture, plug-and-play camps, and wellness-washed decadence on the Playa. It's part love letter, part intervention, calling out the carbon scams, VIP tents, and rich-kid junk while still ending with the classic burner mantra: it was better last year.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/dust-to-dust.jpg",
+    "caption": "Dust to Dust (The Playa Sucks) - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Commercialization of Burning Man",
+      "description": "The tension between Burning Man's anti-commercial principles and the influx of wealth, influencers, and luxury camps"
+    },
+    {
+      "@type": "Thing",
+      "name": "Influencer Culture",
+      "description": "The impact of social media influencers and Instagram culture on the authenticity and spirit of Burning Man"
+    },
+    {
+      "@type": "Thing",
+      "name": "Plug-and-Play Camps",
+      "description": "Luxury turnkey camps that contradict Burning Man's principles of radical self-reliance and participation"
+    },
+    {
+      "@type": "Thing",
+      "name": "Decommodification Principle",
+      "description": "Burning Man's principle against commercialization, challenged by VIP experiences and corporate presence"
+    },
+    {
+      "@type": "Thing",
+      "name": "Burner Nostalgia",
+      "description": "The recurring sentiment that 'it was better last year' - reflecting on cultural change and authenticity"
+    },
+    {
+      "@type": "Thing",
+      "name": "Tech Culture at Burning Man",
+      "description": "Silicon Valley and tech industry presence at Burning Man and its impact on the event's culture"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Observations of Burning Man Cultural Evolution",
+    "description": "Commentary on the transformation of Burning Man culture from grassroots DIY community to mainstream festival with influencer and luxury presence"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Satirical Love Letter and Cultural Critique",
+    "description": "Affectionate criticism of Burning Man's evolution, balancing love for the event with frustration at commercialization and influencer culture"
+  },
+  "musicalKey": "Minor",
+  "tempo": "Mid-tempo",
+  "mood": [
+    "Satirical",
+    "Humorous",
+    "Critical",
+    "Ironic",
+    "Affectionate"
+  ],
+  "temporalCoverage": "1996/2024",
+  "contentReferenceTime": "2024",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Mayan Warrior",
+      "description": "Famous art car and sound camp at Burning Man"
+    },
+    {
+      "@type": "Thing",
+      "name": "Robot Heart",
+      "description": "Iconic art car and music platform at Burning Man"
+    },
+    {
+      "@type": "Organization",
+      "name": "Fyre Festival",
+      "description": "Failed luxury music festival, used as comparison for commercialized Burning Man experiences"
+    },
+    {
+      "@type": "Thing",
+      "name": "1996 Burning Man",
+      "description": "Referenced as the 'authentic' era before mainstream commercialization"
+    }
+  ],
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Decommodification Principle",
+      "description": "Burning Man's core principle against commercial transactions and corporate sponsorship, increasingly challenged by luxury camps and influencer culture"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Cultural Evolution and Authenticity",
+      "description": "How subcultures and counterculture events change when exposed to mainstream attention and wealth"
+    }
+  ],
+  "educationalUse": "Social commentary on the tension between counterculture ideals and mainstream commercialization, using Burning Man as a case study",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Burners who remember earlier eras, critics of commercialization, cultural observers"
+  },
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "Welcome to Black Rock City.\nPopulation: 70,000 egos and one giant match. (yaaaah!)\n\nThey came for the 'Gram, left their brains at home,\nBombshell bras on a dust-swept roam.\nLatex boots in apocalypse heat,\nWorshipping tech bros for a VIP seat.\nChokers tight, and pupils wide,\nThey sparkle hard with no soul inside.\nSniffin' GHB in the LED stew,\nSnappin' pics with the Mayan Warrior crew. (yaaaah!)\n\nThis ain't the desert dream you say it is,\nIt's a rich kid cleanse and a startup biz.\nWe're choking on dust and irony,\nWhile you "find yourself" in luxury.\nBurning Man, you carbon scam,\nJust a wellness retreat with an Instagram.\nIt's a thousand-dollar porta-loo trust fall —\nAnd bro, it sucks for the rest of us all. (pshh!)\n\nNo bikes, no clue, no water in hand,\nJust bear-guy-n dropouts lost in the sand.\n"Wo ist die techno?" they shout at the sky,\nBut Function ain't comin' — don't ask why.\nShazam is banned, their shame is real,\nThey only respect that German feel.\nPassed out cold near Robo Heart,\nWhining that Berlin had better art. (yaaaah!)\n\nThey flew in on jets with organic fear,\nSippin' dust martinis while chanting "we're here."\nRVs parked like mobile ver-sigh,\nBoasting how "nothing" feels so high.\nFiji showers and vibe butlers near,\nWearing Moon Boots worth a fiscal year.\n"This is raw," they say with a grin,\nFrom behind designer oxygen. (ugh!)\n\n"Don't talk to me unless your art car's LEED-certified."\n"I only gift crypto vibes."\n"That's not dust, it's ancestral data."\n"My emotional support drone has solar panels."\n"This dust is micro dosing me."\n"You can't manifest without a cactus enema."\n"That's not a tent — it's a decompression pod."\n"I saw Elon. He said my aura was scalable."\n\nIn '96 it was dust and fire,\nNow it's influences building a brand empire.\nRusted wagons, Reno plates,\nCursing virgins at the gate.\nThey hate your lights, they hate your sound,\nThey miss when weirdos ran the town.\n"Songs need guitars!" they yell mid-spliff,\nThen flick you off with a tribal glyph. (yaaaah!)\n\nThis ain't the primal scream you claim it be,\nIt's Coachella with worse hygiene. (ugh!)\nYou're bonding through dust and LED,\nWhile flexing your tent on NBC.\nBurning Man, you Fyre Fest clone,\nWith a thousand influencers moaning "I'm home."\nIt's a TED Talk wrapped in tribal funk —\nJust call it what it is: rich kid junk. (pshh!)\n\nThey were summoned by the moons of Mars,\nWith hemp-seed beats and healing scars.\nBathing in vibes, skipping the soap,\nMicrodosing and hugging hope.\nThey call it "dusting a nut" out here,\nWhile smearing coconut oil on each ear.\nPreachin' about plastic's sin —\nThen snortin' ket off a port-a-john bin.\n\nHeard the rumor in a rave in neese,\nBought one ticket, no release.\nShowed up lost, no food, no plan,\nDreams of Jamie XX in a dusty van.\nCroissant in hand, burnt to hell,\nChain-smoked cigs with a patchouli smell.\n"Zis is Burning Man?" they ask, confused,\nAs their hopes slowly bruised. (yaaaah!)\n\nPack it in! Pack it out!\nBut you forgot your Eurotrash doubt!\nGoggles on! Morals gone!\nSeven days, your brain is pawned!\nRadical what?! Radical where?!\nYou burned a man — now you don't care! (ugh!)\n\nSo gather round the flame,\nLet's burn away the shame.\nYou came for truth and left with swag,\nYou found your soul… and lost your bag.\nDust to dust, and hype to hype —\nYou came for the burn, but didn't expect the bite.\n\nIt was better last year.\nIt'll be worse next year.\nSee you in the dust.\n(yaaaah!)\nMy Cal Out!",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://mycalmusic.bandcamp.com/track/dust-to-dust-the-playa-sucks",
@@ -44,12 +400,53 @@
     "https://www.youtube.com/watch?v=qAbiVeJWqPM",
     "https://music.apple.com/us/song/dust-to-dust-the-playa-sucks/1830902046"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "Welcome to Black Rock City.\nPopulation: 70,000 egos and one giant match. (yaaaah!)\n\nThey came for the 'Gram, left their brains at home,\nBombshell bras on a dust-swept roam.\nLatex boots in apocalypse heat,\nWorshipping tech bros for a VIP seat.\nChokers tight, and pupils wide,\nThey sparkle hard with no soul inside.\nSniffin' GHB in the LED stew,\nSnappin' pics with the Mayan Warrior crew. (yaaaah!)\n\nThis ain't the desert dream you say it is,\nIt's a rich kid cleanse and a startup biz.\nWe're choking on dust and irony,\nWhile you "find yourself" in luxury.\nBurning Man, you carbon scam,\nJust a wellness retreat with an Instagram.\nIt's a thousand-dollar porta-loo trust fall —\nAnd bro, it sucks for the rest of us all. (pshh!)\n\nNo bikes, no clue, no water in hand,\nJust bear-guy-n dropouts lost in the sand.\n"Wo ist die techno?" they shout at the sky,\nBut Function ain't comin' — don't ask why.\nShazam is banned, their shame is real,\nThey only respect that German feel.\nPassed out cold near Robo Heart,\nWhining that Berlin had better art. (yaaaah!)\n\nThey flew in on jets with organic fear,\nSippin' dust martinis while chanting "we're here."\nRVs parked like mobile ver-sigh,\nBoasting how "nothing" feels so high.\nFiji showers and vibe butlers near,\nWearing Moon Boots worth a fiscal year.\n"This is raw," they say with a grin,\nFrom behind designer oxygen. (ugh!)\n\n"Don't talk to me unless your art car's LEED-certified."\n"I only gift crypto vibes."\n"That's not dust, it's ancestral data."\n"My emotional support drone has solar panels."\n"This dust is micro dosing me."\n"You can't manifest without a cactus enema."\n"That's not a tent — it's a decompression pod."\n"I saw Elon. He said my aura was scalable."\n\nIn '96 it was dust and fire,\nNow it's influences building a brand empire.\nRusted wagons, Reno plates,\nCursing virgins at the gate.\nThey hate your lights, they hate your sound,\nThey miss when weirdos ran the town.\n"Songs need guitars!" they yell mid-spliff,\nThen flick you off with a tribal glyph. (yaaaah!)\n\nThis ain't the primal scream you claim it be,\nIt's Coachella with worse hygiene. (ugh!)\nYou're bonding through dust and LED,\nWhile flexing your tent on NBC.\nBurning Man, you Fyre Fest clone,\nWith a thousand influencers moaning "I'm home."\nIt's a TED Talk wrapped in tribal funk —\nJust call it what it is: rich kid junk. (pshh!)\n\nThey were summoned by the moons of Mars,\nWith hemp-seed beats and healing scars.\nBathing in vibes, skipping the soap,\nMicrodosing and hugging hope.\nThey call it "dusting a nut" out here,\nWhile smearing coconut oil on each ear.\nPreachin' about plastic's sin —\nThen snortin' ket off a port-a-john bin.\n\nHeard the rumor in a rave in neese,\nBought one ticket, no release.\nShowed up lost, no food, no plan,\nDreams of Jamie XX in a dusty van.\nCroissant in hand, burnt to hell,\nChain-smoked cigs with a patchouli smell.\n"Zis is Burning Man?" they ask, confused,\nAs their hopes slowly bruised. (yaaaah!)\n\nPack it in! Pack it out!\nBut you forgot your Eurotrash doubt!\nGoggles on! Morals gone!\nSeven days, your brain is pawned!\nRadical what?! Radical where?!\nYou burned a man — now you don't care! (ugh!)\n\nSo gather round the flame,\nLet's burn away the shame.\nYou came for truth and left with swag,\nYou found your soul… and lost your bag.\nDust to dust, and hype to hype —\nYou came for the burn, but didn't expect the bite.\n\nIt was better last year.\nIt'll be worse next year.\nSee you in the dust.\n(yaaaah!)\nMy Cal Out!"
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/dust-to-dust-the-playa-sucks",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Dust to Dust (The Playa Sucks)",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/dust-to-dust.html"
+    }
+  ]
+}
+</script>
 
 </head>
 <body>

@@ -5,43 +5,439 @@
   <title>Sparkle Pony – Mycal</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- JSON-LD for this track -->
-  <script type="application/ld+json">
+ <!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony.html",
   "name": "Sparkle Pony",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony.html",
+  "duration": "PT3M8S",
+  "position": 8,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "duration": "PT3M8S",
-  "position": 8,
-  "genre": ["Folk", "Electronic", "Burning Man", "Satire"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/sparkel-pony.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Sparkle Pony",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Satire", "Character Study", "Pop"],
+  "keywords": [
+    "Sparkle Pony",
+    "playa tourist",
+    "Instagram culture",
+    "helicopter arrival",
+    "luxury camping",
+    "superficial participation",
+    "radical self-reliance critique",
+    "24-hour visit",
+    "billionaire culture",
+    "influencer tourism",
+    "character satire",
+    "glitter aesthetic",
+    "selfie culture",
+    "privilege on playa"
+  ],
   "description": "\"Sparkle Pony\" is a glitter-bomb character study told from the Sparkle Pony's own POV — chopper drop-offs, billionaire art-car backdrops, designer oxygen, and 24-hour clout cycles. It's a playful, biting riff on the most extra kind of Playa tourist.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/sparkel-pony.jpg",
+    "caption": "Sparkle Pony - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Sparkle Pony Archetype",
+      "description": "Burning Man slang for participants who arrive with minimal preparation, rely on others for basics, prioritize appearance over participation, and often leave quickly - typically arriving via helicopter or luxury transport"
+    },
+    {
+      "@type": "Thing",
+      "name": "Instagram Tourism",
+      "description": "Attending events primarily for social media content and clout rather than genuine participation or community engagement"
+    },
+    {
+      "@type": "Thing",
+      "name": "Radical Self-Reliance Contradiction",
+      "description": "The tension between Burning Man's principle of radical self-reliance and luxury turnkey camping experiences"
+    },
+    {
+      "@type": "Thing",
+      "name": "Helicopter Culture",
+      "description": "Wealthy participants who fly into Black Rock City via helicopter for brief, superficial visits"
+    },
+    {
+      "@type": "Thing",
+      "name": "Performative Participation",
+      "description": "Engaging with Burning Man primarily as aesthetic performance for social media rather than authentic community involvement"
+    }
+  ],
+  "character": [
+    {
+      "@type": "Person",
+      "name": "The Sparkle Pony",
+      "description": "Archetypal character representing superficial, luxury-oriented Burning Man tourist who arrives by helicopter, takes photos, and leaves after 24 hours"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Sparkle Pony Archetype in Burning Man Culture",
+    "description": "Satirical character study based on observed phenomenon of wealthy, superficial participants who contradict Burning Man's core principles"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Satirical Character Study",
+    "description": "Playful yet biting critique told from the perspective of the archetype itself, celebrating excess while exposing superficiality"
+  },
+  "narrativePerspective": "First Person",
+  "musicalKey": "Major",
+  "tempo": "Upbeat",
+  "mood": [
+    "Satirical",
+    "Playful",
+    "Sassy",
+    "Critical",
+    "Humorous"
+  ],
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Helicopter Arrival",
+      "description": "Symbol of wealth and privilege contradicting playa principles"
+    },
+    {
+      "@type": "Thing",
+      "name": "24-Hour Visit",
+      "description": "Brief superficial participation contrasting with week-long immersive experience"
+    },
+    {
+      "@type": "Thing",
+      "name": "Art Cars",
+      "description": "Mobile installations serving as Instagram backdrops"
+    }
+  ],
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Sparkle Pony",
+      "description": "Burning Man community slang for participants who prioritize aesthetics and social media over genuine participation and self-reliance"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Radical Self-Reliance",
+      "description": "Understanding Burning Man's core principle through its contradiction - the expectation that participants are prepared and self-sufficient"
+    }
+  ],
+  "educationalUse": "Cultural critique of privilege, performative participation, and the tension between Burning Man's stated values and actual practice",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Burners who recognize the archetype, critics of influencer culture, social commentary enthusiasts"
+  },
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "Whop-whop-whop, I'm here to slay...\n\nChopper drops me, hear the hum,\nPlaya's red carpet, here I come.\nDressed in shine, no dust on me,\nSelfie throne's my destiny.\nBillionaires can't look away,\nArt cars frame my big display.\nSnap that shot, I'm here to slay,\nSparkle Pony's born today!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya's my runway, steal the show.\nFlash my grin for Insta's crown,\nBurning Man's my playground now!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and shine, then I'm gone,\nSparkle Pony, rule the dawn!\n\nNeon glow's my spotlight beam,\nBillionaires chase my scene.\n\"Move aside—fuck your burn!\" I yell,\nPlaya's mine, can't you tell?\nFilters pop, my vibe's the best,\nDust's for losers, I'm the quest.\nTwenty-four, then jet off high,\nSparkle Pony owns the sky!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya's my runway, steal the show.\nFlash that grin for selfie clout,\nBurning Man's my spotlight shout!\n\nCrowd's in awe, I've set the trend,\nGlitter's gold, my reign won't end.\nPlaya bows beneath my feet,\nSparkle Pony can't be beat!\nJet revs up, I'm out in style,\nBurning Man's my victory mile!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya my runway, steal the show.\nFlash that grin for likes galore,\nBurning Man's my glitter war!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and jet, I'm outta sight,\nSparkle Pony, burn so bright!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and jet, I'm outta sight,\nSparkle Pony, burn so bright!",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
-    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel"
+    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://music.apple.com/us/song/sparkle-pony/1830902047",
     "https://open.spotify.com/track/3vyfGuSEbACkO3g4atjUIU",
     "https://www.pandora.com/artist/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel/sparkle-pony/TRjcgXt326bn44V",
     "https://music.amazon.com/albums/B0FL13GHC2?trackAsin=B0FL14NGY7",
     "https://www.youtube.com/watch?v=_t2XCtCG4D4"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "Whop-whop-whop, I'm here to slay...\n\nChopper drops me, hear the hum,\nPlaya's red carpet, here I come.\nDressed in shine, no dust on me,\nSelfie throne's my destiny.\nBillionaires can't look away,\nArt cars frame my big display.\nSnap that shot, I'm here to slay,\nSparkle Pony's born today!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya's my runway, steal the show.\nFlash my grin for Insta's crown,\nBurning Man's my playground now!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and shine, then I'm gone,\nSparkle Pony, rule the dawn!\n\nNeon glow's my spotlight beam,\nBillionaires chase my scene.\n\"Move aside—fuck your burn!\" I yell,\nPlaya's mine, can't you tell?\nFilters pop, my vibe's the best,\nDust's for losers, I'm the quest.\nTwenty-four, then jet off high,\nSparkle Pony owns the sky!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya's my runway, steal the show.\nFlash that grin for selfie clout,\nBurning Man's my spotlight shout!\n\nCrowd's in awe, I've set the trend,\nGlitter's gold, my reign won't end.\nPlaya bows beneath my feet,\nSparkle Pony can't be beat!\nJet revs up, I'm out in style,\nBurning Man's my victory mile!\n\nI'm the Sparkle Pony, watch me glow,\nPlaya my runway, steal the show.\nFlash that grin for likes galore,\nBurning Man's my glitter war!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and jet, I'm outta sight,\nSparkle Pony, burn so bright!\n\n(Ooh-oh-oh) Sparkle Pony, queen supreme,\n(Ooh-oh-oh) Glitter reigns, my perfect dream,\n(Ooh-oh-oh) Strut and jet, I'm outta sight,\nSparkle Pony, burn so bright!"
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/sparkle-pony",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Sparkle Pony",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/sparkle-pony.html"
+    }
+  ]
+}
+</script>
+
+
+
 </head>
 <body>
     <main class="track-page">

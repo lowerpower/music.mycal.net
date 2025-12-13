@@ -5,29 +5,550 @@
   <title>Weird Steel – Mycal</title>
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- JSON-LD for this track -->
-  <script type="application/ld+json">
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- Reared in Steel Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#reared-in-steel",
+  "name": "Reared in Steel",
+  "alternateName": "Weird Steel",
+  "description": "Burning Man fire art collective and theme camp specializing in large-scale fire installations and performances combining metal fabrication with flame effects. Based in Petaluma, CA with camp location at 9:00 & A in Black Rock City.",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://music.mycal.net/#kevin-clark",
+    "name": "Kevin Clark",
+    "description": "Fire artist and metal fabricator, founder of Reared in Steel"
+  },
+  "member": [
+    {
+      "@type": "Person",
+      "@id": "https://music.mycal.net/#kevin-clark"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    {
+      "@type": "Person",
+      "name": "Dave",
+      "description": "Reared in Steel member - the fix-it guy"
+    },
+    {
+      "@type": "Person",
+      "name": "Andre",
+      "description": "Reared in Steel member - planner and organizer"
+    }
+  ],
+  "location": {
+    "@type": "Place",
+    "name": "Petaluma",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Petaluma",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Black Rock City - 9:00 & A",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "sameAs": [
+    "https://www.instagram.com/rearedinsteel/",
+    "https://www.facebook.com/rearedinsteel"
+  ]
+}
+</script>
+
+<!-- Kevin Clark - Reared in Steel Founder -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://music.mycal.net/#kevin-clark",
+  "name": "Kevin Clark",
+  "jobTitle": "Fire Artist and Metal Fabricator",
+  "description": "Founder of Reared in Steel fire art collective. Creates large-scale fire installations and metal sculptures for Burning Man and Black Rock City.",
+  "hasOccupation": {
+    "@type": "Occupation",
+    "name": "Fire Artist",
+    "occupationalCategory": "Arts and Entertainment"
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#reared-in-steel"
+  },
+  "foundingOrganization": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#reared-in-steel"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://www.instagram.com/rearedinsteel/",
+    "https://www.facebook.com/rearedinsteel"
+  ]
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel.html",
   "name": "Weird Steel",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel.html",
+  "duration": "PT3M42S",
+  "position": 6,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "duration": "PT3M42S",
-  "position": 6,
-  "genre": ["Folk", "Electronic", "Burning Man", "Camp Anthem"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/weird-steel.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Weird Steel",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Camp Anthem", "Roll Call", "Celebration"],
+  "keywords": [
+    "Reared in Steel",
+    "Weird Steel",
+    "camp anthem",
+    "9 and A",
+    "Petaluma",
+    "fire art",
+    "Rhino Redemption",
+    "theme camp",
+    "Kevin Clark",
+    "Fire Kathedral",
+    "Medusa",
+    "art installations",
+    "camp community",
+    "gifting culture",
+    "roll call"
+  ],
   "description": "\"Weird Steel\" is the Reared in Steel camp anthem — a love letter to Petaluma-forged art, Rhino Redemption, couches in the sky, grilled cheese at sunrise, and the fire-bent crew holding down 9 & A. It's part roll call, part legend, and all sparks.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/weird-steel.jpg",
+    "caption": "Weird Steel - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Fire art collective and theme camp based in Petaluma, located at 9:00 & A in Black Rock City"
+    },
+    {
+      "@type": "Place",
+      "name": "9:00 & A, Black Rock City",
+      "description": "Camp location of Reared in Steel in Black Rock City"
+    },
+    {
+      "@type": "Thing",
+      "name": "Camp Culture and Community",
+      "description": "The bonds, traditions, and shared experiences that define a Burning Man theme camp community"
+    },
+    {
+      "@type": "Thing",
+      "name": "Fire Art Installations",
+      "description": "Large-scale fire art created by Reared in Steel including Rhino Redemption, Medusa, Fire Kathedral, and others"
+    },
+    {
+      "@type": "Thing",
+      "name": "Gifting Culture",
+      "description": "Camp offerings including grilled cheese, cookies, slushies, Reiki, weddings, and other gifts to the community"
+    }
+  ],
+  "character": [
+    {
+      "@type": "Person",
+      "@id": "https://music.mycal.net/#kevin-clark",
+      "name": "Kevin",
+      "description": "Kevin Clark - founder of Reared in Steel who 'sparks the sky'"
+    },
+    {
+      "@type": "Person",
+      "name": "Dave",
+      "description": "The fix-it guy of Reared in Steel"
+    },
+    {
+      "@type": "Person",
+      "name": "Andre",
+      "description": "Camp organizer with 'the plan and the best tan alive'"
+    },
+    {
+      "@type": "Person",
+      "name": "Harper",
+      "description": "Creator of GUMA installation"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Reared in Steel Camp History and Art Installations",
+    "description": "Documentation of Reared in Steel's fire art projects, camp culture, and community at Burning Man from Petaluma origins to 9:00 & A location"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Camp Pride and Community Celebration",
+    "description": "A celebration of camp identity, community bonds, artistic achievements, and the joy of building and gifting together"
+  },
+  "musicalKey": "Major",
+  "tempo": "Upbeat",
+  "mood": [
+    "Proud",
+    "Celebratory",
+    "Energetic",
+    "Communal",
+    "Joyful"
+  ],
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "spatialCoverage": [
+    {
+      "@type": "Place",
+      "name": "Petaluma",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Petaluma",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      }
+    },
+    {
+      "@type": "Place",
+      "name": "9:00 & A, Black Rock City",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "40.7864",
+        "longitude": "-119.2065"
+      }
+    }
+  ],
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Rhino Redemption",
+      "description": "Fire-breathing rhinoceros art car and major installation by Reared in Steel"
+    },
+    {
+      "@type": "Thing",
+      "name": "Medusa",
+      "description": "Fire art installation created by Reared in Steel"
+    },
+    {
+      "@type": "Thing",
+      "name": "Fire Kathedral",
+      "description": "Large-scale fire installation with architectural flames"
+    },
+    {
+      "@type": "Thing",
+      "name": "Love Pod Forest",
+      "description": "Installation featuring multiple pods with fire elements"
+    },
+    {
+      "@type": "Thing",
+      "name": "Ladybug",
+      "description": "Art installation with spark effects"
+    },
+    {
+      "@type": "Thing",
+      "name": "GUMA",
+      "description": "Art installation by Harper"
+    },
+    {
+      "@type": "Thing",
+      "name": "Target",
+      "description": "Camp installation or activity"
+    },
+    {
+      "@type": "Thing",
+      "name": "Flower Tower",
+      "description": "Illuminated tower installation"
+    },
+    {
+      "@type": "Thing",
+      "name": "Brass Ring",
+      "description": "Spinning art installation"
+    },
+    {
+      "@type": "Thing",
+      "name": "Sky Couch",
+      "description": "Couch mounted 50 feet high in the air - signature Reared in Steel installation"
+    }
+  ],
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Theme Camp",
+      "description": "Organized camp at Burning Man that provides interactive experiences, art, and gifts to the community - Reared in Steel is located at 9:00 & A"
+    }
+  ],
+  "educationalUse": "Understanding theme camp culture, community building, and the collaborative art creation that defines camps like Reared in Steel",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Reared in Steel camp members, Burning Man community, fire art enthusiasts"
+  },
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "This one's forged in Petaluma — born to burn.\nLive from 9 & A — WEIRD STEEL!\n\nWeird Steel forged at 9 & A\nRight on the edge where the fire gods play\nStep through the portal where the weird ones stay\nWe build with flame — we don't play halfway\n\nCouch in the sky, grilled cheese in hand\nCookies at noon, propane unplanned\nCome find us tomorrow — or better, today\nWeird Steel's got the bar and a burner buffet (whoooa!)\n\nWe are Reared in Steel — Petaluma born (yeah!)\nRhino Redemption with a fire-spitting horn (let it rise!)\n(Target's open!) (Flower Tower glows!)\nWe light the night where the fire wind blows (whoooa!)\n\nKevin sparks the sky,\nDave's the fix-it guy\nAndre's got the plan and the best tan alive (yeah!)\nWeird Steel! (Weird Steel!) — let it burn, let it rise\nWeird Steel! (Weird Steel!) — see the dust in our eyes (whoooa!)\n\nWe gave you Medusa, and the Fire Kathedral's flare\nLove Pod Forest, where sparks fill the air\nLadybug rides with a spark and a smile\nHarper's GUMA glows, wrapped in style (fire!)\n\nSlushies and Reiki, cookies on cue\nWeddings, sky rides, and a century too\nFifty feet high — a couch to the stars\nWe don't just party — we build art cars\n\nStrike team's ready, MOOPin' in stride\nRhino's groovin' while the flames fly wide (boom!)\nAdvice on bread, truth on toast (mmm-hmm)\nWe gift it loud — that's what we do most (yeah!)\n\nWe are Reared in Steel — forged in love (yeah!)\nFrom the Petaluma hills to the stars above\nBrass Ring spins, and our stories ignite\nWeird Steel rides through the magic night\n\nWeird Steel! (Weird Steel!) — let it burn, let it rise\nWeird Steel! (Weird Steel!) — we got stars in our eyes (whoooa!)",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://mycalmusic.bandcamp.com/track/weird-steel",
@@ -37,12 +558,55 @@
     "https://music.amazon.com/albums/B0FL13GHC2?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_fGwB7DvXjFtZjWjdSjPlb7Em1&trackAsin=B0FL16HJV6",
     "https://www.youtube.com/watch?v=2wyjT4VCPDs"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "This one's forged in Petaluma — born to burn.\nLive from 9 & A — WEIRD STEEL!\n\nWeird Steel forged at 9 & A\nRight on the edge where the fire gods play\nStep through the portal where the weird ones stay\nWe build with flame — we don't play halfway\n\nCouch in the sky, grilled cheese in hand\nCookies at noon, propane unplanned\nCome find us tomorrow — or better, today\nWeird Steel's got the bar and a burner buffet (whoooa!)\n\nWe are Reared in Steel — Petaluma born (yeah!)\nRhino Redemption with a fire-spitting horn (let it rise!)\n(Target's open!) (Flower Tower glows!)\nWe light the night where the fire wind blows (whoooa!)\n\nKevin sparks the sky,\nDave's the fix-it guy\nAndre's got the plan and the best tan alive (yeah!)\nWeird Steel! (Weird Steel!) — let it burn, let it rise\nWeird Steel! (Weird Steel!) — see the dust in our eyes (whoooa!)\n\nWe gave you Medusa, and the Fire Kathedral's flare\nLove Pod Forest, where sparks fill the air\nLadybug rides with a spark and a smile\nHarper's GUMA glows, wrapped in style (fire!)\n\nSlushies and Reiki, cookies on cue\nWeddings, sky rides, and a century too\nFifty feet high — a couch to the stars\nWe don't just party — we build art cars\n\nStrike team's ready, MOOPin' in stride\nRhino's groovin' while the flames fly wide (boom!)\nAdvice on bread, truth on toast (mmm-hmm)\nWe gift it loud — that's what we do most (yeah!)\n\nWe are Reared in Steel — forged in love (yeah!)\nFrom the Petaluma hills to the stars above\nBrass Ring spins, and our stories ignite\nWeird Steel rides through the magic night\n\nWeird Steel! (Weird Steel!) — let it burn, let it rise\nWeird Steel! (Weird Steel!) — we got stars in our eyes (whoooa!)"
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/weird-steel",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Weird Steel",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/weird-steel.html"
+    }
+  ]
+}
+</script>
+
+
 </head>
 <body>
     <main class="track-page">

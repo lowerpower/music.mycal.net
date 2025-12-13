@@ -71,34 +71,397 @@ back
     </div>
   </footer>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicRecording",
-    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working",
-    "name": "Fighting Wasn't Working",
-    "duration": "PT2M59S",
-    "inLanguage": "en",
-    "byArtist": {
-      "@type": "Person",
-      "@id": "https://music.mycal.net/#mycal"
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
     },
-    "inAlbum": {
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicRecording",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working.html",
+  "name": "Fighting Wasn't Working",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working.html",
+  "duration": "PT2M59S",
+  "position": 12,
+  "inLanguage": ["en-US", "ja"],
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "byArtist": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "inAlbum": {
+    "@type": "MusicAlbum",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes",
+    "name": "Ashes and Echoes — Songs from the Playa"
+  },
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Fighting Wasn't Working",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Burning Man", "Experimental", "Minimalist", "Sound Art", "Interlude"],
+  "keywords": [
+    "surrender",
+    "acceptance",
+    "letting go",
+    "riding the wave",
+    "minimalist",
+    "sound art",
+    "interlude",
+    "experimental",
+    "sonic exploration",
+    "abstract",
+    "マイカル",
+    "Mycal",
+    "release",
+    "flow",
+    "non-resistance"
+  ],
+  "description": "\"Fighting Wasn't Working\" is a minimalist sonic meditation on surrender — a stark contrast to the album's fuller tracks. With sparse lyrics and abstract sound design, it captures the moment of letting go: when resistance ends and flow begins. The piece dissolves into experimental territory, marked only by vocals, percussion, and the Japanese rendering of Mycal (マイカル) as a signature.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/fighting-wasnt-working.jpg",
+    "caption": "Fighting Wasn't Working - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working.html"
+  },
+  "isPartOf": [
+    {
       "@type": "MusicAlbum",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes"
     },
-    "genre": ["Folk", "Burning Man"],
-    "datePublished": "2025-08-15",
-    "image": "https://music.mycal.net/assets/img/tracks/fighting-wasnt-working.jpg",
-    "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working",
-    "sameAs": [
-      "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel"
-    ],
-    "lyrics": {
-      "@type": "CreativeWork",
-      "text": "Fighting wasn't working\nSo I chose to ride the wave\n\n(Yeeeeeahhhh)\n\nback\n*smash* *bang*\n(whoo-ahhhh)\n\n(Yeeeeeahhhh)\n\nマイカ--ル"
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Surrender and Acceptance",
+      "description": "The realization that resistance and fighting create more struggle than flow - choosing to ride the wave instead of fighting against it"
+    },
+    {
+      "@type": "Thing",
+      "name": "Minimalism",
+      "description": "Using sparse elements and space to convey meaning - what's left unsaid is as important as what's expressed"
+    },
+    {
+      "@type": "Thing",
+      "name": "Sonic Abstraction",
+      "description": "Moving beyond conventional song structure into experimental sound territory with percussion and vocal elements"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Personal Experience of Letting Go",
+    "description": "The moment of recognizing that resistance is futile and choosing surrender, flow, and acceptance instead"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Release and Surrender",
+    "description": "The emotional shift from struggle to acceptance, from fighting to flowing"
+  },
+  "musicalKey": "Ambiguous",
+  "tempo": "Slow to Moderate",
+  "mood": [
+    "Contemplative",
+    "Surrendering",
+    "Abstract",
+    "Meditative",
+    "Experimental"
+  ],
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Surrender",
+      "description": "The practice of letting go of resistance and control, choosing to flow with circumstances rather than fight against them"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Non-Resistance",
+      "description": "The philosophy of accepting what is rather than struggling against reality"
+    }
+  ],
+  "educationalUse": "Understanding the power of surrender and acceptance through minimalist sonic expression",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Listeners interested in experimental music, minimalism, meditation, and the philosophy of surrender"
+  },
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "Fighting wasn't working\nSo I chose to ride the wave\n\n(Yeeeeeahhhh)\n\nback\n*smash* *bang*\n(whoo-ahhhh)\n\n(Yeeeeeahhhh)\n\nマイカ--ル",
+    "inLanguage": ["en-US", "ja"],
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
+  "sameAs": [
+    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/fighting-wasnt-working",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
     }
   }
-  </script>
+}
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Fighting Wasn't Working",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/fighting-wasnt-working.html"
+    }
+  ]
+}
+</script>
+
 </body>
 </html>

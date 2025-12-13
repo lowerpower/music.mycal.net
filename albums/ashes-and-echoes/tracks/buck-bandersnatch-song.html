@@ -6,42 +6,442 @@
   <meta name="description" content="\"The Buck Bandersnatch Song (Playa Dreams)\" wanders through Wunjo runes, tarot pulls, JuPlaya nights, and temple whispers to find joy beyond the burn.">
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <!-- JSON-LD for this track -->
-  <script type="application/ld+json">
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B0FL13GHC2/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song.html",
   "name": "The Buck Bandersnatch Song (Playa Dreams)",
+  "alternateName": "The Buck Bandersnatch Song",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song.html",
+  "duration": "PT3M14S",
+  "position": 9,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "duration": "PT3M14S",
-  "position": 9,
-  "genre": ["Folk", "Electronic", "Burning Man", "Temple Song"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/The-Buck-Bandersnatch-Song.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "The Buck Bandersnatch Song (Playa Dreams)",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Surreal", "Story Song", "Psychedelic Folk"],
+  "keywords": [
+    "Buck Bandersnatch",
+    "playa dreams",
+    "surrealism",
+    "Norse runes",
+    "Wunjo",
+    "tarot",
+    "desert hallucination",
+    "mysticism",
+    "JuPlaya",
+    "temple builder",
+    "surrender",
+    "transformation",
+    "ritual",
+    "psychedelic",
+    "desert mythology"
+  ],
   "description": "\"The Buck Bandersnatch Song (Playa Dreams)\" is a rune-soaked, temple-whisper track about Wunjo, surrender, JuPlaya, and the thin line between ending and beginning. It follows our hero Buck Bandersnatch, temple builder, fence pounder as he wanders through runes, tarot, cigarette rituals and desert omens, looking for joy on the other side of the burn.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/The-Buck-Bandersnatch-Song.jpg",
+    "caption": "The Buck Bandersnatch Song (Playa Dreams) - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Norse Runes",
+      "description": "Ancient Norse runic symbols used for divination and meaning-making, particularly Wunjo (ᚹ - joy), Ingwaz (fertility/new beginnings), Tiwaz (warrior/justice), and Thurisaz (gateway/threshold)"
+    },
+    {
+      "@type": "Thing",
+      "name": "Desert Mysticism",
+      "description": "The intersection of desert experience, altered consciousness, and spiritual seeking on the playa"
+    },
+    {
+      "@type": "Thing",
+      "name": "Surrender and Transformation",
+      "description": "The act of letting go, surrendering to the unknown, and finding joy through release"
+    },
+    {
+      "@type": "Thing",
+      "name": "Tarot and Divination",
+      "description": "Use of tarot cards, runes, and other divinatory practices as mirrors for self-understanding"
+    },
+    {
+      "@type": "Thing",
+      "name": "JuPlaya",
+      "description": "Mythical or spiritual concept of playa consciousness and divine reception in the desert"
+    },
+    {
+      "@type": "Person",
+      "name": "Buck Bandersnatch",
+      "description": "Archetypal character - temple builder, fence pounder, seeker who embodies the surreal journey through playa mysticism and transformation"
+    }
+  ],
+  "character": [
+    {
+      "@type": "Person",
+      "name": "Buck Bandersnatch",
+      "description": "The protagonist - a temple builder and seeker navigating runes, tarot, ritual, and the search for joy through surrender"
+    },
+    {
+      "@type": "Person",
+      "name": "Heartsong",
+      "description": "A transformative figure who helps the protagonist find clarity and direction"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Norse Rune Mythology and Playa Experience",
+    "description": "Drawing from Norse runic traditions, personal experiences with divination practices on the playa, and the surreal, mythological quality of desert consciousness"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Surreal Journey and Mystical Surrender",
+    "description": "A psychedelic folk narrative about seeking joy through surrender, navigating mystical symbols, and the transformative power of letting go"
+  },
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Wunjo Rune",
+      "description": "The Norse rune ᚹ representing joy, harmony, and fellowship - central to the song's theme of finding joy through surrender"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Desert Consciousness",
+      "description": "The altered, mythological state of consciousness that emerges in extreme desert environments like the playa"
+    }
+  ],
+  "educationalUse": "Cultural understanding of divination practices, Norse rune symbolism, and the role of mysticism and altered consciousness in playa culture",
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "mentions": [
+    {
+      "@type": "Thing",
+      "name": "Wunjo (ᚹ)",
+      "description": "Norse rune meaning joy, pleasure, harmony"
+    },
+    {
+      "@type": "Thing",
+      "name": "Ingwaz",
+      "description": "Norse rune of fertility, new beginnings, potential energy"
+    },
+    {
+      "@type": "Thing",
+      "name": "Tiwaz",
+      "description": "Norse rune of the warrior, justice, and honor"
+    },
+    {
+      "@type": "Thing",
+      "name": "Thurisaz",
+      "description": "Norse rune of the giant, gateway, and threshold"
+    }
+  ],
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "(mmm), (yeah),  JOY!\n\nWoke up with a ember on the temple cloth\nNot an i, it was j  and Joy spoke soft\nWUNJO carved in the dust with my hand\nᚹ in the flame, I try to understand\n\nI got no paper, no plan, no pay\nBut I got this dust, and I got this way\nThe Playa knows — and the Playa speaks\nShe draws back the curtain, she kisses my cheek\n(ply-uhhh...)(joy!) (yeah...) (joy!)\n\nJuPlaya, strong reception, man\nDick-cunt glistening, gods in the sand\nRunes fell like thunder, called me \"slave\"\nBut I listened deep and I tried to be brave\n\nThe tarot's a mirror, the rune is the stone\nI fell for a woman who made me go home\nShe called herself Heartsong, and I got clean\nShe found her Leo, and I found my dream\n\n\"Commeth the hour, commeth the man…\"\nI burned the cash, I broke the plan\nI saw the signs, and I let them in\nI met the storm, I met my kin\n\nThe Playa knows — and the Playa gives\nEverything you are, and everything that lives\nWe build, we break, we burn, we bend\nBut fuck it, my friend, this might be the end\nor the start... (mmm...) (joy!)\n\nINGWAZ on its side, Tiwaz on my chest\nThurisaz on my belly, I gave it my best\nFrozen year cycle, portal at the table\nFire shouts random, if you're willing and able\n\nSnakes and moonlight, cigarettes and screams\nMario Kart countdown in ritual dreams\nHad to have a sit, let the stone speak clear\nIt said: \"Joy lives in surrender, my dear\"\n\nSo maybe I'm dying, or maybe I'm free\nMaybe I'm nothing — maybe I'm me\nI'll be in sunlight, or I'll be in shade\nBut I'll be on Playa…where legends are made\n\n501 more to go, the dust don't lie\nGet your shit together — look to the sky\nThis may be it, or the start of more\nBut the temple's whispering…like it did before…\n\nWUNJO...\nfind your joy again..\nLet go...",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
-    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
+    "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-sledel",
     "https://mycalmusic.bandcamp.com/track/the-buck-bandersnatch-song-playa-dreams",
     "https://open.spotify.com/track/2muu3pjtREI1Diw86Yf7Ni",
     "https://music.apple.com/us/song/the-buck-bandersnatch-song-playa-dreams/1830902048",
     "https://music.amazon.com/albums/B0FL13GHC2?trackAsin=B0FL14CCG2"
   ],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "(mmm), (yeah),  JOY!\n\nWoke up with a ember on the temple cloth\nNot an i, it was j  and Joy spoke soft\nWUNJO carved in the dust with my hand\nᚹ in the flame, I try to understand\n\nI got no paper, no plan, no pay\nBut I got this dust, and I got this way\nThe Playa knows — and the Playa speaks\nShe draws back the curtain, she kisses my cheek\n(ply-uhhh...)(joy!) (yeah...) (joy!)\n\nJuPlaya, strong reception, man\nDick-cunt glistening, gods in the sand\nRunes fell like thunder, called me \"slave\"\nBut I listened deep and I tried to be brave\n\nThe tarot's a mirror, the rune is the stone\nI fell for a woman who made me go home\nShe called herself Heartsong, and I got clean\nShe found her Leo, and I found my dream\n\n\"Commeth the hour, commeth the man…\"\nI burned the cash, I broke the plan\nI saw the signs, and I let them in\nI met the storm, I met my kin\n\nThe Playa knows — and the Playa gives\nEverything you are, and everything that lives\nWe build, we break, we burn, we bend\nBut fuck it, my friend, this might be the end\nor the start... (mmm...) (joy!)\n\nINGWAZ on its side, Tiwaz on my chest\nThurisaz on my belly, I gave it my best\nFrozen year cycle, portal at the table\nFire shouts random, if you're willing and able\n\nSnakes and moonlight, cigarettes and screams\nMario Kart countdown in ritual dreams\nHad to have a sit, let the stone speak clear\nIt said: \"Joy lives in surrender, my dear\"\n\nSo maybe I'm dying, or maybe I'm free\nMaybe I'm nothing — maybe I'm me\nI'll be in sunlight, or I'll be in shade\nBut I'll be on Playa…where legends are made\n\n501 more to go, the dust don't lie\nGet your shit together — look to the sky\nThis may be it, or the start of more\nBut the temple's whispering…like it did before…\n\nWUNJO...\nfind your joy again..\nLet go..."
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/the-buck-bandersnatch-song-playa-dreams",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "The Buck Bandersnatch Song (Playa Dreams)",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/buck-bandersnatch-song.html"
+    }
+  ]
+}
+</script>
+
+
+
+
 </head>
 <body>
     <main class="track-page">

@@ -12,29 +12,430 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/style.css">
 
-  <script type="application/ld+json">
-  {
+  <!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me.html",
   "name": "Speak Burner to Me",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me.html",
   "duration": "PT3M43S",
-  "inLanguage": "en",
+  "position": 5,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "position": 5,
-  "genre": ["Folk", "Electronic", "Burning Man", "Glossary Song"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/speak-burner-2-me.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Speak Burner to Me",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Glossary Song", "Educational", "Hip Hop"],
+  "keywords": [
+    "Burning Man glossary",
+    "playa slang",
+    "MOOP",
+    "Ten Principles",
+    "Black Rock City",
+    "burner terminology",
+    "educational song",
+    "vocabulary",
+    "acronyms",
+    "community language",
+    "Default World",
+    "Radical Inclusion",
+    "DPW",
+    "Theme Camps",
+    "call and response"
+  ],
+  "description": "\"Speak Burner to Me\" is a fast-talking Playa glossary in song form — a call-and-response tour through MOOP, Darkwads, Theme Camps, Arctica, DPW, and all the weird acronyms and in-jokes that make Black Rock City feel like another language. If you know, you know.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/speak-burner-2-me.jpg",
+    "caption": "Speak Burner to Me - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Burning Man Vocabulary",
+      "description": "The specialized language, slang, acronyms, and terminology unique to Burning Man and Black Rock City culture"
+    },
+    {
+      "@type": "Thing",
+      "name": "Ten Principles",
+      "description": "Burning Man's guiding principles: Radical Inclusion, Gifting, Decommodification, Radical Self-reliance, Radical Self-expression, Communal Effort, Civic Responsibility, Leaving No Trace, Participation, and Immediacy"
+    },
+    {
+      "@type": "Thing",
+      "name": "Black Rock City Infrastructure",
+      "description": "The temporary city's layout, services, and organizational structure including streets, avenues, theme camps, and support systems"
+    },
+    {
+      "@type": "Thing",
+      "name": "Community Culture and In-Jokes",
+      "description": "Shared references, humor, and cultural touchstones that define insider/outsider status in the Burning Man community"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Burning Man Survival Guide and Community Lexicon",
+    "description": "Comprehensive glossary of terms, slang, and cultural references from years of Burning Man participation and community immersion"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Playful Education and Community Initiation",
+    "description": "A fun, fast-paced introduction to playa culture that welcomes newcomers while celebrating insider knowledge"
+  },
+  "musicalKey": "Minor",
+  "tempo": "Fast",
+  "mood": [
+    "Educational",
+    "Playful",
+    "Energetic",
+    "Welcoming",
+    "Humorous"
+  ],
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "MOOP",
+      "description": "Matter Out Of Place - trash, debris, or anything that doesn't belong on the playa and must be removed per Leave No Trace principle"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Darkwad",
+      "description": "Person or bicycle without proper lighting at night, making them invisible and dangerous on the dark playa"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Sparkle Pony",
+      "description": "Participant who arrives unprepared, prioritizes appearance over participation, often relies on others"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Virgin",
+      "description": "First-time Burning Man participant"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Default World",
+      "description": "Normal society and everyday life outside of Burning Man"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "DPW",
+      "description": "Department of Public Works - crew that builds and maintains Black Rock City infrastructure"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Arctica",
+      "description": "Ice distribution service at 3:00, 6:00, and 9:00 positions in Black Rock City"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Theme Camp",
+      "description": "Organized camp that provides interactive experiences, gifts, or activities to the community"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Mutant Vehicle",
+      "description": "Art car - motorized art installation approved for driving in Black Rock City"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Playa Name",
+      "description": "Nickname or alias adopted for use at Burning Man"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "TTITD",
+      "description": "That Thing In The Desert - euphemism for Burning Man used to avoid saying the name"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Piss Clear",
+      "description": "State of proper hydration - when your urine is clear, you're drinking enough water"
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Exodus",
+      "description": "The mass departure from Black Rock City, often resulting in hours-long traffic delays"
+    }
+  ],
+  "educationalUse": "Teaching Burning Man vocabulary, culture, and principles through music - serves as an initiation guide for newcomers and celebration of community knowledge",
+  "learningResourceType": "Glossary Song",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Burners (both virgins and veterans), anyone learning playa culture"
+  },
+  "mentions": [
+    {
+      "@type": "Organization",
+      "name": "Robot Heart",
+      "description": "Famous art car and music platform at Burning Man"
+    },
+    {
+      "@type": "Organization",
+      "name": "BMIR",
+      "description": "Burning Man Information Radio - community radio station"
+    },
+    {
+      "@type": "Thing",
+      "name": "Esplanade",
+      "description": "Inner ring road of Black Rock City closest to the Man"
+    },
+    {
+      "@type": "Thing",
+      "name": "The Man",
+      "description": "Central effigy burned on Saturday night"
+    }
+  ],
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "Playya… yeah\nNo, not playya — it's Playa (say it right)\nYou ready?\nLet's go…\n\nWelcome to Home, it's That Thing in the Desert\nYou're a Burr-gin no more once you roll in the dust\nGrab your ticket, greet the Greeter, ring the bell, shed your name\nGet a Playa one instead — now you're in the game\nWe don't do the 'Default World' — no commerce, no shame\nJust dust, art, fire, and a Temple in flames\nFrom 10 to 2, from thunder to flashy\nThis ain't no festival, it's full-on batshit classy\n\nSpeak Burner to me — define your tribe\nSay \"MOOP\" not \"trash,\" let the sparkle slide\nSpeak Burner to me — in dust we trust\nFrom Arctica ice to the Temple dust\nSay \"radical,\" say \"now,\" say \"Free\"\nIf you know, you know — speak Burner to me\n(yeah… whoooa…)\n\nIt's Civic with Consent, and Decom with feels\nIt's Line Walks, Leave No Trace, bacon meals on wheels\nIt's Mutant Vehicles cruisin' loud in the night\nFrom Robo Heart drops to a dust bike flight\nLamplighters glowin', the Fluffers bring booze\nJava Cow says \"cream or sugar?\" — you choose\nShirtcockers struttin', Sparkle Ponies pout\nIf your camp's got a fence, then your vibe's sold out\n\nWhat's MOOP? (Matter Out Of Place!)\nWhat's a Darkwad? (Unlit in your face!)\nWho's a Wook? (Begs and bakes and mooches)\nWhat's a Solifuge? (Fast with too many leggy scooches)\nWhat's Piss Clear? (Hydrate 'til you pee!)\nWhat's TTITD? (That Thing in the D!)\nWho's the Man? (Not the cops, the one we burn!)\nWhat's a Theme Camp? (Where weirdos take their turn!)\n\nBRC's got Avenues, from 2 to 10\nStreets from A to L — but no straight lines, friend\nArctica slings ice at 3, 6, and 9\nDPW builds it all, then drinks it all in time\nRangers roam gently, BMIR calls storms\nThe DMZ pounds bass while the Man transforms\nThe Fallopian Tubes lead us in like a womb\nBut Exodus gonna trap you, bring snacks, resume\n\nSpeak Burner to me — throw dust like slang\nRadical Inclusion in a no-pants gang\nSpeak Burner to me — ten principles high\nWith a pants cannon ready and glitter in your eye\nSay \"Flame Effect,\" say \"Foe-moe,\" say \"Free\"\nWelcome Home, mycal — now speak Burner to me \n(yeah! yaaaah!)\n\nBORG! BLM! MOOP it up, then do it again\nEL Wire glow, Esplanade show\nMutant Vehicle rides in a giant rhino whoa\nRV Fortress? That's a no\nSCUM of the Earth? Plug-and-Play bro\nCollexodus, Rebar, P&P\nWhite-Out storm? You can't see me!\nReality Bends, Sparkle Lens\nMuggles don't get it — but this never ends\n\n\nSo if someone asks you where you've been...\nJust whisper, \"The Playa.\"\nAnd if they don't get it...\nSpeak burner to them.",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://mycalmusic.bandcamp.com/track/speak-burner-to-me",
@@ -44,13 +445,53 @@
     "https://music.apple.com/us/song/speak-burner-to-me/1830902044",
     "https://www.pandora.com/artist/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel/speak-burner-to-me/TRKzjrfjcPv34VV"
   ],
-  "description": "\"Speak Burner to Me\" is a fast-talking Playa glossary in song form — a call-and-response tour through MOOP, Darkwads, Theme Camps, Arctica, DPW, and all the weird acronyms and in-jokes that make Black Rock City feel like another language. If you know, you know.",
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "Playya… yeah\nNo, not playya — it's Playa (say it right)\nYou ready?\nLet's go…\n\nWelcome to Home, it's That Thing in the Desert\nYou're a Burr-gin no more once you roll in the dust\nGrab your ticket, greet the Greeter, ring the bell, shed your name\nGet a Playa one instead — now you're in the game\nWe don't do the 'Default World' — no commerce, no shame\nJust dust, art, fire, and a Temple in flames\nFrom 10 to 2, from thunder to flashy\nThis ain't no festival, it's full-on batshit classy\n\nSpeak Burner to me — define your tribe\nSay \"MOOP\" not \"trash,\" let the sparkle slide\nSpeak Burner to me — in dust we trust\nFrom Arctica ice to the Temple dust\nSay \"radical,\" say \"now,\" say \"Free\"\nIf you know, you know — speak Burner to me\n(yeah… whoooa…)\n\nIt's Civic with Consent, and Decom with feels\nIt's Line Walks, Leave No Trace, bacon meals on wheels\nIt's Mutant Vehicles cruisin' loud in the night\nFrom Robo Heart drops to a dust bike flight\nLamplighters glowin', the Fluffers bring booze\nJava Cow says \"cream or sugar?\" — you choose\nShirtcockers struttin', Sparkle Ponies pout\nIf your camp's got a fence, then your vibe's sold out\n\nWhat's MOOP? (Matter Out Of Place!)\nWhat's a Darkwad? (Unlit in your face!)\nWho's a Wook? (Begs and bakes and mooches)\nWhat's a Solifuge? (Fast with too many leggy scooches)\nWhat's Piss Clear? (Hydrate 'til you pee!)\nWhat's TTITD? (That Thing in the D!)\nWho's the Man? (Not the cops, the one we burn!)\nWhat's a Theme Camp? (Where weirdos take their turn!)\n\nBRC's got Avenues, from 2 to 10\nStreets from A to L — but no straight lines, friend\nArctica slings ice at 3, 6, and 9\nDPW builds it all, then drinks it all in time\nRangers roam gently, BMIR calls storms\nThe DMZ pounds bass while the Man transforms\nThe Fallopian Tubes lead us in like a womb\nBut Exodus gonna trap you, bring snacks, resume\n\nSpeak Burner to me — throw dust like slang\nRadical Inclusion in a no-pants gang\nSpeak Burner to me — ten principles high\nWith a pants cannon ready and glitter in your eye\nSay \"Flame Effect,\" say \"Foe-moe,\" say \"Free\"\nWelcome Home, mycal — now speak Burner to me \n(yeah! yaaaah!)\n\nBORG! BLM! MOOP it up, then do it again\nEL Wire glow, Esplanade show\nMutant Vehicle rides in a giant rhino whoa\nRV Fortress? That's a no\nSCUM of the Earth? Plug-and-Play bro\nCollexodus, Rebar, P&P\nWhite-Out storm? You can't see me!\nReality Bends, Sparkle Lens\nMuggles don't get it — but this never ends\n\n\nSo if someone asks you where you've been...\nJust whisper, \"The Playa.\"\nAnd if they don't get it...\nSpeak burner to them."
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/speak-burner-to-me",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Speak Burner to Me",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/speak-burner-to-me.html"
+    }
+  ]
+}
+</script>
 
 </head>
 <body>

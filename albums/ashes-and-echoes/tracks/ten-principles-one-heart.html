@@ -12,28 +12,390 @@
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/assets/css/style.css">
 
-    <script type="application/ld+json">
+<!-- Person/Artist Entity - CANONICAL VERSION (identical across all pages) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
+    "caption": "Mycal - Ashes and Echoes album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician creating folk-electronic fusion inspired by Burning Man and Black Rock City. Long-time Burner and member of Reared in Steel fire art collective. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Folk", "Electronic", "Experimental", "Burning Man", "Playa Music", "Cinematic Electronic"],
+  "hasOccupation": [
+    {
+      "@type": "Occupation",
+      "name": "Musician",
+      "occupationalCategory": "Arts and Entertainment",
+      "occupationLocation": {
+        "@type": "Place",
+        "name": "Black Rock City"
+      }
+    },
+    {
+      "@type": "Occupation",
+      "name": "Technology Executive",
+      "occupationalCategory": "Computer and Information Technology"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com",
+      "founder": {"@id": "https://blog.mycal.net/about/#mycal"},
+      "foundingDate": "2024"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "@id": "https://music.mycal.net/#reared-in-steel",
+      "name": "Reared in Steel",
+      "description": "Burning Man fire art collective"
+    }
+  ],
+  "publishedBy": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "performerIn": {
+    "@type": "Event",
+    "@id": "https://music.mycal.net/#burning-man-event",
+    "name": "Burning Man",
+    "description": "Annual Black Rock City gatherings, fire art performances and installations",
+    "location": {
+      "@type": "Place",
+      "name": "Black Rock City",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "NV",
+        "addressCountry": "US"
+      }
+    }
+  },
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://archive.mycal.net",
+    "https://www.group42.net",
+    "https://github.com/lowerpower",
+    "https://x.com/mycal_1",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization/Publisher Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music publishing organization for Burning Man-inspired albums, Cronosonics projects, and folk-electronic fusion releases by artist Mycal",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "publishingPrinciples": "https://music.mycal.net/",
+  "genre": ["Folk", "Electronic", "Burning Man", "Playa Music", "Story Songs", "Cinematic Electronic"]
+}
+</script>
+
+<!-- Burning Man Event Entity -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Event",
+  "@id": "https://music.mycal.net/#burning-man-event",
+  "name": "Burning Man",
+  "description": "Annual experimental community and temporary city in Black Rock Desert, Nevada, dedicated to art, self-expression, and self-reliance",
+  "startDate": "1986",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "location": {
+    "@type": "Place",
+    "name": "Black Rock City",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "NV",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "40.7864",
+      "longitude": "-119.2065"
+    }
+  },
+  "url": "https://burningman.org"
+}
+</script>
+
+<!-- Cronosonics Creative Work Series -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "@id": "https://music.mycal.net/series/cronosonics",
+  "name": "Cronosonics",
+  "description": "Multimodal aesthetic format pairing technical essays with companion songs to enhance cognitive retention and memory integration",
+  "creator": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Experimental", "Multimedia", "Essay-Song Fusion"],
+  "url": "https://music.mycal.net/series/cronosonics"
+}
+</script>
+
+<!-- MusicRecording - Main Entity for this Track Page -->
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart",
+  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart.html",
   "name": "Ten Principles, One Heart",
+  "alternateName": "10 Principles, 1 Heart",
+  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart.html",
   "duration": "PT2M59S",
-  "inLanguage": "en",
+  "position": 4,
+  "inLanguage": "en-US",
+  "datePublished": "2025-08-15T00:00:00-08:00",
+  "dateCreated": "2024",
+  "dateModified": "2025-12-12T00:00:00-08:00",
+  "copyrightYear": 2025,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "copyrightNotice": "© 2025 Mike Johnson (Mycal). All rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
   "byArtist": {
     "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
   },
   "inAlbum": {
     "@type": "MusicAlbum",
     "@id": "https://music.mycal.net/albums/ashes-and-echoes",
     "name": "Ashes and Echoes — Songs from the Playa"
   },
-  "position": 4,
-  "genre": ["Folk", "Electronic", "Burning Man", "Anthem"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/ten-principles-one-heart.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart.html",
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "name": "Ten Principles, One Heart",
+    "composer": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "lyricist": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "iswcCode": "",
+    "datePublished": "2024"
+  },
+  "genre": ["Folk", "Electronic", "Burning Man", "Anthem", "Sing-along", "Community"],
+  "keywords": [
+    "Ten Principles",
+    "Burning Man values",
+    "Radical Inclusion",
+    "Radical Self-expression",
+    "community anthem",
+    "camp song",
+    "sing-along",
+    "playa pledge",
+    "Leave No Trace",
+    "Gifting",
+    "Decommodification",
+    "Civic Responsibility",
+    "Immediacy",
+    "Participation",
+    "Communal Effort"
+  ],
+  "description": "\"Ten Principles, One Heart\" is the Playa pledge in song form — a sing-along camp anthem that runs the Burning Man principles through dust, bass, and radical love. It's part reminder, part rallying cry: from radical inclusion to leaving no trace, many burners, one heart.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/tracks/ten-principles-one-heart.jpg",
+    "caption": "Ten Principles, One Heart - Album artwork"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart.html"
+  },
+  "isPartOf": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics",
+      "name": "Cronosonics"
+    }
+  ],
+  "about": [
+    {
+      "@type": "Thing",
+      "name": "Ten Principles of Burning Man",
+      "description": "The foundational values that guide Burning Man culture and community: Radical Inclusion, Gifting, Decommodification, Radical Self-reliance, Radical Self-expression, Communal Effort, Civic Responsibility, Leaving No Trace, Participation, and Immediacy"
+    },
+    {
+      "@type": "Thing",
+      "name": "Community Unity",
+      "description": "The collective spirit and shared values that unite diverse participants into one community"
+    },
+    {
+      "@type": "Thing",
+      "name": "Radical Love",
+      "description": "The philosophy of unconditional acceptance, gifting, and community care that defines playa culture"
+    }
+  ],
+  "isBasedOn": {
+    "@type": "CreativeWork",
+    "name": "Burning Man's Ten Principles",
+    "description": "The official guiding principles established by Burning Man founder Larry Harvey to define the community's values and culture",
+    "url": "https://burningman.org/about/10-principles/"
+  },
+  "emotionalContent": {
+    "@type": "Thing",
+    "name": "Communal Celebration and Commitment",
+    "description": "A rallying cry and collective affirmation of shared values - celebrating unity while pledging to uphold community principles"
+  },
+  "musicalKey": "Major",
+  "tempo": "Moderate to Upbeat",
+  "mood": [
+    "Uplifting",
+    "Unifying",
+    "Celebratory",
+    "Inspirational",
+    "Joyful"
+  ],
+  "temporalCoverage": "2024",
+  "contentReferenceTime": "2024",
+  "teaches": [
+    {
+      "@type": "DefinedTerm",
+      "name": "Radical Inclusion",
+      "description": "Anyone may be a part of Burning Man. We welcome and respect the stranger. No prerequisites exist for participation in our community."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Gifting",
+      "description": "Burning Man is devoted to acts of gift giving. The value of a gift is unconditional. Gifting does not contemplate a return or an exchange for something of equal value."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Decommodification",
+      "description": "In order to preserve the spirit of gifting, our community seeks to create social environments that are unmediated by commercial sponsorships, transactions, or advertising."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Radical Self-reliance",
+      "description": "Burning Man encourages the individual to discover, exercise and rely on their inner resources."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Radical Self-expression",
+      "description": "Radical self-expression arises from the unique gifts of the individual. No one other than the individual or a collaborating group can determine its content. It is offered as a gift to others."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Communal Effort",
+      "description": "Our community values creative cooperation and collaboration. We strive to produce, promote and protect social networks, public spaces, works of art, and methods of communication that support such interaction."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Civic Responsibility",
+      "description": "We value civil society. Community members who organize events should assume responsibility for public welfare and endeavor to communicate civic responsibilities to participants."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Leaving No Trace",
+      "description": "Our community respects the environment. We are committed to leaving no physical trace of our activities wherever we gather. We clean up after ourselves and endeavor, whenever possible, to leave such places in a better state than when we found them."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Participation",
+      "description": "Our community is committed to a radically participatory ethic. We believe that transformative change, whether in the individual or in society, can occur only through the medium of deeply personal participation."
+    },
+    {
+      "@type": "DefinedTerm",
+      "name": "Immediacy",
+      "description": "Immediate experience is, in many ways, the most important touchstone of value in our culture. We seek to overcome barriers that stand between us and a recognition of our inner selves, the reality of those around us, participation in society, and contact with a natural world exceeding human powers."
+    }
+  ],
+  "educationalUse": "Teaching and celebrating Burning Man's Ten Principles through music - serves as both educational tool and community anthem",
+  "learningResourceType": "Community Anthem",
+  "audience": {
+    "@type": "PeopleAudience",
+    "audienceType": "Burners, camp communities, anyone learning or celebrating Burning Man values"
+  },
+  "lyrics": {
+    "@type": "CreativeWork",
+    "text": "Rollin' through dust with a backpack of dreams\nPlaya wind howlin' through busted-up seams\nMet a stranger who gave me cold tea and a smile\nSaid \"Welcome home, stay weird for a while\"\nLED bikes like a galaxy spun\nThe party don't end with the rising sun\nEvery step in the sand leaves a spark in your soul\nEvery camp's burning a piece of the whole\n\nTen principles, one heart\nWe glow like sparks in the dark\nWe gift, we build, we play our part\nRadical love, that's our art\nFrom dust to flame, we rise and start\nTen principles, one heart\n(yaaaah!)\n\nRadical welcome wherever you land\nSelf-expression kicks up the sand\n\nNo brands, no deals — just soul and skin\nA gift in your hand, no price, just grin\nDust in your hair, a beat in your soul\nEvery sunrise makes you feel whole\nArt takes flight in a desert dream\nLiving the moment, a vibrant stream\nNo trace left but the stories we tell\nImmediacy's real, a truth you can tell\nCommunal effort, leave ego behind\nConsent and respect — we stay radically kind\n\nLeave your titles, your status, your plan\nBecome the dust, the art, the clan\nOn the edge of the void, we dance and ignite\nBurn the fears, let your joy take flight\nStrip off the masks, let the real you shine\nIn the dust we're all one — no yours, no mine\n(yeahhh!)\nSing it now—\n\nTen principles, one heart (say it loud!)\nGlowin' wild in the dark (shout it proud!)\nWe build, we dance, we share our spark\nRadical dreams leave a mark\nFrom dust to light, we play our part\nTen principles, one heart\n(whoooa!)\nTen principles, one heart\n(ohhh yeah!)\nTen principles, one heart\nTen principles! (One heart!)\n\nBack to the dust, where the heart stays free\nTen principles live in you and me.",
+    "inLanguage": "en-US",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightHolder": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "copyrightYear": 2025
+  },
   "sameAs": [
     "https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel",
     "https://www.youtube.com/watch?v=2wyjT4VCPDs",
@@ -43,13 +405,53 @@
     "https://music.amazon.com/albums/B0FL13GHC2?trackAsin=B0FL15W9ZP",
     "https://www.pandora.com/artist/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel/10-principles-1-heart/TRp46bJg4zrfvPk"
   ],
-  "description": "\"Ten Principles, One Heart\" is the Playa pledge in song form — a sing-along camp anthem that runs the Burning Man principles through dust, bass, and radical love. It's part reminder, part rallying cry: from radical inclusion to leaving no trace, many burners, one heart.",
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": "Rollin' through dust with a backpack of dreams\nPlaya wind howlin' through busted-up seams\nMet a stranger who gave me cold tea and a smile\nSaid \"Welcome home, stay weird for a while\"\nLED bikes like a galaxy spun\nThe party don't end with the rising sun\nEvery step in the sand leaves a spark in your soul\nEvery camp's burning a piece of the whole\n\nTen principles, one heart\nWe glow like sparks in the dark\nWe gift, we build, we play our part\nRadical love, that's our art\nFrom dust to flame, we rise and start\nTen principles, one heart\n(yaaaah!)\n\nRadical welcome wherever you land\nSelf-expression kicks up the sand\n\nNo brands, no deals — just soul and skin\nA gift in your hand, no price, just grin\nDust in your hair, a beat in your soul\nEvery sunrise makes you feel whole\nArt takes flight in a desert dream\nLiving the moment, a vibrant stream\nNo trace left but the stories we tell\nImmediacy's real, a truth you can tell\nCommunal effort, leave ego behind\nConsent and respect — we stay radically kind\n\nLeave your titles, your status, your plan\nBecome the dust, the art, the clan\nOn the edge of the void, we dance and ignite\nBurn the fears, let your joy take flight\nStrip off the masks, let the real you shine\nIn the dust we're all one — no yours, no mine\n(yeahhh!)\nSing it now—\n\nTen principles, one heart (say it loud!)\nGlowin' wild in the dark (shout it proud!)\nWe build, we dance, we share our spark\nRadical dreams leave a mark\nFrom dust to light, we play our part\nTen principles, one heart\n(whoooa!)\nTen principles, one heart\n(ohhh yeah!)\nTen principles, one heart\nTen principles! (One heart!)\n\nBack to the dust, where the heart stays free\nTen principles live in you and me."
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://mycalmusic.bandcamp.com/track/ten-principles-one-heart",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
   }
 }
-  </script>
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Albums",
+      "item": "https://music.mycal.net/#albums"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Ashes and Echoes",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Ten Principles, One Heart",
+      "item": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart.html"
+    }
+  ]
+}
+</script>
 
 </head>
 <body>
