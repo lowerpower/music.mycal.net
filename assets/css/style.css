@@ -96,6 +96,12 @@ main {
   box-shadow: var(--shadow);
 }
 
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
 .hero-content h1 {
   margin: 0 0 0.4rem;
   font-size: clamp(1.9rem, 3vw, 2.4rem);
@@ -226,8 +232,16 @@ ol.tracklist {
 }
 
 .track-embed iframe {
-  width: min(360px, 100%);
+  width: 100%;
+  max-width: 420px;
   border-radius: 8px;
+  background: var(--bg);
+}
+
+.hero .track-embed {
+  margin-top: 1.25rem;
+  padding-top: 0.35rem;
+  justify-content: flex-start;
 }
 
 .lyrics {
