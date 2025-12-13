@@ -2,3 +2,19 @@ logs/
 *.swp
 *.tmp
 .DS_Store
+
+# User authentication/session files
+users.xml
+*.user
+*.session
+
+# Any other sensitive config
+config.local.*
+.env
+.env.local
+
+#bing
+BingSiteAuth.xml
+
+
+
