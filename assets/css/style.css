@@ -218,6 +218,18 @@ ol.tracklist {
   font-weight: 700;
 }
 
+.track-embed {
+  margin-left: auto;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.track-embed iframe {
+  width: min(360px, 100%);
+  border-radius: 8px;
+}
+
 .lyrics {
   white-space: pre-wrap;
   line-height: 1.6;
