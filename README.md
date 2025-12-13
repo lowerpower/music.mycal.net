@@ -1,283 +1,93 @@
 
-🎵 music.mycal.net — Static Site Specification
+# music.mycal.net
 
-Author: Mycal
-Purpose: Multi-album static music site served by Caddy
-Build System: Plain HTML/CSS (no JS required)
-AI Assistants: Claude Code, Copilot, ChatGPT (allowed to generate files)
+**Official music site for Mycal** - Folk-electronic fusion from Black Rock City and the playa.
 
-📌 Overview
+🔗 **Live Site:** [music.mycal.net](https://music.mycal.net)
 
-This repository contains the source for music.mycal.net, the public site for Mycal Music.
+## About
 
-The site is fully static and deployed via Caddy.
-It supports:
+This is a static website showcasing albums and tracks by Mycal, including:
 
-Multiple albums
+- **[Ashes and Echoes — Songs from the Playa](https://music.mycal.net/albums/ashes-and-echoes)** (2025)
+  - 14 tracks exploring Burning Man culture, fire art, transformation, and the emotional architecture of Black Rock City
+  - Folk x Fire x Electronic for art cars, sunrise sets, and Temple nights
 
-Dedicated album pages
+## Technical Details
 
-Dedicated track pages
+- **Stack:** Static HTML/CSS served by Caddy (no build process, no JavaScript required)
+- **Structured Data:** Comprehensive JSON-LD on every page for discoverability
+- **Performance:** Optimized for speed with no tracking pixels
+- **License:** Code is MIT, music content is © 2025 Mike Johnson (Mycal)
 
-Track images + lyrics
+## Structure
 
-Per-page Music JSON-LD for SEO and cataloging
-
-Root-relative links (no JS routing)
-
-The first album implemented is:
-
-Ashes and Echoes – Songs from the Playa (2025)
-
-📁 Directory Structure
-
-AI assistants should maintain this structure:
-
+```
 /
-  index.html                        # Home page listing all albums
-
-  /albums/
-    /ashes-and-echoes/
-      index.html                    # Album page
-      album.jsonld                  # (optional separate JSON-LD file)
-      /tracks/
-        ten-principles-one-heart.html
-        ashes-and-echoes.html
-        sparkle-pony.html
-        overheard-at-burning-man.html
-        speak-burner-to-me.html
-        ... (one file per track)
-        track.jsonld (optional per-track version)
-
-  /assets/
-    /img/
-      album/ashes-and-echoes-cover.jpg
-      album/ashes-and-echoes-bg.jpg
-      tracks/
-        ten-principles-one-heart.jpg
-        sparkle-pony.jpg
-        ...
-    /css/
-      style.css
-
-
-AI assistants may create additional small CSS files if needed, but must not add a build pipeline.
-
-🏠 Home Page Requirements (index.html)
-
-The home page must:
-
-Display all albums as cards with:
-
-Cover art
-
-Title
-
-Tagline
-
-Release date
-
-“View Album” button → /albums/<slug>/
-
-Include JSON-LD of type CollectionPage listing available albums.
-
-Keep layout minimal, clean, and extremely fast.
-
-🎧 Album Page Requirements (/albums/ashes-and-echoes/index.html)
-
-Album pages must include:
-
-1. Header
-
-Album cover
-
-Title: Ashes and Echoes – Songs from the Playa
-
-Subtitle: Mycal's Songs from the Playa. Stories from Fire and Steel.
-
-Release date
-
-Streaming platform links
-
-Social links (YouTube, Instagram, TikTok)
-
-2. Description
-
-A short paragraph about the album’s theme and context.
-
-3. Tracklist
-
-Ordered list with links:
-
-/albums/ashes-and-echoes/tracks/ten-principles-one-heart
-/albums/ashes-and-echoes/tracks/ashes-and-echoes
-/albums/ashes-and-echoes/tracks/sparkle-pony
-/albums/ashes-and-echoes/tracks/overheard-at-burning-man
-/albums/ashes-and-echoes/tracks/speak-burner-to-me
-...
-
-4. Album JSON-LD (MusicAlbum)
-
-Template:
-
-{
-  "@context": "https://schema.org",
-  "@type": "MusicAlbum",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes",
-  "name": "Ashes and Echoes",
-  "alternateName": "Ashes and Echoes – Songs from the Playa",
-  "byArtist": {
-    "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
-  },
-  "genre": ["Folk", "EDM", "Burning Man"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes",
-  "track": []
-}
-
-
-AI assistants must automatically populate "track": [] entries.
-
-🎶 Track Page Requirements (/tracks/<slug>.html)
-
-Each track page must include:
-
-1. Basic layout
-
-Back link to album
-
-Track title
-
-Track-specific image (optional)
-
-Streaming platform links
-
-Lyrics in a <pre> block (no auto-formatting)
-
-2. Track JSON-LD (MusicRecording)
-
-Example template:
-
-{
-  "@context": "https://schema.org",
-  "@type": "MusicRecording",
-  "@id": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart",
-  "name": "Ten Principles, One Heart",
-  "byArtist": {
-    "@type": "Person",
-    "@id": "https://music.mycal.net/#mycal"
-  },
-  "inAlbum": {
-    "@type": "MusicAlbum",
-    "@id": "https://music.mycal.net/albums/ashes-and-echoes"
-  },
-  "genre": ["Folk", "Burning Man"],
-  "datePublished": "2025-08-15",
-  "image": "https://music.mycal.net/assets/img/tracks/ten-principles-one-heart.jpg",
-  "url": "https://music.mycal.net/albums/ashes-and-echoes/tracks/ten-principles-one-heart",
-  "sameAs": [],
-  "lyrics": {
-    "@type": "CreativeWork",
-    "text": ""
-  }
-}
-
-
-AI assistants should insert:
-
-Correct streaming URLs
-
-Correct image references
-
-Full lyrics
-
-🧩 Slug Conventions
-
-AI assistants must use this format:
-
-Album: ashes-and-echoes
-Track: weird-title → weird-title.html
-
-
-Track slugs are lowercase, hyphenated.
-
-🎨 Styling Rules (CSS)
-
-Very light, album-focused aesthetic
-
-Dark desert tones + accents
-
-Album hero section supports a full-width image
-
-Track pages simple and readable
-
-Mobile-friendly with no JS
-
-AI assistants will generate /assets/css/style.css.
-
-🤖 AI Assistant Tasks
-
-AI assistants (Claude Code, ChatGPT, Copilot) are authorized to:
-
-Create all HTML files & directories.
-
-Populate track pages.
-
-Generate placeholder images if needed.
-
-Generate JSON-LD for albums and tracks.
-
-Generate CSS.
-
-Refactor as needed while maintaining structure.
-
-They must not:
-
-Add a JS framework
-
-Add a build step (React, Svelte, Hugo, etc.)
-
-Change URLs or slugs without approval
-
-Remove JSON-LD
-
-🚀 Deployment Notes
-
-Caddy is expected to:
-
-Serve this repo’s root directly
-
-Cache static assets
-
-Automatically provide HTTPS
-
-No backend required
-
-📌 TODO for Assistants
-
- Move current music.mycal.net content → /albums/ashes-and-echoes/index.html
-
- Create index.html album list
-
- Scaffold all track pages
-
- Insert lyrics from Mycal
-
- Add JSON-LD everywhere
-
- Create basic site-wide CSS
-
- Add alt text for all images
-
- Build a responsive header/footer
-
-End of README
-
-AI assistants may now begin creating files.
-
-
-
-
+├── index.html                    # Homepage - album catalog
+├── albums/
+│   └── ashes-and-echoes/
+│       ├── index.html           # Album page
+│       └── tracks/              # Individual track pages with lyrics
+├── assets/
+│   ├── img/                     # Album art and track images
+│   └── css/                     # Site styles
+└── sitemap.xml                  # Search engine sitemap
+```
+
+## Albums
+
+### Ashes and Echoes — Songs from the Playa (2025)
+
+Burning Man-inspired folk-electronic fusion exploring transformation, fire art, community, and the Ten Principles.
+
+**Tracks:**
+1. We Did Start the Fire (Burning Man History Jam)
+2. I Was Meant to Burn
+3. Burner Girl
+4. Ten Principles, One Heart
+5. Speak Burner to Me
+6. Weird Steel
+7. Dust to Dust (The Playa Sucks)
+8. Sparkle Pony
+9. The Buck Bandersnatch Song (Playa Dreams)
+10. Ash and Echoes (The Temple Song)
+11. Overheard at Burning Man
+12. Fighting Wasn't Working
+13. No Authority Night Crew
+14. Petaluma Chicken Scratch (Bonus Track)
+
+## Listen
+
+- [Bandcamp](https://mycalmusic.bandcamp.com/album/ashes-and-echoes)
+- [Spotify](https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB)
+- [Apple Music](https://music.apple.com/us/artist/mycal/1830794420)
+- [YouTube Music](https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A)
+- [All Platforms](https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel)
+
+## About Mycal
+
+Mike Johnson (Mycal) is a musician, technologist, chronofuturist, and long-time Burner. Member of [Reared in Steel](https://www.instagram.com/rearedinsteel/) fire art collective. Based in Petaluma, CA.
+
+- **Music:** [music.mycal.net](https://music.mycal.net)
+- **Blog:** [blog.mycal.net](https://blog.mycal.net)
+- **Archive:** [archive.mycal.net](https://archive.mycal.net)
+- **Tech:** CTO at [Remote.it](https://remote.it), Founder at [NoBGP Inc.](https://nobgp.com)
+
+## Connect
+
+- [Instagram](https://www.instagram.com/mycal.music/)
+- [YouTube](https://www.youtube.com/@mycalmusicofficial)
+- [TikTok](https://www.tiktok.com/@mycal.music)
+- [Facebook](https://www.facebook.com/mycalmusic/)
+
+## License
+
+- **Code:** MIT License
+- **Music & Content:** © 2025 Mike Johnson (Mycal). All rights reserved.
+- **Lyrics/Music:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) where applicable
+
+---
+
+Built with care in Petaluma, CA.  Music forged in dust, steel, and fire. 🔥
 
