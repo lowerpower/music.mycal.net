@@ -1187,6 +1187,7 @@ const playlist = [
     let karaokeLines = [];
     let karaokeLineIdx = 0;
     let karaokeAdvanceTimer = null;
+    let karaokePinnedWordIdx = -1;
     let nextWordIdx = 0;
     let trackGen = 0;
 
@@ -1211,6 +1212,7 @@ const playlist = [
       lyricsData = null;
       karaokeLines = [];
       karaokeLineIdx = 0;
+      karaokePinnedWordIdx = -1;
       nextWordIdx = 0;
       clearKaraokeAdvance();
       renderKaraoke(null, -1);
@@ -1320,7 +1322,8 @@ const playlist = [
       }
       const currentLine = karaokeLines[karaokeLineIdx] ?? null;
       const nextLine = karaokeLines[karaokeLineIdx + 1] ?? null;
-      const resolvedWordIdx = activeWordIdx ?? (t == null ? -1 : karaokeWordIndexAt(t));
+      const baseWordIdx = activeWordIdx ?? (t == null ? -1 : karaokeWordIndexAt(t));
+      const resolvedWordIdx = karaokePinnedWordIdx >= 0 ? Math.max(baseWordIdx, karaokePinnedWordIdx) : baseWordIdx;
       const nextLineInteractive = !!nextLine && resolvedWordIdx >= nextLine.startIdx;
       renderKaraokeLine(karaokeCurrentEl, currentLine, resolvedWordIdx, true);
       renderKaraokeLine(karaokeUpcomingEl, nextLine, resolvedWordIdx, nextLineInteractive);
@@ -1342,22 +1345,26 @@ const playlist = [
 
       const targetLineIdx = karaokeLineIndexAt(t);
       const activeWordIdx = karaokeWordIndexAt(t);
+      if (karaokePinnedWordIdx >= 0 && activeWordIdx > karaokePinnedWordIdx) karaokePinnedWordIdx = -1;
 
       if (!animate || targetLineIdx < karaokeLineIdx || targetLineIdx > karaokeLineIdx + 1) {
         clearKaraokeAdvance();
+        karaokePinnedWordIdx = -1;
         karaokeLineIdx = targetLineIdx;
         renderKaraoke(t, activeWordIdx);
         return;
       }
 
       if (targetLineIdx === karaokeLineIdx + 1 && !karaokeAdvanceTimer && shouldScrollToNextLine(t, activeWordIdx)) {
+        const incomingLine = karaokeLines[karaokeLineIdx + 1] ?? null;
+        karaokePinnedWordIdx = incomingLine ? incomingLine.startIdx : -1;
         renderKaraoke(t, activeWordIdx);
         karaokeEl.classList.add('scrolling');
         karaokeAdvanceTimer = setTimeout(() => {
           karaokeAdvanceTimer = null;
           karaokeLineIdx = Math.min(karaokeLineIdx + 1, karaokeLines.length - 1);
           karaokeEl.classList.remove('scrolling');
-          renderKaraoke(audio.currentTime);
+          renderKaraoke(audio.currentTime, karaokeWordIndexAt(audio.currentTime));
         }, KARAOKE_SCROLL_MS);
         return;
       }
