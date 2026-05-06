@@ -1133,6 +1133,7 @@ const playlist = [
     const KARAOKE_MAX_CHARS = 34;
     const KARAOKE_BREAK_GAP = 1.15;
     const KARAOKE_SCROLL_MS = 320;
+    const KARAOKE_PRE_SCROLL_HOLD_MS = 350;
 
     function clearKaraokeAdvance() {
       if (karaokeAdvanceTimer) {
@@ -1243,8 +1244,17 @@ const playlist = [
       const currentLine = karaokeLines[karaokeLineIdx] ?? null;
       const nextLine = karaokeLines[karaokeLineIdx + 1] ?? null;
       const resolvedWordIdx = activeWordIdx ?? (t == null ? -1 : karaokeWordIndexAt(t));
+      const nextLineInteractive = !!nextLine && resolvedWordIdx >= nextLine.startIdx;
       renderKaraokeLine(karaokeCurrentEl, currentLine, resolvedWordIdx, true);
-      renderKaraokeLine(karaokeUpcomingEl, nextLine, resolvedWordIdx, false);
+      renderKaraokeLine(karaokeUpcomingEl, nextLine, resolvedWordIdx, nextLineInteractive);
+    }
+
+    function shouldScrollToNextLine(t, activeWordIdx) {
+      const nextLine = karaokeLines[karaokeLineIdx + 1] ?? null;
+      if (!nextLine) return false;
+      if (activeWordIdx > nextLine.startIdx) return true;
+      if (activeWordIdx < nextLine.startIdx) return false;
+      return t >= nextLine.startTime + KARAOKE_PRE_SCROLL_HOLD_MS / 1000;
     }
 
     function syncKaraokeToTime(t, animate) {
@@ -1263,7 +1273,7 @@ const playlist = [
         return;
       }
 
-      if (targetLineIdx === karaokeLineIdx + 1 && !karaokeAdvanceTimer) {
+      if (targetLineIdx === karaokeLineIdx + 1 && !karaokeAdvanceTimer && shouldScrollToNextLine(t, activeWordIdx)) {
         renderKaraoke(t, activeWordIdx);
         karaokeEl.classList.add('scrolling');
         karaokeAdvanceTimer = setTimeout(() => {
