@@ -815,6 +815,7 @@ const playlist = [
     const karaokeEl = document.getElementById('karaoke');
     const karaokeCurrentEl = karaokeEl.querySelector('.karaoke-line.current');
     const karaokeUpcomingEl = karaokeEl.querySelector('.karaoke-line.upcoming');
+    const mediaSession = navigator.mediaSession ?? null;
 
     function fmtTime(t) {
       if (!isFinite(t) || t < 0) return '0:00';
@@ -832,6 +833,29 @@ const playlist = [
     const playPath = '<path d="M8 5v14l11-7z"/>';
     const pausePath = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
     const loadPath = '<path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>';
+
+    function updateMediaSessionMetadata() {
+      if (!mediaSession || typeof MediaMetadata === 'undefined') return;
+      mediaSession.metadata = new MediaMetadata({
+        title: playlist[index].title,
+        artist: 'PMR',
+        album: 'North Shore Kinda Heaven'
+      });
+    }
+
+    function updateMediaSessionPlaybackState(state = (audio.paused ? 'paused' : 'playing')) {
+      if (!mediaSession) return;
+      mediaSession.playbackState = state;
+    }
+
+    function updateMediaSessionPositionState() {
+      if (!mediaSession || typeof mediaSession.setPositionState !== 'function' || !isFinite(audio.duration) || audio.duration <= 0) return;
+      mediaSession.setPositionState({
+        duration: audio.duration,
+        playbackRate: audio.playbackRate || 1,
+        position: Math.min(audio.currentTime, audio.duration)
+      });
+    }
 
     function syncToggleAria() {
       toggle.setAttribute('aria-expanded', String(!document.body.classList.contains('playlist-closed')));
@@ -855,6 +879,8 @@ const playlist = [
       index = (i + playlist.length) % playlist.length;
       audio.src = playlist[index].src;
       nowPlayingTitle.textContent = playlist[index].title;
+      updateMediaSessionMetadata();
+      updateMediaSessionPositionState();
       try { localStorage.setItem(LAST_KEY, playlist[index].src); } catch {}
       seekSlider.max = 0;
       seekSlider.value = 0;
@@ -1027,18 +1053,22 @@ const playlist = [
     audio.addEventListener('waiting', () => {
       player.classList.add('loading');
       icon.innerHTML = loadPath;
+      updateMediaSessionPlaybackState('playing');
     });
     audio.addEventListener('playing', () => {
       player.classList.remove('loading');
       player.classList.add('playing');
       icon.innerHTML = pausePath;
       player.setAttribute('aria-label', 'Pause');
+      updateMediaSessionPlaybackState('playing');
+      updateMediaSessionPositionState();
     });
     audio.addEventListener('pause', () => {
       player.classList.remove('loading');
       player.classList.remove('playing');
       icon.innerHTML = playPath;
       player.setAttribute('aria-label', 'Play');
+      updateMediaSessionPlaybackState('paused');
     });
     function viewIndices() {
       if (!flipCard.classList.contains('flipped')) return null;
@@ -1071,13 +1101,25 @@ const playlist = [
       return (current - 1 + playlist.length) % playlist.length;
     }
 
+    function playTrackAt(newIndex) {
+      load(newIndex);
+      return audio.play();
+    }
+
+    function playNextTrack() {
+      return playTrackAt(nextIndex(index));
+    }
+
+    function playPrevTrack() {
+      return playTrackAt(prevIndex(index));
+    }
+
     audio.addEventListener('ended', () => {
-      load(nextIndex(index));
-      audio.play();
+      playNextTrack();
     });
 
-    btnPrev.addEventListener('click', () => { load(prevIndex(index)); audio.play(); });
-    btnNext.addEventListener('click', () => { load(nextIndex(index)); audio.play(); });
+    btnPrev.addEventListener('click', () => { playPrevTrack(); });
+    btnNext.addEventListener('click', () => { playNextTrack(); });
     btnBack5.addEventListener('click', () => {
       audio.currentTime = Math.max(0, audio.currentTime - 5);
     });
@@ -1100,6 +1142,7 @@ const playlist = [
     audio.addEventListener('loadedmetadata', () => {
       seekSlider.max = audio.duration || 0;
       timeTotal.textContent = fmtTime(audio.duration);
+      updateMediaSessionPositionState();
       if (!seeking) {
         seekSlider.value = audio.currentTime;
         updateSeekVisual();
@@ -1115,7 +1158,27 @@ const playlist = [
         updateSeekVisual();
       }
       timeCurrent.textContent = fmtTime(audio.currentTime);
+      updateMediaSessionPositionState();
     });
+
+    if (mediaSession) {
+      mediaSession.setActionHandler('play', () => { audio.play(); });
+      mediaSession.setActionHandler('pause', () => { audio.pause(); });
+      mediaSession.setActionHandler('nexttrack', () => { playNextTrack(); });
+      mediaSession.setActionHandler('previoustrack', () => { playPrevTrack(); });
+      mediaSession.setActionHandler('seekbackward', (details) => {
+        const offset = details.seekOffset ?? 5;
+        audio.currentTime = Math.max(0, audio.currentTime - offset);
+      });
+      mediaSession.setActionHandler('seekforward', (details) => {
+        const offset = details.seekOffset ?? 5;
+        const max = isFinite(audio.duration) ? audio.duration : Infinity;
+        audio.currentTime = Math.min(max, audio.currentTime + offset);
+      });
+      mediaSession.setActionHandler('seekto', (details) => {
+        if (typeof details.seekTime === 'number') audio.currentTime = details.seekTime;
+      });
+    }
 
     const stageEl = document.getElementById('stage');
     const ambientEl = document.getElementById('ambient');
@@ -1217,18 +1280,32 @@ const playlist = [
     }
 
     function renderKaraokeLine(el, line, activeWordIdx, interactive) {
-      el.textContent = '';
       if (!line) {
-        el.innerHTML = '&nbsp;';
+        if (el.dataset.lineStart !== '') {
+          el.textContent = '';
+          el.dataset.lineStart = '';
+        }
+        if (!el.firstChild) el.innerHTML = '&nbsp;';
         return;
       }
-      line.words.forEach((word) => {
-        const span = document.createElement('span');
-        span.className = 'karaoke-word';
-        if (interactive && activeWordIdx >= word.idx) span.classList.add('done');
-        if (interactive && activeWordIdx === word.idx) span.classList.add('active');
-        span.textContent = word.w;
-        el.appendChild(span);
+
+      const lineKey = String(line.startIdx);
+      if (el.dataset.lineStart !== lineKey) {
+        el.textContent = '';
+        el.dataset.lineStart = lineKey;
+        line.words.forEach((word) => {
+          const span = document.createElement('span');
+          span.className = 'karaoke-word';
+          span.dataset.wordIdx = String(word.idx);
+          span.textContent = word.w;
+          el.appendChild(span);
+        });
+      }
+
+      Array.from(el.children).forEach((child) => {
+        const wordIdx = parseInt(child.dataset.wordIdx ?? '-1', 10);
+        child.classList.toggle('done', interactive && activeWordIdx >= wordIdx);
+        child.classList.toggle('active', interactive && activeWordIdx === wordIdx);
       });
     }
 
