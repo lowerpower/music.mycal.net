@@ -658,47 +658,53 @@
   <audio id="audio" preload="none"></audio>
 
   <script>
-    const playlist = [
-      { src: 'ghosts-in-the-datastream.mp3', title: 'Ghosts in the Datastream' },
-      { src: '10-principles-1-heart.mp3', title: '10 Principles, 1 Heart' },
-      { src: 'amplified.mp3', title: 'Amplified' },
-      { src: 'burner-girl.mp3', title: 'Burner Girl' },
-      { src: 'cba-anthem.mp3', title: 'CBA Anthem' },
-      { src: 'cronosonic-roll-compress-all.mp3', title: 'Cronosonic Roll (Compress All)' },
-      { src: 'energy-becoming-inference.mp3', title: 'Energy Becoming Inference' },
-      { src: 'entropy-always-wins.mp3', title: 'Entropy Always Wins' },
-      { src: 'fight-entropy.mp3', title: 'Fight Entropy' },
-      { src: 'hard-mode-begins.mp3', title: 'Hard Mode Begins' },
-      { src: 'infrastructure-wins-cronosonic-drift.mp3', title: 'Infrastructure Wins (Cronosonic Drift)' },
-      { src: 'it-looks-like-history.mp3', title: 'It Looks Like History' },
-      { src: 'i-was-meant-to-burn.mp3', title: 'I Was Meant to Burn' },
-      { src: 'kernel-patch.mp3', title: 'Kernel Patch' },
-      { src: 'lackey-flunky-minion.mp3', title: 'Lackey, Flunky, Minion' },
-      { src: 'local-truth-cannon-collapse-mycal.mp3', title: 'Local Truth: Cannon Collapse (Mycal)' },
-      { src: 'mirror-fluency.mp3', title: 'Mirror Fluency' },
-      { src: 'mycal-proof-of-continuity.mp3', title: 'Mycal: Proof of Continuity' },
-      { src: 'not-a-price-a-flow.mp3', title: 'Not a Price, a Flow' },
-      { src: 'post-patent-brain.mp3', title: 'Post-Patent Brain' },
-      { src: 'route-the-real-2025-12.mp3', title: 'Route the Real (2025-12)' },
-      { src: 'route-the-real.mp3', title: 'Route the Real' },
-      { src: 'the-beauty-of-intent.mp3', title: 'The Beauty of Intent' },
-      { src: 'the-cost-was-paid-before-you-arrived.mp3', title: 'The Cost Was Paid Before You Arrived' },
-      { src: 'the-handshake-that-was-always-there.mp3', title: 'The Handshake That Was Always There' },
-      { src: 'the-lords-of-zero.mp3', title: 'The Lords of Zero' },
-      { src: 'the-man-the-myth-mycal.mp3', title: 'The Man, the Myth, Mycal' },
-      { src: 'thermodynamic-ascension.mp3', title: 'Thermodynamic Ascension' },
-      { src: 'the-solder-smoke-hum.mp3', title: 'The Solder Smoke Hum' },
-      { src: 'the-stack-that-survived.mp3', title: 'The Stack That Survived' },
-      { src: 'the-three-empires.mp3', title: 'The Three Empires' },
-      { src: 'we-did-start-the-fire-burning-man-history-jam.mp3', title: 'We Did Start the Fire (Burning Man History Jam)' },
-      { src: 'ttwwadi-thats-the-way-we-always-did-it.mp3', title: "TTWWADI (That's the Way We Always Did It)" },
-      { src: 'tunnels-the-full-stack-went-physical.mp3', title: 'Tunnels: The Full Stack Went Physical' },
-      { src: 'weird-steel.mp3', title: 'Weird Steel' },
-      { src: 'what-gets-remembered-and-what-quietly-disappears.mp3', title: 'What Gets Remembered, and What Quietly Disappears' },
-      { src: 'when-a-phrase-becomes-gravity.mp3', title: 'When a Phrase Becomes Gravity' },
-      { src: 'when-essays-sing.mp3', title: 'When Essays Sing' },
-      { src: 'you-dont-have-to-be-first.mp3', title: "You Don't Have to Be First" },
-    ];
+const playlist = [
+  { 
+    src: '01-Lowering_the_Boat_Down-PMR.mp3', 
+    lyrics: '01-Lowering_the_Boat_Down-PMR.lyrics.json',
+    title: 'Lowering the Boat Down' 
+  },
+  { 
+    src: "02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.mp3", 
+    lyrics: "02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.lyrics.json",
+    title: "Clearlake Summers with the Kids (Mary's Song)" 
+  },
+  { 
+    src: '03-Roof_of_the_Dock-PMR.mp3', 
+    lyrics: '03-Roof_of_the_Dock-PMR.lyrics.json',
+    title: 'Roof of the Dock' 
+  },
+  { 
+    src: '04-Cool_Cove-PMR.mp3', 
+    lyrics: '04-Cool_Cove-PMR.lyrics.json',
+    title: 'Cool Cove' 
+  },
+  { 
+    src: '05-North_Shore_Kinda_Heaven-PMR.mp3', 
+    lyrics: '05-North_Shore_Kinda_Heaven-PMR.lyrics.json',
+    title: 'North Shore Kinda Heaven' 
+  },
+  { 
+    src: '06-Richmond_Park_on_a_Saturday_Afternoon-PMR.mp3', 
+    lyrics: '06-Richmond_Park_on_a_Saturday_Afternoon-PMR.lyrics.json',
+    title: 'Richmond Park on a Saturday Afternoon' 
+  },
+  { 
+    src: '07-Vacation_House_Blue-PMR.mp3', 
+    lyrics: '07-Vacation_House_Blue-PMR.lyrics.json',
+    title: 'Vacation House Blue' 
+  },
+  { 
+    src: '08-Konocti_Sunset-PMR.mp3', 
+    lyrics: '08-Konocti_Sunset-PMR.lyrics.json',
+    title: 'Konocti Sunset' 
+  },
+  { 
+    src: '09-Clearlake_Olympics-PMR.mp3', 
+    lyrics: '09-Clearlake_Olympics-PMR.lyrics.json',
+    title: 'Clearlake Olympics' 
+  }
+];
 
     const audio = document.getElementById('audio');
     const player = document.getElementById('player');
