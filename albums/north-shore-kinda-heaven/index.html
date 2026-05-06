@@ -480,6 +480,73 @@
       position: relative;
       z-index: 2;
     }
+    #karaoke {
+      --karaoke-line-height: 42px;
+      width: min(760px, calc(100% - 48px));
+      min-height: calc(var(--karaoke-line-height) * 2 + 12px);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+    #karaoke.empty {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #karaoke-track {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transform: translateY(0);
+      transition: transform 0.32s ease;
+    }
+    #karaoke.scrolling #karaoke-track {
+      transform: translateY(calc(-1 * (var(--karaoke-line-height) + 12px)));
+    }
+    .karaoke-line {
+      min-height: var(--karaoke-line-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.28em;
+      padding: 0 12px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: clamp(21px, 3vw, 34px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      text-align: center;
+    }
+    .karaoke-line.upcoming {
+      color: rgba(255, 255, 255, 0.35);
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+    }
+    .karaoke-line.upcoming .karaoke-word {
+      color: rgba(255, 255, 255, 0.28);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    }
+    .karaoke-word {
+      color: rgba(255, 255, 255, 0.48);
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
+      transition: color 0.12s ease, text-shadow 0.12s ease;
+    }
+    .karaoke-word.done {
+      color: rgba(0, 255, 65, 0.88);
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+    }
+    .karaoke-word.active {
+      color: #fff;
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.75),
+        0 0 22px rgba(0, 255, 65, 0.5);
+    }
     #seek-row {
       display: flex;
       align-items: center;
@@ -580,6 +647,16 @@
       body:not(.playlist-closed) #stage { margin-right: 0; }
       #playlist { width: 100vw; }
       body:not(.playlist-closed) #toggle { right: 0; }
+      #karaoke {
+        --karaoke-line-height: 34px;
+        width: calc(100% - 12px);
+        min-height: calc(var(--karaoke-line-height) * 2 + 10px);
+      }
+      #karaoke-track { gap: 10px; }
+      .karaoke-line {
+        font-size: clamp(16px, 4vw, 22px);
+        padding: 0 4px;
+      }
       #player {
         width: 104px;
         height: 104px;
@@ -611,6 +688,12 @@
         <button id="btn-back5" type="button" aria-label="Back 5 seconds" title="Back 5s">−5</button>
         <button id="btn-fwd5" type="button" aria-label="Forward 5 seconds" title="Forward 5s">+5</button>
         <button id="btn-next" type="button" aria-label="Next track" title="Next track">⏭</button>
+      </div>
+    </div>
+    <div id="karaoke" class="empty" aria-hidden="true">
+      <div id="karaoke-track">
+        <div class="karaoke-line current"></div>
+        <div class="karaoke-line upcoming"></div>
       </div>
     </div>
   </div>
@@ -661,12 +744,10 @@
 const playlist = [
   { 
     src: '01-Lowering_the_Boat_Down-PMR.mp3', 
-    lyrics: '01-Lowering_the_Boat_Down-PMR.lyrics.json',
     title: 'Lowering the Boat Down' 
   },
   { 
     src: "02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.mp3", 
-    lyrics: "02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.lyrics.json",
     title: "Clearlake Summers with the Kids (Mary's Song)" 
   },
   { 
@@ -731,6 +812,9 @@ const playlist = [
     const btnBack5 = document.getElementById('btn-back5');
     const btnFwd5 = document.getElementById('btn-fwd5');
     const btnRestart = document.getElementById('btn-restart');
+    const karaokeEl = document.getElementById('karaoke');
+    const karaokeCurrentEl = karaokeEl.querySelector('.karaoke-line.current');
+    const karaokeUpcomingEl = karaokeEl.querySelector('.karaoke-line.upcoming');
 
     function fmtTime(t) {
       if (!isFinite(t) || t < 0) return '0:00';
@@ -1037,17 +1121,166 @@ const playlist = [
     const ambientEl = document.getElementById('ambient');
 
     let lyricsData = null;
+    let karaokeLines = [];
+    let karaokeLineIdx = 0;
+    let karaokeAdvanceTimer = null;
     let nextWordIdx = 0;
     let trackGen = 0;
 
     const KEEP_OUT_PX = 92;
     const MAX_ALIVE = 30;
+    const KARAOKE_MAX_WORDS = 7;
+    const KARAOKE_MAX_CHARS = 34;
+    const KARAOKE_BREAK_GAP = 1.15;
+    const KARAOKE_SCROLL_MS = 320;
+
+    function clearKaraokeAdvance() {
+      if (karaokeAdvanceTimer) {
+        clearTimeout(karaokeAdvanceTimer);
+        karaokeAdvanceTimer = null;
+      }
+      karaokeEl.classList.remove('scrolling');
+    }
+
+    function resetLyricsState() {
+      ambientEl.textContent = '';
+      lyricsData = null;
+      karaokeLines = [];
+      karaokeLineIdx = 0;
+      nextWordIdx = 0;
+      clearKaraokeAdvance();
+      renderKaraoke(null, -1);
+    }
+
+    function buildKaraokeLines(words) {
+      const lines = [];
+      let current = null;
+      let chars = 0;
+
+      function pushCurrent() {
+        if (!current || !current.words.length) return;
+        current.startTime = current.words[0].t;
+        current.endTime = current.words[current.words.length - 1].t;
+        current.startIdx = current.words[0].idx;
+        current.endIdx = current.words[current.words.length - 1].idx;
+        current.text = current.words.map((word) => word.w).join(' ');
+        lines.push(current);
+        current = null;
+        chars = 0;
+      }
+
+      words.forEach((word, idx) => {
+        const entry = { ...word, idx };
+        const prev = current?.words[current.words.length - 1] ?? null;
+        const gap = prev ? entry.t - prev.t : 0;
+        const prevEndsPhrase = prev ? /[,.!?;:]$/.test(prev.w) : false;
+        const wouldOverflow = current
+          ? chars + 1 + entry.w.length > KARAOKE_MAX_CHARS || current.words.length >= KARAOKE_MAX_WORDS
+          : false;
+
+        if (current && (gap >= KARAOKE_BREAK_GAP || wouldOverflow || (prevEndsPhrase && current.words.length >= 4))) {
+          pushCurrent();
+        }
+
+        if (!current) current = { words: [] };
+        current.words.push(entry);
+        chars = current.words.reduce((sum, item, i) => sum + item.w.length + (i ? 1 : 0), 0);
+
+        if (/[!?]$/.test(entry.w) || (/[,.]$/.test(entry.w) && current.words.length >= 4)) {
+          pushCurrent();
+        }
+      });
+
+      pushCurrent();
+      return lines;
+    }
+
+    function karaokeWordIndexAt(t) {
+      if (!lyricsData) return -1;
+      const words = lyricsData.words;
+      let lo = 0, hi = words.length;
+      while (lo < hi) {
+        const mid = (lo + hi) >>> 1;
+        if (words[mid].t <= t) lo = mid + 1;
+        else hi = mid;
+      }
+      return lo - 1;
+    }
+
+    function karaokeLineIndexAt(t) {
+      if (!karaokeLines.length) return 0;
+      for (let i = 0; i < karaokeLines.length; i++) {
+        if (t <= karaokeLines[i].endTime + 0.04) return i;
+      }
+      return karaokeLines.length - 1;
+    }
+
+    function renderKaraokeLine(el, line, activeWordIdx, interactive) {
+      el.textContent = '';
+      if (!line) {
+        el.innerHTML = '&nbsp;';
+        return;
+      }
+      line.words.forEach((word) => {
+        const span = document.createElement('span');
+        span.className = 'karaoke-word';
+        if (interactive && activeWordIdx >= word.idx) span.classList.add('done');
+        if (interactive && activeWordIdx === word.idx) span.classList.add('active');
+        span.textContent = word.w;
+        el.appendChild(span);
+      });
+    }
+
+    function renderKaraoke(t = null, activeWordIdx = null) {
+      const hasLyrics = !!karaokeLines.length;
+      karaokeEl.classList.toggle('empty', !hasLyrics);
+      karaokeEl.setAttribute('aria-hidden', hasLyrics ? 'false' : 'true');
+      if (!hasLyrics) {
+        karaokeCurrentEl.innerHTML = '&nbsp;';
+        karaokeUpcomingEl.innerHTML = '&nbsp;';
+        return;
+      }
+      const currentLine = karaokeLines[karaokeLineIdx] ?? null;
+      const nextLine = karaokeLines[karaokeLineIdx + 1] ?? null;
+      const resolvedWordIdx = activeWordIdx ?? (t == null ? -1 : karaokeWordIndexAt(t));
+      renderKaraokeLine(karaokeCurrentEl, currentLine, resolvedWordIdx, true);
+      renderKaraokeLine(karaokeUpcomingEl, nextLine, resolvedWordIdx, false);
+    }
+
+    function syncKaraokeToTime(t, animate) {
+      if (!karaokeLines.length) {
+        renderKaraoke(null, -1);
+        return;
+      }
+
+      const targetLineIdx = karaokeLineIndexAt(t);
+      const activeWordIdx = karaokeWordIndexAt(t);
+
+      if (!animate || targetLineIdx < karaokeLineIdx || targetLineIdx > karaokeLineIdx + 1) {
+        clearKaraokeAdvance();
+        karaokeLineIdx = targetLineIdx;
+        renderKaraoke(t, activeWordIdx);
+        return;
+      }
+
+      if (targetLineIdx === karaokeLineIdx + 1 && !karaokeAdvanceTimer) {
+        renderKaraoke(t, activeWordIdx);
+        karaokeEl.classList.add('scrolling');
+        karaokeAdvanceTimer = setTimeout(() => {
+          karaokeAdvanceTimer = null;
+          karaokeLineIdx = Math.min(karaokeLineIdx + 1, karaokeLines.length - 1);
+          karaokeEl.classList.remove('scrolling');
+          renderKaraoke(audio.currentTime);
+        }, KARAOKE_SCROLL_MS);
+        return;
+      }
+
+      renderKaraoke(t, activeWordIdx);
+    }
 
     async function loadLyricsForCurrentTrack() {
       const myGen = ++trackGen;
-      ambientEl.textContent = '';
-      lyricsData = null;
-      nextWordIdx = 0;
+      resetLyricsState();
       if (!fancyMode) return;
       const src = playlist[index].src;
       const url = src.replace(/\.mp3$/i, '.lyrics.json');
@@ -1059,7 +1292,9 @@ const playlist = [
         if (myGen !== trackGen) return;
         if (data && Array.isArray(data.words)) {
           lyricsData = data;
+          karaokeLines = buildKaraokeLines(data.words);
           seekLyricsTo(audio.currentTime);
+          syncKaraokeToTime(audio.currentTime, false);
         }
       } catch {}
     }
@@ -1073,9 +1308,7 @@ const playlist = [
       fancyToggle.setAttribute('aria-pressed', String(on));
       try { localStorage.setItem(FANCY_KEY, on ? '1' : '0'); } catch {}
       if (!on) {
-        ambientEl.textContent = '';
-        lyricsData = null;
-        nextWordIdx = 0;
+        resetLyricsState();
       } else if (!audio.paused) {
         loadLyricsForCurrentTrack();
       }
@@ -1137,7 +1370,16 @@ const playlist = [
     }
 
     audio.addEventListener('loadstart', loadLyricsForCurrentTrack);
-    audio.addEventListener('seeked', () => seekLyricsTo(audio.currentTime));
+    audio.addEventListener('seeked', () => {
+      seekLyricsTo(audio.currentTime);
+      syncKaraokeToTime(audio.currentTime, false);
+    });
+    audio.addEventListener('timeupdate', () => {
+      syncKaraokeToTime(audio.currentTime, true);
+    });
+    audio.addEventListener('pause', () => {
+      syncKaraokeToTime(audio.currentTime, false);
+    });
     requestAnimationFrame(tickLyrics);
   </script>
 </body>
