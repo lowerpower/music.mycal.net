@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!--
+    PATCH: page <title> is now driven by PLAYLIST_META.pageTitle (script sets it on load).
+    Default kept as 'coding music' so the static markup still works if JS fails.
+  -->
+  <title>coding music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: stretch;
+    }
+    #stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex: 1;
+      min-width: 0;
+      margin-right: 320px;
+      transition: margin-right 0.3s ease;
+      position: relative;
+    }
+    #ambient {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .lyric-word {
+      position: absolute;
+      font-family: 'Titillium Web', sans-serif;
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.6), 0 0 14px rgba(0, 255, 65, 0.25);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      --max-opacity: 0.9;
+      animation: lyric-drift 1.9s cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+    }
+    @keyframes lyric-drift {
+      0%   { opacity: 0;                    transform: translate(-50%, -50%) scale(0.55); }
+      16%  { opacity: var(--max-opacity);   transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0;                    transform: translate(-50%, calc(-50% - 90px)) scale(1.18); }
+    }
+    body.playlist-closed #stage { margin-right: 0; }
+    #toggle {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 30;
+      width: 22px;
+      height: 72px;
+      border: 1px solid rgba(0, 255, 65, 0.35);
+      border-right: none;
+      border-radius: 6px 0 0 6px;
+      background: rgba(0, 255, 65, 0.06);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      box-shadow: -2px 0 12px rgba(0, 255, 65, 0.12);
+      transition: right 0.3s ease, background 0.15s ease, box-shadow 0.2s ease, width 0.15s ease;
+    }
+    #toggle::before,
+    #toggle::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      width: 8px;
+      height: 1px;
+      background: rgba(0, 255, 65, 0.35);
+    }
+    #toggle::before { top: 14px; }
+    #toggle::after { bottom: 14px; }
+    #toggle:hover {
+      width: 26px;
+      background: rgba(0, 255, 65, 0.14);
+      box-shadow: -4px 0 18px rgba(0, 255, 65, 0.3);
+    }
+    body:not(.playlist-closed) #toggle { right: 320px; }
+    #toggle svg {
+      width: 14px;
+      height: 14px;
+      fill: #00ff41;
+      filter: drop-shadow(0 0 4px rgba(0, 255, 65, 0.7));
+      transition: transform 0.3s ease;
+    }
+    body:not(.playlist-closed) #toggle svg { transform: rotate(180deg); }
+    #playlist {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 320px;
+      max-width: 100vw;
+      background: #0d0d0d;
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+      z-index: 20;
+    }
+    body.playlist-closed #playlist { transform: translateX(100%); }
+    #now-playing {
+      margin: 16px 16px 0;
+      padding: 0 4px 12px;
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.45);
+      border-bottom: 1px solid rgba(0, 255, 65, 0.15);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    #now-playing::before {
+      content: "\26A1";
+      font-weight: 700;
+      color: #00ff41;
+      flex-shrink: 0;
+    }
+    #now-playing-title {
+      flex: 1;
+      min-width: 0;
+      word-wrap: break-word;
+    }
+    #repeat-toggle {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: 1px solid rgba(0, 255, 65, 0.3);
+      border-radius: 4px;
+      background: transparent;
+      color: rgba(0, 255, 65, 0.45);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    #repeat-toggle:hover { color: #00ff41; border-color: rgba(0, 255, 65, 0.55); }
+    #repeat-toggle[aria-pressed="true"] {
+      background: rgba(0, 255, 65, 0.18);
+      border-color: rgba(0, 255, 65, 0.7);
+      color: #00ff41;
+      box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    }
+    #repeat-toggle svg { width: 14px; height: 14px; fill: currentColor; }
+    .filter-wrap {
+      position: relative;
+      margin: 16px 16px 0;
+    }
+    .filter-wrap svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      fill: rgba(255, 255, 255, 0.4);
+    }
+    .filter-wrap .icon-search { left: 10px; }
+    .filter-wrap .icon-clear {
+      right: 8px;
+      pointer-events: auto;
+      cursor: pointer;
+      padding: 4px;
+      box-sizing: content-box;
+      border-radius: 4px;
+      opacity: 0;
+      transition: opacity 0.15s ease, fill 0.15s ease;
+    }
+    .filter-wrap.has-value .icon-clear { opacity: 1; }
+    .filter-wrap .icon-clear:hover { fill: rgba(255, 255, 255, 0.85); }
+    #filter {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 32px 8px 32px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+    #filter:focus { border-color: rgba(46, 204, 113, 0.5); }
+    .list-wrap {
+      position: relative;
+      flex: 1;
+      min-height: 0;
+    }
+    #playlist-items,
+    #favorites-items {
+      list-style: none;
+      margin: 0;
+      padding: 16px;
+      height: 100%;
+      box-sizing: border-box;
+      overflow-y: auto;
+      scrollbar-width: none;
+      counter-reset: track;
+    }
+    #playlist-items::-webkit-scrollbar,
+    #favorites-items::-webkit-scrollbar { display: none; }
+    #playlist-items li,
+    #favorites-items li {
+      counter-increment: track;
+      padding: 10px 12px;
+      color: #2ecc71;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.4;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    #playlist-items li::before,
+    #favorites-items li::before {
+      content: counter(track, decimal-leading-zero);
+      color: rgba(46, 204, 113, 0.5);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+    }
+    #playlist-items li:hover,
+    #favorites-items li:hover {
+      background: rgba(46, 204, 113, 0.1);
+      color: #5eea90;
+    }
+    #playlist-items li.active,
+    #favorites-items li.active {
+      background: rgba(46, 204, 113, 0.18);
+      color: #7fffaf;
+      font-weight: 500;
+    }
+    .track-title {
+      flex: 1;
+      min-width: 0;
+      word-wrap: break-word;
+    }
+    .fav-btn {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.22);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      transition: color 0.15s ease, transform 0.15s ease;
+    }
+    .fav-btn:hover { color: rgba(0, 255, 65, 0.7); transform: scale(1.15); }
+    .fav-btn.active { color: #00ff41; filter: drop-shadow(0 0 4px rgba(0, 255, 65, 0.5)); }
+    .fav-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .empty-state {
+      list-style: none;
+      padding: 40px 16px;
+      color: rgba(255, 255, 255, 0.3);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+    }
+    #filter-row {
+      display: flex;
+      gap: 8px;
+      margin: 16px 16px 0;
+      align-items: stretch;
+    }
+    #filter-row .filter-wrap {
+      flex: 1;
+      min-width: 0;
+      margin: 0;
+    }
+    #favs-toggle {
+      flex-shrink: 0;
+      width: 34px;
+      height: 34px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    #favs-toggle:hover { color: #00ff41; border-color: rgba(0, 255, 65, 0.4); }
+    #favs-toggle.active {
+      background: rgba(0, 255, 65, 0.16);
+      border-color: rgba(0, 255, 65, 0.7);
+      color: #00ff41;
+      box-shadow: 0 0 8px rgba(0, 255, 65, 0.4);
+    }
+    #favs-toggle svg { width: 16px; height: 16px; fill: currentColor; }
+    .flip-container {
+      flex: 1;
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .flip-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .flip-face.front { transform: translateX(0); }
+    .flip-face.back { transform: translateX(100%); }
+    .flip-card.flipped .flip-face.front { transform: translateX(-100%); }
+    .flip-card.flipped .flip-face.back { transform: translateX(0); }
+    .flip-face .list-wrap {
+      position: absolute;
+      inset: 0;
+    }
+    .indicator {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 56px;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      color: rgba(46, 204, 113, 0.7);
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 2;
+    }
+    .indicator.top {
+      top: 0;
+      align-items: flex-start;
+      padding-top: 8px;
+      background: linear-gradient(to bottom, #0d0d0d 25%, rgba(13, 13, 13, 0));
+    }
+    .indicator.bottom {
+      bottom: 0;
+      align-items: flex-end;
+      padding-bottom: 8px;
+      background: linear-gradient(to top, #0d0d0d 25%, rgba(13, 13, 13, 0));
+    }
+    .indicator.show { opacity: 1; }
+    #playlist-footer {
+      padding: 10px 16px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: 'Titillium Web', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    #playlist-footer a {
+      color: rgba(0, 255, 65, 0.65);
+      text-decoration: none;
+      transition: color 0.15s ease, text-shadow 0.15s ease;
+    }
+    #playlist-footer a:hover {
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+    }
+    #fancy-toggle {
+      flex-shrink: 0;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      outline: none;
+      transition: color 0.15s ease, text-shadow 0.15s ease;
+    }
+    #fancy-toggle:hover { color: #00ff41; }
+    #fancy-toggle[aria-pressed="true"] {
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.6);
+    }
+    body.fancy-off #player.playing { animation: none; }
+    body.fancy-off #ambient { display: none; }
+    #player {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(50, 50, 50, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      color: rgba(255, 255, 255, 0.75);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(80, 80, 80, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.2s ease;
+      outline: none;
+      position: relative;
+      z-index: 2;
+    }
+    #player:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 70px rgba(80, 80, 80, 0.4);
+    }
+    #player:active {
+      transform: scale(0.97);
+    }
+    #player svg {
+      width: 48px;
+      height: 48px;
+      fill: rgba(255, 255, 255, 0.78);
+    }
+    #player.loading svg {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    #player.playing {
+      animation: player-glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes player-glow {
+      from {
+        box-shadow:
+          0 0 32px   rgba(0, 255, 65, 0.85),
+          0 0 110px  rgba(0, 255, 65, 0.55),
+          0 0 240px  rgba(0, 255, 65, 0.30);
+      }
+      to {
+        box-shadow:
+          0 0 56px   rgba(0, 255, 65, 1.00),
+          0 0 200px  rgba(0, 255, 65, 0.80),
+          0 0 400px  rgba(0, 255, 65, 0.45);
+      }
+    }
+    #player-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      width: min(420px, calc(100% - 48px));
+      position: relative;
+      z-index: 2;
+    }
+    #karaoke {
+      --karaoke-line-height: 42px;
+      --karaoke-gap: 12px;
+      width: min(760px, calc(100% - 48px));
+      min-height: calc(var(--karaoke-line-height) * 3 + var(--karaoke-gap) * 2);
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease;
+    }
+    #karaoke.empty {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #karaoke-track {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: var(--karaoke-gap);
+      transform: translateY(0);
+      transition: transform 0.32s ease;
+    }
+    #karaoke.scrolling #karaoke-track {
+      transform: translateY(calc(-1 * (var(--karaoke-line-height) + var(--karaoke-gap))));
+    }
+    .karaoke-line {
+      min-height: var(--karaoke-line-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.28em;
+      padding: 0 12px;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: clamp(21px, 3vw, 34px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      text-align: center;
+    }
+    .karaoke-line.upcoming {
+      color: rgba(255, 255, 255, 0.35);
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+    }
+    .karaoke-line.upcoming .karaoke-word {
+      color: rgba(255, 255, 255, 0.28);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.08);
+    }
+    .karaoke-line.upcoming .karaoke-word.done {
+      color: rgba(0, 255, 65, 0.88);
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+    }
+    .karaoke-line.upcoming .karaoke-word.active {
+      color: #fff;
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.75),
+        0 0 22px rgba(0, 255, 65, 0.5);
+    }
+    .karaoke-word {
+      color: rgba(255, 255, 255, 0.48);
+      text-shadow: 0 0 14px rgba(255, 255, 255, 0.1);
+      transition: color 0.12s ease, text-shadow 0.12s ease;
+    }
+    .karaoke-word.done {
+      color: rgba(0, 255, 65, 0.88);
+      text-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+    }
+    .karaoke-word.active {
+      color: #fff;
+      text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.75),
+        0 0 22px rgba(0, 255, 65, 0.5);
+    }
+    #seek-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      font-variant-numeric: tabular-nums;
+    }
+    #seek-slider {
+      flex: 1;
+      min-width: 0;
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      height: 12px;
+      margin: 0;
+      padding: 0;
+      cursor: pointer;
+    }
+    #seek-slider:focus { outline: none; }
+    #seek-slider::-webkit-slider-runnable-track {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to right, rgba(0, 255, 65, 0.7) var(--p, 0%), rgba(255, 255, 255, 0.12) var(--p, 0%));
+    }
+    #seek-slider::-moz-range-track {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+    #seek-slider::-moz-range-progress {
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(0, 255, 65, 0.7);
+    }
+    #seek-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00ff41;
+      border: none;
+      margin-top: -4px;
+      box-shadow: 0 0 6px rgba(0, 255, 65, 0.6);
+    }
+    #seek-slider::-moz-range-thumb {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #00ff41;
+      border: none;
+      box-shadow: 0 0 6px rgba(0, 255, 65, 0.6);
+    }
+    #transport {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 8px;
+    }
+    #transport #btn-restart { margin-right: auto; }
+    #transport button {
+      background: transparent;
+      border: none;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 10px 12px;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 16px;
+      line-height: 1;
+      outline: none;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: color 0.15s ease, text-shadow 0.15s ease, transform 0.1s ease, background 0.15s ease;
+    }
+    @media (hover: hover) {
+      #transport button:hover {
+        color: #00ff41;
+        text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+      }
+    }
+    #transport button:active {
+      transform: scale(0.92);
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+    }
+    #transport button:focus-visible {
+      color: #00ff41;
+      text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+    }
+    #transport #btn-prev,
+    #transport #btn-next { font-size: 24px; }
+    #transport #btn-restart { font-size: 22px; }
+    @media (max-width: 600px) {
+      #stage { margin-right: 0; padding: 0 16px; }
+      body:not(.playlist-closed) #stage { margin-right: 0; }
+      #playlist { width: 100vw; }
+      body:not(.playlist-closed) #toggle { right: 0; }
+      #karaoke {
+        --karaoke-line-height: 34px;
+        --karaoke-gap: 10px;
+        width: calc(100% - 12px);
+        min-height: calc(var(--karaoke-line-height) * 3 + var(--karaoke-gap) * 2);
+      }
+      .karaoke-line {
+        font-size: clamp(16px, 4vw, 22px);
+        padding: 0 4px;
+      }
+      #player {
+        width: 104px;
+        height: 104px;
+        box-shadow: 0 0 40px rgba(128, 128, 128, 0.4);
+      }
+      #player svg { width: 40px; height: 40px; }
+    }
+  </style>
+</head>
+<body>
+  <script>if (matchMedia('(max-width: 600px)').matches) document.body.classList.add('playlist-closed');</script>
+  <button id="toggle" aria-label="Toggle playlist" aria-expanded="true">
+    <svg id="toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+  </button>
+  <div id="stage">
+    <div id="ambient" aria-hidden="true"></div>
+    <button id="player" aria-label="Play">
+      <svg id="icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+    <div id="player-controls">
+      <div id="seek-row">
+        <span id="time-current">0:00</span>
+        <input id="seek-slider" type="range" min="0" max="0" step="0.1" value="0" aria-label="Seek">
+        <span id="time-total">0:00</span>
+      </div>
+      <div id="transport">
+        <button id="btn-restart" type="button" aria-label="Restart track" title="Restart">↺</button>
+        <button id="btn-prev" type="button" aria-label="Previous track" title="Previous track">⏮</button>
+        <button id="btn-back5" type="button" aria-label="Back 5 seconds" title="Back 5s">−5</button>
+        <button id="btn-fwd5" type="button" aria-label="Forward 5 seconds" title="Forward 5s">+5</button>
+        <button id="btn-next" type="button" aria-label="Next track" title="Next track">⏭</button>
+      </div>
+    </div>
+    <div id="karaoke" class="empty" aria-hidden="true">
+      <div id="karaoke-track">
+        <div class="karaoke-line current"></div>
+        <div class="karaoke-line upcoming"></div>
+        <div class="karaoke-line queue"></div>
+      </div>
+    </div>
+  </div>
+  <aside id="playlist">
+    <div id="now-playing">
+      <span id="now-playing-title" aria-live="polite"></span>
+      <button id="repeat-toggle" type="button" aria-label="Repeat current song" aria-pressed="false" title="Repeat current song">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4zM13 15V9h-1l-2 1v1h1.5v4H13z"/></svg>
+      </button>
+    </div>
+    <div id="filter-row">
+      <div class="filter-wrap">
+        <svg class="icon-search" viewBox="0 0 24 24" aria-hidden="true"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input id="filter" type="text" aria-label="Filter songs" autocomplete="off" />
+        <svg id="filter-clear" class="icon-clear" viewBox="0 0 24 24" role="button" tabindex="0" aria-label="Clear filter"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      </div>
+      <button id="favs-toggle" type="button" aria-label="Show favorites" aria-pressed="false" title="Show favorites">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/></svg>
+      </button>
+    </div>
+    <div class="flip-container">
+      <div class="flip-card" id="flip-card">
+        <div class="flip-face front">
+          <div class="list-wrap">
+            <div class="indicator top" aria-hidden="true">▲</div>
+            <ol id="playlist-items"></ol>
+            <div class="indicator bottom" aria-hidden="true">▼</div>
+          </div>
+        </div>
+        <div class="flip-face back">
+          <div class="list-wrap">
+            <div class="indicator top fav-top" aria-hidden="true">▲</div>
+            <ol id="favorites-items"></ol>
+            <div class="indicator bottom fav-bottom" aria-hidden="true">▼</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="playlist-footer">
+      <span>metabolising <a href="https://blog.mycal.net" target="_blank" rel="noopener noreferrer">blog.mycal.net</a></span>
+      <button id="fancy-toggle" type="button" aria-pressed="true" aria-label="Toggle visual effects" title="Toggle visual effects (glow + lyrics)">☢</button>
+    </div>
+  </aside>
+
+  <audio id="audio" preload="none"></audio>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────────
+    // PATCH 1 — PLAYLIST_META: edit these constants per directory.
+    // PATCH 2 — STORAGE_NS namespaces localStorage so favorites/lastTrack
+    //           don't leak between playlists.
+    // PATCH 3 — Each playlist entry may include `slug` for ?track= URLs.
+    //           (Optional — falls back to LAST_KEY behaviour if absent.)
+    // ─────────────────────────────────────────────────────────────────
+    const PLAYLIST_META = {
+      pageTitle: 'North Shore Kinda Heaven',        // <title> in the tab
+      artist:    'PMR',                              // MediaSession artist
+      album:     'North Shore Kinda Heaven',         // MediaSession album
+      storageNs: 'nskh'                              // localStorage namespace
+    };
+
+    document.title = PLAYLIST_META.pageTitle;
+
+const playlist = [
+  {
+    src: '01-Lowering_the_Boat_Down-PMR.mp3',
+    slug: 'lowering-the-boat-down',
+    title: 'Lowering the Boat Down'
+  },
+  {
+    src: "02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.mp3",
+    slug: 'clearlake-summers-with-the-kids',
+    title: "Clearlake Summers with the Kids (Mary's Song)"
+  },
+  {
+    src: '03-Roof_of_the_Dock-PMR.mp3',
+    slug: 'roof-of-the-dock',
+    lyrics: '03-Roof_of_the_Dock-PMR.lyrics.json',
+    title: 'Roof of the Dock'
+  },
+  {
+    src: '04-Cool_Cove-PMR.mp3',
+    slug: 'cool-cove',
+    lyrics: '04-Cool_Cove-PMR.lyrics.json',
+    title: 'Cool Cove'
+  },
+  {
+    src: '05-North_Shore_Kinda_Heaven-PMR.mp3',
+    slug: 'north-shore-kinda-heaven',
+    lyrics: '05-North_Shore_Kinda_Heaven-PMR.lyrics.json',
+    title: 'North Shore Kinda Heaven'
+  },
+  {
+    src: '06-Richmond_Park_on_a_Saturday_Afternoon-PMR.mp3',
+    slug: 'richmond-park-on-a-saturday-afternoon',
+    lyrics: '06-Richmond_Park_on_a_Saturday_Afternoon-PMR.lyrics.json',
+    title: 'Richmond Park on a Saturday Afternoon'
+  },
+  {
+    src: '07-Vacation_House_Blue-PMR.mp3',
+    slug: 'vacation-house-blue',
+    lyrics: '07-Vacation_House_Blue-PMR.lyrics.json',
+    title: 'Vacation House Blue'
+  },
+  {
+    src: '08-Konocti_Sunset-PMR.mp3',
+    slug: 'konocti-sunset',
+    lyrics: '08-Konocti_Sunset-PMR.lyrics.json',
+    title: 'Konocti Sunset'
+  },
+  {
+    src: '09-Clearlake_Olympics-PMR.mp3',
+    slug: 'clearlake-olympics',
+    lyrics: '09-Clearlake_Olympics-PMR.lyrics.json',
+    title: 'Clearlake Olympics'
+  }
+];
+
+    const audio = document.getElementById('audio');
+    const player = document.getElementById('player');
+    const icon = document.getElementById('icon');
+    const listEl = document.getElementById('playlist-items');
+    const filterEl = document.getElementById('filter');
+    const filterWrap = document.querySelector('.filter-wrap');
+    const filterClear = document.getElementById('filter-clear');
+    const indTop = document.querySelector('.flip-face.front .indicator.top');
+    const indBot = document.querySelector('.flip-face.front .indicator.bottom');
+    const favIndTop = document.querySelector('.fav-top');
+    const favIndBot = document.querySelector('.fav-bottom');
+    const favoritesEl = document.getElementById('favorites-items');
+    const favsToggle = document.getElementById('favs-toggle');
+    const flipCard = document.getElementById('flip-card');
+    const toggle = document.getElementById('toggle');
+    const nowPlayingTitle = document.getElementById('now-playing-title');
+    const repeatToggle = document.getElementById('repeat-toggle');
+    const seekSlider = document.getElementById('seek-slider');
+    const timeCurrent = document.getElementById('time-current');
+    const timeTotal = document.getElementById('time-total');
+    const btnPrev = document.getElementById('btn-prev');
+    const btnNext = document.getElementById('btn-next');
+    const btnBack5 = document.getElementById('btn-back5');
+    const btnFwd5 = document.getElementById('btn-fwd5');
+    const btnRestart = document.getElementById('btn-restart');
+    const karaokeEl = document.getElementById('karaoke');
+    const karaokeCurrentEl = karaokeEl.querySelector('.karaoke-line.current');
+    const karaokeUpcomingEl = karaokeEl.querySelector('.karaoke-line.upcoming');
+    const karaokeQueueEl = karaokeEl.querySelector('.karaoke-line.queue');
+    const mediaSession = navigator.mediaSession ?? null;
+
+    function fmtTime(t) {
+      if (!isFinite(t) || t < 0) return '0:00';
+      const m = Math.floor(t / 60);
+      const s = Math.floor(t % 60).toString().padStart(2, '0');
+      return `${m}:${s}`;
+    }
+    function updateSeekVisual() {
+      const max = parseFloat(seekSlider.max) || 0;
+      const val = parseFloat(seekSlider.value) || 0;
+      const p = max > 0 ? (val / max) * 100 : 0;
+      seekSlider.style.setProperty('--p', p + '%');
+    }
+
+    const playPath = '<path d="M8 5v14l11-7z"/>';
+    const pausePath = '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>';
+    const loadPath = '<path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46A7.93 7.93 0 0 0 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74A7.93 7.93 0 0 0 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/>';
+
+    function updateMediaSessionMetadata() {
+      if (!mediaSession || typeof MediaMetadata === 'undefined') return;
+      mediaSession.metadata = new MediaMetadata({
+        title: playlist[index].title,
+        artist: PLAYLIST_META.artist,
+        album: PLAYLIST_META.album
+      });
+    }
+
+    function updateMediaSessionPlaybackState(state = (audio.paused ? 'paused' : 'playing')) {
+      if (!mediaSession) return;
+      mediaSession.playbackState = state;
+    }
+
+    function updateMediaSessionPositionState() {
+      if (!mediaSession || typeof mediaSession.setPositionState !== 'function' || !isFinite(audio.duration) || audio.duration <= 0) return;
+      mediaSession.setPositionState({
+        duration: audio.duration,
+        playbackRate: audio.playbackRate || 1,
+        position: Math.min(audio.currentTime, audio.duration)
+      });
+    }
+
+    function syncToggleAria() {
+      toggle.setAttribute('aria-expanded', String(!document.body.classList.contains('playlist-closed')));
+    }
+
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('playlist-closed');
+      syncToggleAria();
+    });
+
+    syncToggleAria();
+
+    repeatToggle.addEventListener('click', () => {
+      audio.loop = !audio.loop;
+      repeatToggle.setAttribute('aria-pressed', String(audio.loop));
+    });
+
+    let index = 0;
+
+    function load(i) {
+      index = (i + playlist.length) % playlist.length;
+      audio.src = playlist[index].src;
+      nowPlayingTitle.textContent = playlist[index].title;
+      updateMediaSessionMetadata();
+      updateMediaSessionPositionState();
+      try { localStorage.setItem(LAST_KEY, playlist[index].src); } catch {}
+      // PATCH 3: keep ?track= in sync with what's actually loaded, so
+      // a copied URL reproduces the same track. Use replaceState so the
+      // back button doesn't fill up with track changes.
+      try {
+        const slug = playlist[index].slug;
+        if (slug) {
+          const url = new URL(window.location.href);
+          url.searchParams.set('track', slug);
+          history.replaceState(null, '', url);
+        }
+      } catch {}
+      seekSlider.max = 0;
+      seekSlider.value = 0;
+      timeCurrent.textContent = '0:00';
+      timeTotal.textContent = '0:00';
+      updateSeekVisual();
+      [listEl, favoritesEl].forEach((list) => {
+        Array.from(list.children).forEach((el) => {
+          const idx = parseInt(el.dataset.idx ?? '-1', 10);
+          el.classList.toggle('active', idx === index);
+        });
+      });
+    }
+
+    function updateIndicators() {
+      indTop.classList.toggle('show', listEl.scrollTop > 4);
+      indBot.classList.toggle('show', listEl.scrollTop + listEl.clientHeight < listEl.scrollHeight - 4);
+      favIndTop.classList.toggle('show', favoritesEl.scrollTop > 4);
+      favIndBot.classList.toggle('show', favoritesEl.scrollTop + favoritesEl.clientHeight < favoritesEl.scrollHeight - 4);
+    }
+
+    // PATCH 2: namespaced localStorage keys. Each playlist directory uses
+    // its own PLAYLIST_META.storageNs so favorites/lastTrack/view/fancy
+    // settings don't collide across players.
+    const _ns = PLAYLIST_META.storageNs;
+    const FAVS_KEY  = `radio.${_ns}.favorites`;
+    const LAST_KEY  = `radio.${_ns}.lastTrack`;
+    const VIEW_KEY  = `radio.${_ns}.view`;
+    const FANCY_KEY = `radio.${_ns}.fancy`;
+    let favorites = new Set();
+    try {
+      const raw = localStorage.getItem(FAVS_KEY);
+      if (raw) favorites = new Set(JSON.parse(raw));
+    } catch {}
+
+    function saveFavorites() {
+      try { localStorage.setItem(FAVS_KEY, JSON.stringify([...favorites])); } catch {}
+    }
+
+    const STAR_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>';
+
+    function createTrackLi(playlistIndex) {
+      const item = playlist[playlistIndex];
+      const li = document.createElement('li');
+      li.dataset.idx = String(playlistIndex);
+
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'track-title';
+      titleSpan.textContent = item.title;
+      li.appendChild(titleSpan);
+
+      const fav = document.createElement('button');
+      fav.className = 'fav-btn';
+      fav.type = 'button';
+      fav.setAttribute('aria-label', 'Toggle favorite');
+      fav.innerHTML = STAR_SVG;
+      if (favorites.has(item.src)) fav.classList.add('active');
+      fav.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFavorite(item.src);
+      });
+      li.appendChild(fav);
+
+      if (playlistIndex === index) li.classList.add('active');
+
+      li.addEventListener('click', () => {
+        load(playlistIndex);
+        audio.play();
+      });
+
+      return li;
+    }
+
+    function renderFavorites() {
+      favoritesEl.textContent = '';
+      let count = 0;
+      for (let i = 0; i < playlist.length; i++) {
+        if (favorites.has(playlist[i].src)) {
+          favoritesEl.appendChild(createTrackLi(i));
+          count++;
+        }
+      }
+      if (count === 0) {
+        const empty = document.createElement('li');
+        empty.className = 'empty-state';
+        empty.textContent = 'no favorites yet — tap ★ on any track';
+        favoritesEl.appendChild(empty);
+      }
+      applyFilter();
+    }
+
+    function toggleFavorite(src) {
+      if (favorites.has(src)) favorites.delete(src);
+      else favorites.add(src);
+      saveFavorites();
+      Array.from(listEl.querySelectorAll('.fav-btn')).forEach((btn) => {
+        const li = btn.closest('li');
+        const idx = li ? parseInt(li.dataset.idx, 10) : -1;
+        if (idx >= 0) btn.classList.toggle('active', favorites.has(playlist[idx].src));
+      });
+      renderFavorites();
+    }
+
+    function setView(showFavorites) {
+      flipCard.classList.toggle('flipped', showFavorites);
+      favsToggle.classList.toggle('active', showFavorites);
+      favsToggle.setAttribute('aria-pressed', String(showFavorites));
+      if (showFavorites) renderFavorites();
+      try { localStorage.setItem(VIEW_KEY, showFavorites ? 'favorites' : 'all'); } catch {}
+    }
+
+    favsToggle.addEventListener('click', () => {
+      setView(!flipCard.classList.contains('flipped'));
+    });
+
+    playlist.forEach((_item, i) => {
+      listEl.appendChild(createTrackLi(i));
+    });
+
+    function applyFilter() {
+      const q = filterEl.value.trim().toLowerCase();
+      filterWrap.classList.toggle('has-value', filterEl.value.length > 0);
+      [listEl, favoritesEl].forEach((list) => {
+        Array.from(list.children).forEach((el) => {
+          const idx = parseInt(el.dataset.idx ?? '-1', 10);
+          if (idx < 0) { el.style.display = ''; return; }
+          const match = !q || playlist[idx].title.toLowerCase().includes(q);
+          el.style.display = match ? '' : 'none';
+        });
+      });
+      updateIndicators();
+    }
+
+    filterEl.addEventListener('input', applyFilter);
+    filterClear.addEventListener('click', () => {
+      filterEl.value = '';
+      filterEl.focus();
+      applyFilter();
+    });
+    filterClear.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        filterClear.click();
+      }
+    });
+
+    listEl.addEventListener('scroll', updateIndicators);
+    favoritesEl.addEventListener('scroll', updateIndicators);
+    window.addEventListener('resize', updateIndicators);
+
+    renderFavorites();
+
+    // PATCH 3: ?track=<slug> precedence over LAST_KEY. If the URL has
+    // ?track=, use that and autoplay. Otherwise fall back to LAST_KEY.
+    // Autoplay is wrapped via the existing play()-after-load pattern.
+    let initialIndex = 0;
+    let autoplayFromUrl = false;
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const requestedSlug = params.get('track');
+      if (requestedSlug) {
+        const found = playlist.findIndex((t) => t.slug === requestedSlug);
+        if (found >= 0) {
+          initialIndex = found;
+          autoplayFromUrl = true;
+        }
+      }
+      if (!autoplayFromUrl) {
+        const lastSrc = localStorage.getItem(LAST_KEY);
+        if (lastSrc) {
+          const found = playlist.findIndex((t) => t.src === lastSrc);
+          if (found >= 0) initialIndex = found;
+        }
+      }
+    } catch {}
+    load(initialIndex);
+    if (autoplayFromUrl) {
+      audio.play().catch(() => { /* autoplay blocked — user can hit play */ });
+    }
+    try {
+      if (localStorage.getItem(VIEW_KEY) === 'favorites') setView(true);
+    } catch {}
+    updateIndicators();
+
+    player.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    });
+
+    audio.addEventListener('waiting', () => {
+      player.classList.add('loading');
+      icon.innerHTML = loadPath;
+      updateMediaSessionPlaybackState('playing');
+    });
+    audio.addEventListener('playing', () => {
+      player.classList.remove('loading');
+      player.classList.add('playing');
+      icon.innerHTML = pausePath;
+      player.setAttribute('aria-label', 'Pause');
+      updateMediaSessionPlaybackState('playing');
+      updateMediaSessionPositionState();
+    });
+    audio.addEventListener('pause', () => {
+      player.classList.remove('loading');
+      player.classList.remove('playing');
+      icon.innerHTML = playPath;
+      player.setAttribute('aria-label', 'Play');
+      updateMediaSessionPlaybackState('paused');
+    });
+    function viewIndices() {
+      if (!flipCard.classList.contains('flipped')) return null;
+      const fav = [];
+      for (let i = 0; i < playlist.length; i++) {
+        if (favorites.has(playlist[i].src)) fav.push(i);
+      }
+      return fav.length ? fav : null;
+    }
+
+    function nextIndex(current) {
+      const fav = viewIndices();
+      if (fav) {
+        const pos = fav.indexOf(current);
+        if (pos >= 0) return fav[(pos + 1) % fav.length];
+        for (const idx of fav) if (idx > current) return idx;
+        return fav[0];
+      }
+      return (current + 1) % playlist.length;
+    }
+
+    function prevIndex(current) {
+      const fav = viewIndices();
+      if (fav) {
+        const pos = fav.indexOf(current);
+        if (pos >= 0) return fav[(pos - 1 + fav.length) % fav.length];
+        for (let i = fav.length - 1; i >= 0; i--) if (fav[i] < current) return fav[i];
+        return fav[fav.length - 1];
+      }
+      return (current - 1 + playlist.length) % playlist.length;
+    }
+
+    function playTrackAt(newIndex) {
+      load(newIndex);
+      return audio.play();
+    }
+
+    function playNextTrack() {
+      return playTrackAt(nextIndex(index));
+    }
+
+    function playPrevTrack() {
+      return playTrackAt(prevIndex(index));
+    }
+
+    audio.addEventListener('ended', () => {
+      playNextTrack();
+    });
+
+    btnPrev.addEventListener('click', () => { playPrevTrack(); });
+    btnNext.addEventListener('click', () => { playNextTrack(); });
+    btnBack5.addEventListener('click', () => {
+      audio.currentTime = Math.max(0, audio.currentTime - 5);
+    });
+    btnFwd5.addEventListener('click', () => {
+      const max = isFinite(audio.duration) ? audio.duration : Infinity;
+      audio.currentTime = Math.min(max, audio.currentTime + 5);
+    });
+    btnRestart.addEventListener('click', () => { audio.currentTime = 0; });
+
+    let seeking = false;
+    seekSlider.addEventListener('input', () => {
+      seeking = true;
+      const v = parseFloat(seekSlider.value);
+      if (isFinite(audio.duration)) audio.currentTime = v;
+      timeCurrent.textContent = fmtTime(v);
+      updateSeekVisual();
+    });
+    seekSlider.addEventListener('change', () => { seeking = false; });
+
+    audio.addEventListener('loadedmetadata', () => {
+      seekSlider.max = audio.duration || 0;
+      timeTotal.textContent = fmtTime(audio.duration);
+      updateMediaSessionPositionState();
+      if (!seeking) {
+        seekSlider.value = audio.currentTime;
+        updateSeekVisual();
+      }
+    });
+    audio.addEventListener('timeupdate', () => {
+      if (!seeking) {
+        if (parseFloat(seekSlider.max) !== (audio.duration || 0) && isFinite(audio.duration)) {
+          seekSlider.max = audio.duration;
+          timeTotal.textContent = fmtTime(audio.duration);
+        }
+        seekSlider.value = audio.currentTime;
+        updateSeekVisual();
+      }
+      timeCurrent.textContent = fmtTime(audio.currentTime);
+      updateMediaSessionPositionState();
+    });
+
+    if (mediaSession) {
+      mediaSession.setActionHandler('play', () => { audio.play(); });
+      mediaSession.setActionHandler('pause', () => { audio.pause(); });
+      mediaSession.setActionHandler('nexttrack', () => { playNextTrack(); });
+      mediaSession.setActionHandler('previoustrack', () => { playPrevTrack(); });
+      mediaSession.setActionHandler('seekbackward', (details) => {
+        const offset = details.seekOffset ?? 5;
+        audio.currentTime = Math.max(0, audio.currentTime - offset);
+      });
+      mediaSession.setActionHandler('seekforward', (details) => {
+        const offset = details.seekOffset ?? 5;
+        const max = isFinite(audio.duration) ? audio.duration : Infinity;
+        audio.currentTime = Math.min(max, audio.currentTime + offset);
+      });
+      mediaSession.setActionHandler('seekto', (details) => {
+        if (typeof details.seekTime === 'number') audio.currentTime = details.seekTime;
+      });
+    }
+
+    const stageEl = document.getElementById('stage');
+    const ambientEl = document.getElementById('ambient');
+
+    let lyricsData = null;
+    let karaokeLines = [];
+    let karaokeLineIdx = 0;
+    let karaokeAdvanceTimer = null;
+    let karaokePinnedWordIdx = -1;
+    let nextWordIdx = 0;
+    let trackGen = 0;
+
+    const KEEP_OUT_PX = 92;
+    const MAX_ALIVE = 30;
+    const KARAOKE_MAX_WORDS = 7;
+    const KARAOKE_MAX_CHARS = 34;
+    const KARAOKE_BREAK_GAP = 1.15;
+    const KARAOKE_SCROLL_MS = 320;
+    const KARAOKE_PRE_SCROLL_HOLD_MS = 350;
+
+    function clearKaraokeAdvance() {
+      if (karaokeAdvanceTimer) {
+        clearTimeout(karaokeAdvanceTimer);
+        karaokeAdvanceTimer = null;
+      }
+      karaokeEl.classList.remove('scrolling');
+    }
+
+    function resetLyricsState() {
+      ambientEl.textContent = '';
+      lyricsData = null;
+      karaokeLines = [];
+      karaokeLineIdx = 0;
+      karaokePinnedWordIdx = -1;
+      nextWordIdx = 0;
+      clearKaraokeAdvance();
+      renderKaraoke(null, -1);
+    }
+
+    function buildKaraokeLines(words) {
+      const lines = [];
+      let current = null;
+      let chars = 0;
+
+      function pushCurrent() {
+        if (!current || !current.words.length) return;
+        current.startTime = current.words[0].t;
+        current.endTime = current.words[current.words.length - 1].t;
+        current.startIdx = current.words[0].idx;
+        current.endIdx = current.words[current.words.length - 1].idx;
+        current.text = current.words.map((word) => word.w).join(' ');
+        lines.push(current);
+        current = null;
+        chars = 0;
+      }
+
+      words.forEach((word, idx) => {
+        const entry = { ...word, idx };
+        const prev = current?.words[current.words.length - 1] ?? null;
+        const gap = prev ? entry.t - prev.t : 0;
+        const prevEndsPhrase = prev ? /[,.!?;:]$/.test(prev.w) : false;
+        const wouldOverflow = current
+          ? chars + 1 + entry.w.length > KARAOKE_MAX_CHARS || current.words.length >= KARAOKE_MAX_WORDS
+          : false;
+
+        if (current && (gap >= KARAOKE_BREAK_GAP || wouldOverflow || (prevEndsPhrase && current.words.length >= 4))) {
+          pushCurrent();
+        }
+
+        if (!current) current = { words: [] };
+        current.words.push(entry);
+        chars = current.words.reduce((sum, item, i) => sum + item.w.length + (i ? 1 : 0), 0);
+
+        if (/[!?]$/.test(entry.w) || (/[,.]$/.test(entry.w) && current.words.length >= 4)) {
+          pushCurrent();
+        }
+      });
+
+      pushCurrent();
+      return lines;
+    }
+
+    function karaokeWordIndexAt(t) {
+      if (!lyricsData) return -1;
+      const words = lyricsData.words;
+      let lo = 0, hi = words.length;
+      while (lo < hi) {
+        const mid = (lo + hi) >>> 1;
+        if (words[mid].t <= t) lo = mid + 1;
+        else hi = mid;
+      }
+      return lo - 1;
+    }
+
+    function karaokeLineIndexAt(t) {
+      if (!karaokeLines.length) return 0;
+      for (let i = 0; i < karaokeLines.length; i++) {
+        if (t <= karaokeLines[i].endTime + 0.04) return i;
+      }
+      return karaokeLines.length - 1;
+    }
+
+    function renderKaraokeLine(el, line, activeWordIdx, interactive) {
+      if (!line) {
+        if (el.dataset.lineStart !== '') {
+          el.textContent = '';
+          el.dataset.lineStart = '';
+        }
+        if (!el.firstChild) el.innerHTML = '&nbsp;';
+        return;
+      }
+
+      const lineKey = String(line.startIdx);
+      if (el.dataset.lineStart !== lineKey) {
+        el.textContent = '';
+        el.dataset.lineStart = lineKey;
+        line.words.forEach((word) => {
+          const span = document.createElement('span');
+          span.className = 'karaoke-word';
+          span.dataset.wordIdx = String(word.idx);
+          span.textContent = word.w;
+          el.appendChild(span);
+        });
+      }
+
+      Array.from(el.children).forEach((child) => {
+        const wordIdx = parseInt(child.dataset.wordIdx ?? '-1', 10);
+        child.classList.toggle('done', interactive && activeWordIdx >= wordIdx);
+        child.classList.toggle('active', interactive && activeWordIdx === wordIdx);
+      });
+    }
+
+    function renderKaraoke(t = null, activeWordIdx = null) {
+      const hasLyrics = !!karaokeLines.length;
+      karaokeEl.classList.toggle('empty', !hasLyrics);
+      karaokeEl.setAttribute('aria-hidden', hasLyrics ? 'false' : 'true');
+      if (!hasLyrics) {
+        karaokeCurrentEl.innerHTML = '&nbsp;';
+        karaokeUpcomingEl.innerHTML = '&nbsp;';
+        karaokeQueueEl.innerHTML = '&nbsp;';
+        return;
+      }
+      const currentLine = karaokeLines[karaokeLineIdx] ?? null;
+      const nextLine = karaokeLines[karaokeLineIdx + 1] ?? null;
+      const queueLine = karaokeLines[karaokeLineIdx + 2] ?? null;
+      const baseWordIdx = activeWordIdx ?? (t == null ? -1 : karaokeWordIndexAt(t));
+      const resolvedWordIdx = karaokePinnedWordIdx >= 0 ? Math.max(baseWordIdx, karaokePinnedWordIdx) : baseWordIdx;
+      renderKaraokeLine(karaokeCurrentEl, currentLine, resolvedWordIdx, true);
+      renderKaraokeLine(karaokeUpcomingEl, nextLine, resolvedWordIdx, true);
+      renderKaraokeLine(karaokeQueueEl, queueLine, resolvedWordIdx, true);
+    }
+
+    function shouldScrollToNextLine(t, activeWordIdx) {
+      const incomingLine = karaokeLines[karaokeLineIdx + 2] ?? null;
+      if (!incomingLine) return false;
+      if (activeWordIdx > incomingLine.startIdx) return true;
+      if (activeWordIdx < incomingLine.startIdx) return false;
+      return t >= incomingLine.startTime + KARAOKE_PRE_SCROLL_HOLD_MS / 1000;
+    }
+
+    function syncKaraokeToTime(t, animate) {
+      if (!karaokeLines.length) {
+        renderKaraoke(null, -1);
+        return;
+      }
+
+      const targetLineIdx = karaokeLineIndexAt(t);
+      const activeWordIdx = karaokeWordIndexAt(t);
+      if (karaokePinnedWordIdx >= 0 && activeWordIdx > karaokePinnedWordIdx) karaokePinnedWordIdx = -1;
+
+      if (!animate || targetLineIdx < karaokeLineIdx || targetLineIdx > karaokeLineIdx + 2) {
+        clearKaraokeAdvance();
+        karaokePinnedWordIdx = -1;
+        karaokeLineIdx = targetLineIdx;
+        renderKaraoke(t, activeWordIdx);
+        return;
+      }
+
+      if (targetLineIdx === karaokeLineIdx + 2 && !karaokeAdvanceTimer && shouldScrollToNextLine(t, activeWordIdx)) {
+        const incomingLine = karaokeLines[karaokeLineIdx + 2] ?? null;
+        karaokePinnedWordIdx = incomingLine ? incomingLine.startIdx : -1;
+        renderKaraoke(t, activeWordIdx);
+        karaokeEl.classList.add('scrolling');
+        karaokeAdvanceTimer = setTimeout(() => {
+          karaokeAdvanceTimer = null;
+          karaokeLineIdx = Math.min(karaokeLineIdx + 1, karaokeLines.length - 1);
+          karaokeEl.classList.remove('scrolling');
+          renderKaraoke(audio.currentTime, karaokeWordIndexAt(audio.currentTime));
+        }, KARAOKE_SCROLL_MS);
+        return;
+      }
+
+      renderKaraoke(t, activeWordIdx);
+    }
+
+    async function loadLyricsForCurrentTrack() {
+      const myGen = ++trackGen;
+      resetLyricsState();
+      if (!fancyMode) return;
+      const src = playlist[index].src;
+      const url = src.replace(/\.mp3$/i, '.lyrics.json');
+      try {
+        const res = await fetch(url);
+        if (myGen !== trackGen) return;
+        if (!res.ok) return;
+        const data = await res.json();
+        if (myGen !== trackGen) return;
+        if (data && Array.isArray(data.words)) {
+          lyricsData = data;
+          karaokeLines = buildKaraokeLines(data.words);
+          seekLyricsTo(audio.currentTime);
+          syncKaraokeToTime(audio.currentTime, false);
+        }
+      } catch {}
+    }
+
+    let fancyMode = true;
+    const fancyToggle = document.getElementById('fancy-toggle');
+
+    function setFancy(on) {
+      fancyMode = on;
+      document.body.classList.toggle('fancy-off', !on);
+      fancyToggle.setAttribute('aria-pressed', String(on));
+      try { localStorage.setItem(FANCY_KEY, on ? '1' : '0'); } catch {}
+      if (!on) {
+        resetLyricsState();
+      } else if (!audio.paused) {
+        loadLyricsForCurrentTrack();
+      }
+    }
+
+    fancyToggle.addEventListener('click', () => setFancy(!fancyMode));
+
+    try {
+      if (localStorage.getItem(FANCY_KEY) === '0') setFancy(false);
+    } catch {}
+
+    function seekLyricsTo(t) {
+      if (!lyricsData) return;
+      const words = lyricsData.words;
+      let lo = 0, hi = words.length;
+      while (lo < hi) {
+        const mid = (lo + hi) >>> 1;
+        if (words[mid].t <= t) lo = mid + 1;
+        else hi = mid;
+      }
+      nextWordIdx = lo;
+    }
+
+    function spawnLyricWord(text) {
+      const rect = stageEl.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const maxDist = Math.max(KEEP_OUT_PX + 40, Math.min(rect.width, rect.height) / 2 - 24);
+      const angle = Math.random() * Math.PI * 2;
+      const dist = KEEP_OUT_PX + Math.random() * (maxDist - KEEP_OUT_PX);
+      const x = cx + Math.cos(angle) * dist;
+      const y = cy + Math.sin(angle) * dist;
+
+      const span = document.createElement('span');
+      span.className = 'lyric-word';
+      span.textContent = text;
+      span.style.left = x + 'px';
+      span.style.top = y + 'px';
+      span.style.fontSize = (12 + Math.random() * 14).toFixed(1) + 'px';
+      span.style.setProperty('--max-opacity', (0.55 + Math.random() * 0.4).toFixed(2));
+      span.addEventListener('animationend', () => span.remove(), { once: true });
+      ambientEl.appendChild(span);
+
+      while (ambientEl.childElementCount > MAX_ALIVE) {
+        ambientEl.firstElementChild?.remove();
+      }
+    }
+
+    function tickLyrics() {
+      requestAnimationFrame(tickLyrics);
+      if (!fancyMode || !lyricsData || audio.paused) return;
+      const t = audio.currentTime;
+      const words = lyricsData.words;
+      while (nextWordIdx < words.length && words[nextWordIdx].t <= t) {
+        spawnLyricWord(words[nextWordIdx].w);
+        nextWordIdx++;
+      }
+    }
+
+    audio.addEventListener('loadstart', loadLyricsForCurrentTrack);
+    audio.addEventListener('seeked', () => {
+      seekLyricsTo(audio.currentTime);
+      syncKaraokeToTime(audio.currentTime, false);
+    });
+    audio.addEventListener('timeupdate', () => {
+      syncKaraokeToTime(audio.currentTime, true);
+    });
+    audio.addEventListener('pause', () => {
+      syncKaraokeToTime(audio.currentTime, false);
+    });
+    requestAnimationFrame(tickLyrics);
+  </script>
+</body>
+</html>
+
