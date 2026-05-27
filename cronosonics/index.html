@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronosonics | music.mycal.net</title>
+  <meta name="description" content="Cronosonics: essays paired with companion songs. Two playlists: the full Cronosonic catalog, and Cronofuture — the future-facing thematic subset.">
+  <link rel="icon" type="image/png" href="https://music.mycal.net/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/svg+xml" href="https://music.mycal.net/favicon.svg">
+  <link rel="shortcut icon" href="https://music.mycal.net/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://music.mycal.net/apple-touch-icon.png">
+  <link rel="manifest" href="https://music.mycal.net/site.webmanifest">
+  <link rel="stylesheet" href="https://music.mycal.net/assets/css/style.css">
+
+  <style>
+    /* Cronosonics card grid — scoped additions, no global overrides */
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .track-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1.25rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0.75rem;
+      background: rgba(255,255,255,0.02);
+    }
+    .track-card .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+    .playlist-badge {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+      font-size: 0.72rem;
+    }
+    .playlist-badge.cronofuture::before { content: "★ "; }
+    .track-number { font-variant-numeric: tabular-nums; opacity: 0.6; }
+    .track-title { margin: 0.25rem 0 0; font-size: 1.2rem; }
+    .track-essay { margin: 0; font-size: 0.9rem; opacity: 0.85; }
+    .track-blurb { margin: 0.25rem 0 0.75rem; font-size: 0.95rem; }
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: auto;
+      flex-wrap: wrap;
+    }
+    .card-actions .button-play,
+    .card-actions .button-read {
+      display: inline-block;
+      padding: 0.45rem 0.9rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid currentColor;
+    }
+    .card-actions .button-play { font-weight: 600; }
+    .playlist-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .playlist-heading h2 { margin: 0; }
+    .playlist-heading .open-player {
+      font-size: 0.9rem;
+      text-decoration: underline;
+    }
+  </style>
+
+  <script defer src="https://analytics.mycal.net/script.js" data-website-id="875131dd-45c8-4045-a25e-d7e326dbf431"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/cronosonics/",
+    "url": "https://music.mycal.net/cronosonics/",
+    "name": "Cronosonics",
+    "description": "Index of Cronosonic and Cronofuture playlists by Mycal — essays paired with companion songs.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://music.mycal.net/#website"
+    },
+    "about": {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics"
+    },
+    "inLanguage": "en-US"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    "@id": "https://music.mycal.net/series/cronosonics",
+    "name": "Cronosonics",
+    "alternateName": ["Cronosonic"],
+    "description": "A creative format pairing essays with companion songs so complex ideas become more memorable and engaging. Cronofuture is the future-facing thematic subset of Cronosonics.",
+    "creator": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    },
+    "url": "https://music.mycal.net/cronosonics/"
+  }
+  </script>
+
+  <!--
+    The two MusicPlaylist JSON-LD blocks below are PLACEHOLDERS.
+    Claude Code regenerates these from the MP3 + sidecar JSON files
+    in cronosonics/cronofuture/ and cronosonics/cronosonics/.
+    See README.md for the spec.
+  -->
+  <script type="application/ld+json" id="ldjson-cronofuture-playlist">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicPlaylist",
+    "@id": "https://music.mycal.net/cronosonics/cronofuture/",
+    "name": "Cronofuture",
+    "description": "The future-facing thematic subset of Cronosonics — Substrate War, kWh Token, energy and meaning.",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics"
+    },
+    "track": []
+  }
+  </script>
+
+  <script type="application/ld+json" id="ldjson-cronosonics-playlist">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicPlaylist",
+    "@id": "https://music.mycal.net/cronosonics/cronosonics/",
+    "name": "Cronosonic",
+    "description": "The full Cronosonic catalog — essays paired with companion songs.",
+    "isPartOf": {
+      "@type": "CreativeWorkSeries",
+      "@id": "https://music.mycal.net/series/cronosonics"
+    },
+    "track": []
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <nav class="navbar" aria-label="Primary">
+      <a class="logo" href="/">
+        <span>music.mycal.net</span>
+      </a>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/cronosonics/">Cronosonics</a>
+        <a href="https://mycalmusic.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="meta">Cronosonics</p>
+        <h1>Essays you can hum.</h1>
+        <p>Cronosonics pairs an essay with a companion song. The prose carries the argument. The song carries the memory. Two playlists live here: the full Cronosonic catalog, and <strong>Cronofuture</strong> — the future-facing thematic subset where the work runs hottest.</p>
+        <div class="button-row">
+          <a class="button" href="#cronofuture">Cronofuture ★</a>
+          <a class="button" href="#cronosonics">Cronosonic</a>
+          <a class="button" href="https://blog.mycal.net/cronosonics-when-essays-sing/" target="_blank" rel="noopener">Origin essay</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="card-grid" aria-labelledby="grid-heading">
+      <h2 id="grid-heading" class="visually-hidden">Tracks</h2>
+
+      <!--
+        ▼ EVERYTHING INSIDE #card-grid IS GENERATED BY CLAUDE CODE ▼
+        Source: README.md
+        Cards built from MP3 + sidecar JSON in cronofuture/ and cronosonics/
+        Cronofuture section appears first. Two example placeholder cards below.
+      -->
+
+      <div class="playlist-heading" id="cronofuture">
+        <h2>Cronofuture <span aria-hidden="true">★</span></h2>
+        <a class="open-player" href="/cronosonics/cronofuture/">Open full player →</a>
+      </div>
+      <div class="track-grid">
+        <article class="track-card" data-playlist="cronofuture" data-slug="example-track">
+          <div class="card-header">
+            <span class="playlist-badge cronofuture">Cronofuture</span>
+            <span class="track-number">01</span>
+          </div>
+          <h3 class="track-title">Example Track Title</h3>
+          <p class="track-essay">Paired with <a href="https://blog.mycal.net/example/">Example Essay Title</a></p>
+          <p class="track-blurb">One-line blurb describing what this pairing does. Roughly twenty words is the sweet spot.</p>
+          <div class="card-actions">
+            <a class="button-play" href="/cronosonics/cronofuture/?track=example-track">▶ Play</a>
+            <a class="button-read" href="https://blog.mycal.net/example/">Read essay</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="playlist-heading" id="cronosonics">
+        <h2>Cronosonic</h2>
+        <a class="open-player" href="/cronosonics/cronosonics/">Open full player →</a>
+      </div>
+      <div class="track-grid">
+        <article class="track-card" data-playlist="cronosonics" data-slug="example-cronosonic">
+          <div class="card-header">
+            <span class="playlist-badge cronosonics">Cronosonic</span>
+            <span class="track-number">01</span>
+          </div>
+          <h3 class="track-title">Another Example Title</h3>
+          <p class="track-essay">Paired with <a href="https://blog.mycal.net/example-2/">Another Essay</a></p>
+          <p class="track-blurb">Cards in this section are Cronosonic only — solid pairings, not in the Cronofuture thematic arc.</p>
+          <div class="card-actions">
+            <a class="button-play" href="/cronosonics/cronosonics/?track=example-cronosonic">▶ Play</a>
+            <a class="button-read" href="https://blog.mycal.net/example-2/">Read essay</a>
+          </div>
+        </article>
+      </div>
+
+      <!-- ▲ END GENERATED REGION ▲ -->
+    </section>
+
+    <section class="section prose" aria-labelledby="format-heading">
+      <h2 id="format-heading">About the format</h2>
+      <p>Cronosonics came out of an accidental experiment: write an essay, distill its core ideas into a rough song, publish both, then notice readers quoting not just the prose but the lyrics when they needed the idea again. People forget bullet points. They don't forget choruses.</p>
+      <p>Cronofuture is the subset of that work pointed at the substrate questions — energy, computation, meaning, and the contest over the foundations underneath them. If you only listen to a few tracks here, start there.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>© 2025 Mycal Music • Built for speed, no tracking pixels.</div>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="https://www.youtube.com/@mycalmusicofficial" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://www.instagram.com/mycal.music" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="https://music.mycal.net/assets/js/analytics-events.js"></script>
+</body>
+</html>
+
+
