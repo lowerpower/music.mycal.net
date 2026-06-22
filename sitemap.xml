@@ -4,14 +4,14 @@
 
   <url>
     <loc>https://music.mycal.net/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://music.mycal.net/about/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -29,9 +29,24 @@
 
   <url>
     <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/</loc>
-    <lastmod>2026-05-26</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>North Shore Kinda Heaven</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Konocti Sunset</image:title>
+    </image:image>
   </url>
 
   <url>

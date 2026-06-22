@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>music.mycal.net — Albums by Mycal</title>
-  <meta name="description" content="Discover Mycal's music catalog, including Ashes and Echoes – Songs from the Playa.">
+  <meta name="description" content="Discover Mycal's music catalog, including North Shore Kinda Heaven and Ashes and Echoes – Songs from the Playa.">
   <link rel="icon" type="image/png" href="https://music.mycal.net/favicon-96x96.png" sizes="96x96">
   <link rel="icon" type="image/svg+xml" href="https://music.mycal.net/favicon.svg">
   <link rel="shortcut icon" href="https://music.mycal.net/favicon.ico">
@@ -308,12 +308,37 @@
   "@type": "CollectionPage",
   "name": "Mycal Music - Albums",
   "url": "https://music.mycal.net/",
-  "description": "Albums and tracks by Mycal - Folk-electronic fusion from Black Rock City",
+  "description": "Albums and tracks by Mycal, including North Shore Kinda Heaven and Ashes and Echoes",
   "publisher": {
     "@type": "Person",
     "@id": "https://blog.mycal.net/about/#mycal"
   },
   "hasPart": [
+    {
+      "@type": "MusicAlbum",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven",
+      "name": "North Shore Kinda Heaven",
+      "description": "Stories from the North Shore - Country Americana from Clear Lake. Lead single Konocti Sunset releases June 27, 2026; full album releases June 27, 2026.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
+        "caption": "Konocti Sunset temporary cover image for North Shore Kinda Heaven"
+      },
+      "datePublished": "2026-06-27",
+      "byArtist": {
+        "@type": "Person",
+        "@id": "https://blog.mycal.net/about/#mycal"
+      },
+      "recordLabel": {
+        "@type": "Organization",
+        "@id": "https://music.mycal.net/#mycal-music"
+      },
+      "genre": ["Country", "Americana", "Alt-Country"],
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven",
+      "numTracks": 10,
+      "albumProductionType": "http://schema.org/StudioAlbum",
+      "albumReleaseType": "http://schema.org/AlbumRelease"
+    },
     {
       "@type": "MusicAlbum",
       "@id": "https://music.mycal.net/albums/ashes-and-echoes",
@@ -745,6 +770,7 @@
       <div class="nav-links">
         <a href="/">Home</a>
         <a href="/about/">About</a>
+        <a href="albums/north-shore-kinda-heaven/">North Shore Kinda Heaven</a>
         <a href="albums/ashes-and-echoes/">Ashes and Echoes</a>
         <a href="https://mycalmusic.bandcamp.com/" target="_blank" rel="noopener">Bandcamp</a>
       </div>
@@ -753,14 +779,14 @@
 
   <main>
     <section class="hero">
-      <img src="assets/img/album/ashes-and-echoes-cover.jpg" alt="Ashes and Echoes album cover featuring a Burning Man-inspired scene">
+      <img src="assets/img/album/ashes-and-echoes-cover.jpg" alt="Ashes and Echoes album cover featuring a Burning Man-inspired scene" width="1024" height="1024">
       <div class="hero-content">
-        <p class="meta">Mycal Music • Folk x Fire x Electronic • 2025</p>
-        <h1>Music forged in dust, steel, and starlight.</h1>
-        <p>Welcome to the home of Mycal's music. Dive into stories from Black Rock City, recorded with fire-lit grit and cinematic electronics. Explore the album, read lyrics, and stream wherever you listen.</p>
+        <p class="meta">Mycal Music • Country Americana • Folk x Fire x Electronic</p>
+        <h1>Stories from Clear Lake and Black Rock City.</h1>
+        <p>Welcome to the home of Mycal's music. Start with the new Clear Lake single, then dive into songs from Black Rock City, fire-lit grit, and cinematic electronics.</p>
         <div class="button-row">
-          <a class="button" href="albums/ashes-and-echoes/">View Album</a>
-          <a class="button" href="https://distrokid.com/hyperfollow/mycal/ashes-and-echoes-songs-from-the-playa-stories-from-fire-and-steel" target="_blank" rel="noopener">Stream Everywhere</a>
+          <a class="button" href="albums/north-shore-kinda-heaven/">North Shore Kinda Heaven</a>
+          <a class="button" href="albums/ashes-and-echoes/">Ashes and Echoes</a>
         </div>
       </div>
     </section>
@@ -772,7 +798,24 @@
       </div>
       <div class="grid">
         <article class="card">
-          <img src="https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg" alt="Ashes and Echoes album cover by Mycal">
+          <img src="https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg" alt="Konocti Sunset cover photo for North Shore Kinda Heaven by Mycal" width="1024" height="1024">
+          <div class="card-content">
+            <div class="meta">New single releases June 27, 2026 · Full album June 27, 2026</div>
+            <h3 style="margin:0;">North Shore Kinda Heaven</h3>
+            <p class="meta">Stories from the North Shore — Country Americana from Clear Lake.</p>
+            <p class="meta">New single — Konocti Sunset — releases June 27, 2026.</p>
+            <div class="tag-list" aria-label="Album tags">
+              <span class="tag">Clear Lake</span>
+              <span class="tag">Country Americana</span>
+              <span class="tag">Story Songs</span>
+            </div>
+            <div class="button-row">
+              <a class="button" href="https://music.mycal.net/albums/north-shore-kinda-heaven/">View Album</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg" alt="Ashes and Echoes album cover by Mycal" width="1024" height="1024">
           <div class="card-content">
             <div class="meta">Released August 15, 2025</div>
             <h3 style="margin:0;">Ashes and Echoes — Songs from the Playa</h3>
