@@ -4,14 +4,14 @@
 
   <url>
     <loc>https://music.mycal.net/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://music.mycal.net/about/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -29,7 +29,7 @@
 
   <url>
     <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -40,12 +40,100 @@
 
   <url>
     <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html</loc>
-    <lastmod>2026-06-22</lastmod>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <image:image>
       <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
       <image:title>Konocti Sunset</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/lowering-the-boat-down.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Lowering the Boat Down</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-summers-with-the-kids.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Clearlake Summers with the Kids (Mary's Song)</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/cool-cove.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Cool Cove</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/roof-of-the-dock.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Roof of the Dock</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/north-shore-kinda-heaven.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>North Shore Kinda Heaven</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/richmond-park-on-a-saturday-afternoon.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Richmond Park on a Saturday Afternoon</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/vacation-house-blue.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Vacation House Blue</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-olympics.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg</image:loc>
+      <image:title>Clearlake Olympics</image:title>
     </image:image>
   </url>
 
