@@ -91,6 +91,8 @@ main {
 
 .hero img {
   width: 100%;
+  height: auto;
+  display: block;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
