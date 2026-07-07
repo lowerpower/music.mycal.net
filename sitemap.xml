@@ -138,6 +138,17 @@
   </url>
 
   <url>
+    <loc>https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/wish-summer-would-never-end.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <image:image>
+      <image:loc>https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg</image:loc>
+      <image:title>Wish Summer Would Never End</image:title>
+    </image:image>
+  </url>
+
+  <url>
     <loc>https://music.mycal.net/albums/ashes-and-echoes/tracks/we-did-start-the-fire.html</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>monthly</changefreq>
