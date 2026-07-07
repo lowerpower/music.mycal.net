@@ -287,6 +287,7 @@ ol.tracklist {
 
 .track-item {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.6rem;
   padding: 0.6rem 0.75rem;
@@ -302,6 +303,7 @@ ol.tracklist {
 .track-embed {
   margin-left: auto;
   display: flex;
+  flex: 1 1 320px;
   justify-content: flex-end;
   width: 100%;
 }
@@ -311,6 +313,10 @@ ol.tracklist {
   max-width: 420px;
   border-radius: 8px;
   background: var(--bg);
+}
+
+.track-embed audio {
+  width: min(100%, 420px);
 }
 
 .hero .track-embed {
@@ -359,5 +365,10 @@ small {
 
   .nav-links {
     flex-wrap: wrap;
+  }
+
+  .track-embed {
+    margin-left: 0;
+    justify-content: flex-start;
   }
 }
