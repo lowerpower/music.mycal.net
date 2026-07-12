@@ -14,63 +14,539 @@
 
   <script defer src="https://analytics.mycal.net/script.js" data-website-id="875131dd-45c8-4045-a25e-d7e326dbf431"></script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicAlbum",
-    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven",
-    "name": "North Shore Kinda Heaven",
-    "description": "Songs from the North Shore of Clear Lake. Country and Americana stories about the cove, the green dock, the boat lift, Konocti Harbor in the distance, and the blue house that held the whole thing together.",
-    "image": {
-      "@type": "ImageObject",
-      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg",
-      "width": 1024,
-      "height": 1024,
-      "caption": "North Shore Kinda Heaven album cover"
+
+<!-- ============================================================
+     JSON-LD for https://music.mycal.net/albums/north-shore-kinda-heaven/
+     Paste ALL of these blocks into the <head> of the album's index.html.
+     This page has no site-wide graph, so the supporting entities it
+     references (Person #mycal, Organization #mycal-music, WebSite #website)
+     are reproduced here from your homepage. Same @ids = consistent identity;
+     the page is self-contained and every reference resolves locally.
+
+     ============================================================ -->
+
+<!-- Person: Mike Johnson / Mycal (canonical, reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg",
+    "caption": "Mycal - North Shore Kinda Heaven album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician and songwriter. Country-Americana storyteller of Clear Lake's North Shore and folk-electronic artist inspired by Burning Man and Black Rock City. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Country", "Americana", "Alt-Country", "Folk", "Electronic", "Story Songs"],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com"
     },
-    "byArtist": {
-      "@type": "Person",
-      "name": "Mycal",
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization: Mycal Music (record label, reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music label and publishing organization for albums and releases by artist Mycal.",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "genre": ["Country", "Americana", "Alt-Country", "Folk", "Electronic", "Story Songs"],
+  "sameAs": [
+    "https://mycalmusic.bandcamp.com/",
+    "https://music.mycal.net/"
+  ]
+}
+</script>
+
+<!-- WebSite: music.mycal.net (reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://music.mycal.net/#website",
+  "url": "https://music.mycal.net/",
+  "name": "music.mycal.net",
+  "alternateName": "Mycal Music Official Site",
+  "description": "Official music site for Mycal — albums including North Shore Kinda Heaven and Ashes and Echoes.",
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "inLanguage": "en-US",
+  "copyrightYear": 2026,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  }
+}
+</script>
+
+<!-- Featured Artist: Marycal (inline — defined here, like the others) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://music.mycal.net/#marycal",
+  "name": "Marycal",
+  "alternateName": ["Mary"],
+  "description": "Featured vocalist and co-writer on North Shore Kinda Heaven, appearing on 'Clearlake Summers with the Kids (Mary's Song)' and 'Vacation House Blue'.",
+  "memberOf": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  }
+}
+</script>
+
+<!-- MusicAlbum: North Shore Kinda Heaven (fat, self-sufficient) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicAlbum",
+  "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven",
+  "name": "North Shore Kinda Heaven",
+  "description": "Songs from the North Shore of Clear Lake. Recorded on the docks and decks of Clear Lake's North Shore, this country-Americana concept album captures hundreds of summers in ten songs — the cove, the green dock, the boat lift, Konocti Harbor in the distance, and the blue house that held the whole thing together.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg",
+    "width": 1024,
+    "height": 1024,
+    "caption": "North Shore Kinda Heaven album cover"
+  },
+  "datePublished": "2026-07-03",
+  "dateCreated": "2026",
+  "byArtist": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "producer": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "genre": ["Country", "Americana", "Alt-Country", "Story Songs", "Concept Album"],
+  "keywords": [
+    "North Shore Kinda Heaven",
+    "Mycal",
+    "Marycal",
+    "Clear Lake",
+    "Clearlake",
+    "North Shore",
+    "Mount Konocti",
+    "Konocti Harbor",
+    "Indian Beach",
+    "Richmond Park",
+    "Cool Cove",
+    "boat lift",
+    "green dock",
+    "roof of the dock",
+    "Clearlake Olympics",
+    "vacation house blue",
+    "country Americana",
+    "alt-country",
+    "lake life",
+    "summer",
+    "family memory",
+    "boat-in nights",
+    "story songs",
+    "concept album",
+    "Green Trombone Records"
+  ],
+  "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/",
+  "numTracks": 10,
+  "inLanguage": "en",
+  "copyrightYear": 2026,
+  "copyrightHolder": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "copyrightNotice": "© 2026 Mycal Music. Some rights reserved.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "creditText": "All songs written by Mycal (tracks 2 and 7 co-written with Mary); vocals by Mycal and Marycal. Composed with Suno + ACE-Step 1.5 (custom training), humanized via the Humanizer pipeline, mixed in Audacity + FL Studio, mastered by Green Trombone Records.",
+  "albumProductionType": "http://schema.org/StudioAlbum",
+  "albumReleaseType": "http://schema.org/AlbumRelease",
+  "duration": "PT32M55S",
+  "about": [
+    {
+      "@type": "Place",
+      "name": "Clear Lake",
+      "address": { "@type": "PostalAddress", "addressRegion": "California", "addressCountry": "US" },
+      "description": "The lake in Lake County, California whose North Shore anchors the album."
+    },
+    {
+      "@type": "Place",
+      "name": "North Shore",
+      "address": { "@type": "PostalAddress", "addressRegion": "California", "addressCountry": "US" },
+      "description": "The north shore of Clear Lake — the album's central geography of coves, docks, and boat lifts."
+    },
+    {
+      "@type": "Place",
+      "name": "Mount Konocti",
+      "description": "The mountain overlooking Clear Lake, a recurring landmark across the record."
+    },
+    {
+      "@type": "Place",
+      "name": "Konocti Harbor",
+      "address": { "@type": "PostalAddress", "addressLocality": "Kelseyville", "addressRegion": "California", "addressCountry": "US" },
+      "description": "Former lakeside concert resort recalled in 'Konocti Sunset'."
+    },
+    { "@type": "Place", "name": "Indian Beach" },
+    { "@type": "Place", "name": "Richmond Park" },
+    { "@type": "Place", "name": "Brassfield Estate Winery" },
+    {
+      "@type": "Thing",
+      "name": "Lake summers",
+      "description": "Family summer rituals on Clear Lake — the boat lift, the green dock, tube rides, and neighborhood gatherings."
+    }
+  ],
+  "recordedAt": {
+    "@type": "Place",
+    "name": "Mycal Labs",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Petaluma",
+      "addressRegion": "CA",
+      "addressCountry": "US"
+    }
+  },
+  "track": [
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/lowering-the-boat-down.html",
+      "name": "Lowering the Boat Down",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/lowering-the-boat-down.html",
+      "position": 1,
+      "duration": "PT3M24S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Opening Track"],
+      "keywords": ["boat lift", "launch ritual", "start of summer", "dock", "cove", "family routine", "Clear Lake North Shore"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/01-Lowering_the_Boat_Down-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-summers-with-the-kids.html",
+      "name": "Clearlake Summers with the Kids (Mary's Song)",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-summers-with-the-kids.html",
+      "position": 2,
+      "duration": "PT4M29S",
+      "datePublished": "2026-07-03",
+      "byArtist": [
+        { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+        { "@type": "Person", "@id": "https://music.mycal.net/#marycal" }
+      ],
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Family Song"],
+      "keywords": ["family memory", "green dock", "roof jumping", "cannonball", "Indian Beach", "karaoke", "inheritance", "kids"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/02-Clearlake_Summers_with_the_Kids_(Mary's_Song)-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/cool-cove.html",
+      "name": "Cool Cove",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/cool-cove.html",
+      "position": 3,
+      "duration": "PT3M40S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Neighborhood Song"],
+      "keywords": ["west-end cove", "Indian Beach", "paddle boat", "wine moms", "Ladies at the Lake", "borrowed ice", "lake community"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/04-Cool_Cove-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/roof-of-the-dock.html",
+      "name": "Roof of the Dock",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/roof-of-the-dock.html",
+      "position": 4,
+      "duration": "PT3M15S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Jump Song"],
+      "keywords": ["dock roof", "jumping", "tube kids", "koozies", "rite of passage", "fireworks", "one more lap"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/03-Roof_of_the_Dock-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/north-shore-kinda-heaven.html",
+      "name": "North Shore Kinda Heaven",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/north-shore-kinda-heaven.html",
+      "position": 5,
+      "duration": "PT3M10S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Title Track"],
+      "keywords": ["title track", "belonging", "tube rides", "dock chairs", "summer light", "Clearlake", "declaration"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/05-North_Shore_Kinda_Heaven-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/richmond-park-on-a-saturday-afternoon.html",
+      "name": "Richmond Park on a Saturday Afternoon",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/richmond-park-on-a-saturday-afternoon.html",
+      "position": 6,
+      "duration": "PT3M25S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Gathering Song"],
+      "keywords": ["Richmond Park", "floating docks", "tied-up boats", "burgers", "live band", "Tommy Rox", "communal weekend"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/06-Richmond_Park_on_a_Saturday_Afternoon-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/vacation-house-blue.html",
+      "name": "Vacation House Blue",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/vacation-house-blue.html",
+      "position": 7,
+      "duration": "PT4M20S",
+      "datePublished": "2026-07-03",
+      "byArtist": [
+        { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+        { "@type": "Person", "@id": "https://music.mycal.net/#marycal" }
+      ],
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "House Song"],
+      "keywords": ["blue lake house", "Fourth of July on the third", "fireworks", "Brassfield", "wine country", "Father's Day", "friendship", "belonging"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/07-Vacation_House_Blue-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
+      "name": "Konocti Sunset",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
+      "position": 8,
+      "duration": "PT3M59S",
+      "datePublished": "2026-06-27",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Ballad"],
+      "keywords": ["Konocti Harbor", "boat-in concerts", "Star Card", "ticket stubs", "Mount Konocti", "memory", "nostalgia"],
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
+        "caption": "Sunset over Mount Konocti from the North Shore of Clear Lake"
+      },
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/08-Konocti_Sunset-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      },
       "sameAs": [
-        "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
-        "https://music.apple.com/us/artist/mycal/1830794420",
-        "https://music.amazon.com/artists/B003GMIO2A/mycal",
-        "https://blog.mycal.net/about/#mycal"
+        "https://open.spotify.com/album/43gIZsPcU9enq6dcuZc3bm",
+        "https://music.apple.com/us/album/konocti-sunset-single/6777906246",
+        "https://music.amazon.com/albums/B0H4FZHJY1",
+        "https://music.youtube.com/watch?v=7a4y8uj7_po"
       ]
     },
-    "albumProductionType": "http://schema.org/StudioAlbum",
-    "albumReleaseType": "http://schema.org/AlbumRelease",
-    "numTracks": 10,
-    "genre": ["Country", "Americana", "Alt-Country"],
-    "recordLabel": "Mycal Music",
-    "datePublished": "2026-07-03",
-    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/",
-    "sameAs": [
-      "https://distrokid.com/hyperfollow/mycal/north-shore-kinda-heaven"
-    ],
-    "about": [
-      {"@type": "Place", "name": "Clear Lake", "address": {"@type": "PostalAddress", "addressRegion": "California", "addressCountry": "US"}},
-      {"@type": "Place", "name": "Konocti Harbor", "address": {"@type": "PostalAddress", "addressLocality": "Kelseyville", "addressRegion": "California", "addressCountry": "US"}},
-      {"@type": "Place", "name": "Mount Konocti"},
-      {"@type": "Place", "name": "North Shore", "address": {"@type": "PostalAddress", "addressRegion": "California", "addressCountry": "US"}},
-      {"@type": "Place", "name": "Indian Beach"},
-      {"@type": "Place", "name": "Richmond Park"},
-      {"@type": "Place", "name": "Brassfield Estate Winery"}
-    ],
-    "track": [
-      {"@type": "MusicRecording", "name": "Lowering the Boat Down", "position": 1, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/lowering-the-boat-down.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Clearlake Summers with the Kids (Mary's Song)", "position": 2, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-summers-with-the-kids.html", "byArtist": [{"@type": "Person", "name": "Mycal"}, {"@type": "Person", "name": "Marycal"}]},
-      {"@type": "MusicRecording", "name": "Cool Cove", "position": 3, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/cool-cove.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Roof of the Dock", "position": 4, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/roof-of-the-dock.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "North Shore Kinda Heaven", "position": 5, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/north-shore-kinda-heaven.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Richmond Park on a Saturday Afternoon", "position": 6, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/richmond-park-on-a-saturday-afternoon.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Vacation House Blue", "position": 7, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/vacation-house-blue.html", "byArtist": [{"@type": "Person", "name": "Mycal"}, {"@type": "Person", "name": "Marycal"}]},
-      {"@type": "MusicRecording", "name": "Konocti Sunset", "position": 8, "datePublished": "2026-06-27", "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Clearlake Olympics", "position": 9, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-olympics.html", "byArtist": {"@type": "Person", "name": "Mycal"}},
-      {"@type": "MusicRecording", "name": "Wish Summer Would Never End", "position": 10, "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/wish-summer-would-never-end.html", "byArtist": {"@type": "Person", "name": "Mycal"}}
-    ]
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-olympics.html",
+      "name": "Clearlake Olympics",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/clearlake-olympics.html",
+      "position": 9,
+      "duration": "PT2M37S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Anthem"],
+      "keywords": ["Clearlake Olympics", "September", "banners", "brackets", "croquet", "paddle boat race", "trivia", "neighborhood competition"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/09-Clearlake_Olympics-PMR.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@type": "MusicRecording",
+      "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/wish-summer-would-never-end.html",
+      "name": "Wish Summer Would Never End",
+      "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/wish-summer-would-never-end.html",
+      "position": 10,
+      "duration": "PT0M36S",
+      "datePublished": "2026-07-03",
+      "byArtist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+      "inAlbum": { "@type": "MusicAlbum", "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven" },
+      "genre": ["Country", "Americana", "Alt-Country", "Spoken Word", "Closing Track"],
+      "keywords": ["closing track", "spoken word", "end of summer", "goodbye", "dock", "Green Trombone"],
+      "audio": {
+        "@type": "AudioObject",
+        "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/10-Wish_Summer_Would_Never_End.mp3",
+        "encodingFormat": "audio/mpeg",
+        "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "price": "0",
+    "priceCurrency": "USD",
+    "url": "https://distrokid.com/hyperfollow/mycal/north-shore-kinda-heaven",
+    "seller": {
+      "@type": "Person",
+      "@id": "https://blog.mycal.net/about/#mycal"
+    }
+  },
+  "sameAs": [
+    "https://distrokid.com/hyperfollow/mycal/north-shore-kinda-heaven"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/"
   }
-  </script>
+}
+</script>
+
+<!-- WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/",
+  "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/",
+  "name": "North Shore Kinda Heaven — Mycal",
+  "description": "North Shore Kinda Heaven is Mycal's Clear Lake concept album, released July 3, 2026. Listen to tracks from the North Shore of Clear Lake.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://music.mycal.net/#website"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg"
+  },
+  "about": {
+    "@type": "MusicAlbum",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven"
+  },
+  "datePublished": "2026-07-03",
+  "dateModified": "2026-07-03"
+}
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "North Shore Kinda Heaven",
+      "item": "https://music.mycal.net/albums/north-shore-kinda-heaven/"
+    }
+  ]
+}
+</script>
+
+
 </head>
 <body>
   <header>
