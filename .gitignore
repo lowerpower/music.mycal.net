@@ -1,7 +1,12 @@
 logs/
 *.swp
 *.tmp
+*.old
+*old.html
 .DS_Store
+
+# Local album demos and working audio
+albums/north-shore-kinda-heaven/demo/
 
 # User authentication/session files
 users.xml
@@ -16,5 +21,3 @@ config.local.*
 #bing
 BingSiteAuth.xml
 resume.txt
-
-

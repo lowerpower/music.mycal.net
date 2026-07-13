@@ -12,59 +12,269 @@
   <link rel="manifest" href="https://music.mycal.net/site.webmanifest">
   <link rel="stylesheet" href="https://music.mycal.net/assets/css/style.css">
   <script defer src="https://analytics.mycal.net/script.js" data-website-id="875131dd-45c8-4045-a25e-d7e326dbf431"></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicRecording",
+
+<!-- Person: Mike Johnson / Mycal (canonical, reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://blog.mycal.net/about/#mycal",
+  "identifier": {
+    "@type": "PropertyValue",
+    "propertyID": "canonical-uuid",
+    "value": "urn:uuid:4ff7ed97-b78f-4ae6-9011-5af714ee241c"
+  },
+  "name": "Mike Johnson",
+  "givenName": "Michael",
+  "familyName": "Johnson",
+  "alternateName": ["Mycal", "Mike", "マイカル", "mycal"],
+  "url": "https://music.mycal.net/",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/NorthShoreKindaHeaven-cover.jpg",
+    "caption": "Mycal - North Shore Kinda Heaven album cover"
+  },
+  "jobTitle": ["Musician", "Founder and Architect", "Chief Technology Officer"],
+  "description": "Musician and songwriter. Country-Americana storyteller of Clear Lake's North Shore and folk-electronic artist inspired by Burning Man and Black Rock City. CTO of Remote.it and Founder/Architect of NoBGP Inc.",
+  "genre": ["Country", "Americana", "Alt-Country", "Folk", "Electronic", "Story Songs"],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://nobgp.com/#organization",
+      "name": "NoBGP Inc.",
+      "url": "https://nobgp.com"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://remote.it/#organization",
+      "name": "Remote.it",
+      "url": "https://remote.it"
+    }
+  ],
+  "sameAs": [
+    "https://www.mycal.net",
+    "https://blog.mycal.net",
+    "https://mycalmusic.bandcamp.com/",
+    "https://open.spotify.com/artist/5HgUqmIzyL8nF0jS1jSTeB",
+    "https://music.apple.com/us/artist/mycal/1830794420",
+    "https://www.pandora.com/artist/mycal/AR5Ktb2xXcgKm4X",
+    "https://music.amazon.com/artists/B003GMIO2A/mycal",
+    "https://music.youtube.com/channel/UCM7dxY_VuZh7aDYYO66yd9A",
+    "https://www.facebook.com/mycalmusic/",
+    "https://www.instagram.com/mycal.music/",
+    "https://www.tiktok.com/@mycal.music"
+  ],
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/"
+  }
+}
+</script>
+
+<!-- Organization: Mycal Music (record label, reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://music.mycal.net/#mycal-music",
+  "name": "Mycal Music",
+  "description": "Independent music label and publishing organization for albums and releases by artist Mycal.",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "url": "https://music.mycal.net/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://music.mycal.net/assets/img/album/ashes-and-echoes-cover.jpg"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Petaluma",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "genre": ["Country", "Americana", "Alt-Country", "Folk", "Electronic", "Story Songs"],
+  "sameAs": [
+    "https://mycalmusic.bandcamp.com/",
+    "https://music.mycal.net/"
+  ]
+}
+</script>
+
+<!-- WebSite: music.mycal.net (reproduced from homepage) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://music.mycal.net/#website",
+  "url": "https://music.mycal.net/",
+  "name": "music.mycal.net",
+  "alternateName": "Mycal Music Official Site",
+  "description": "Official music site for Mycal — albums including North Shore Kinda Heaven and Ashes and Echoes.",
+  "publisher": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "inLanguage": "en-US",
+  "copyrightYear": 2026,
+  "copyrightHolder": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  }
+}
+</script>
+
+<!-- ImageObject: Konocti Sunset cover photo (preserved, now @id-linked) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageObject",
+  "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#cover",
+  "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
+  "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
+  "width": 1024,
+  "height": 1024,
+  "name": "Konocti Sunset",
+  "caption": "Sunset over Mount Konocti from the North Shore of Clear Lake",
+  "description": "Sunset over Mount Konocti from the North Shore of Clear Lake, with gold and red sky burning over silhouetted docks and calm water reflections.",
+  "creator": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+  "contentLocation": { "@type": "Place", "name": "Boat lift next to Indian Beach, North Shore of Clear Lake, California" },
+  "locationCreated": { "@type": "Place", "name": "Boat lift next to Indian Beach, North Shore of Clear Lake, California" },
+  "copyrightHolder": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+  "copyrightYear": "2026",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+}
+</script>
+
+<!-- MusicRecording: Konocti Sunset (with lyrics) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MusicRecording",
+  "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#recording",
+  "name": "Konocti Sunset",
+  "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
+  "position": 8,
+  "duration": "PT3M59S",
+  "datePublished": "2026-06-27",
+  "inLanguage": "en",
+  "description": "\"Konocti Sunset\" is the album's memory-burn track: a Clear Lake ballad for boat-in concert nights, old ticket stubs, and the particular ache of a place that still glows long after its era has closed. It anchors the record's larger theme that places can vanish in one sense and remain permanent in another.",
+  "genre": ["Country", "Americana", "Alt-Country", "Ballad"],
+  "keywords": ["Konocti Harbor", "boat-in concerts", "Star Card", "ticket stubs", "Mount Konocti", "memory", "nostalgia", "Clear Lake"],
+  "byArtist": {
+    "@type": "Person",
+    "@id": "https://blog.mycal.net/about/#mycal"
+  },
+  "inAlbum": {
+    "@type": "MusicAlbum",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven",
+    "name": "North Shore Kinda Heaven",
+    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/"
+  },
+  "recordLabel": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "copyrightYear": 2026,
+  "copyrightHolder": {
+    "@type": "Organization",
+    "@id": "https://music.mycal.net/#mycal-music"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#cover"
+  },
+  "audio": {
+    "@type": "AudioObject",
+    "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/08-Konocti_Sunset-PMR.mp3",
+    "encodingFormat": "audio/mpeg",
+    "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+  },
+  "recordingOf": {
+    "@type": "MusicComposition",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#composition",
     "name": "Konocti Sunset",
-    "byArtist": {"@type": "Person", "name": "Mycal"},
-    "inAlbum": {"@type": "MusicAlbum", "name": "North Shore Kinda Heaven", "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/"},
-    "datePublished": "2026-06-27",
-    "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
-    "image": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
-    "encoding": {"@type": "MediaObject", "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/08-Konocti_Sunset-PMR.mp3", "encodingFormat": "audio/mpeg"},
-    "sameAs": [
-      "https://open.spotify.com/album/43gIZsPcU9enq6dcuZc3bm",
-      "https://music.apple.com/us/album/konocti-sunset-single/6777906246",
-      "https://music.amazon.com/albums/B0H4FZHJY1",
-      "https://music.youtube.com/watch?v=7a4y8uj7_po"
-    ],
+    "lyricist": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
+    "composer": { "@type": "Person", "@id": "https://blog.mycal.net/about/#mycal" },
     "lyrics": {
       "@type": "CreativeWork",
+      "inLanguage": "en",
       "text": "Used to keep those ticket stubs stacked in a drawer\nNineteen-dollar nights, we were always wantin' more\nStar Card summer man we thought we had it made\nBoat pointed west and the whole lake lit our way\nNever once drove a car up to that hill\nWe came in by water and I can see it still\nTied up down below with the sunset on our backs\nLivin' like a dream that you never thought would crack\n\nKonocti Sunset burnin' gold and red\nSongs out on the water still ringin' in my head\nWe were young and lucky and didn't know just yet\nHow a place can leave and never let you forget\nNow I look across the lake and feel it in my chest\nEvery time that mountain catches fire in the west\nSome nights are gone but they never really set\nUnder a Konocti Sunset\n\nCrowd rollin' in by road, we came in by wake\nThat old lake carried us to every show we'd take\nCold drink in your hand, warm wind in your face\nFelt like nothin' in the world could ever take that place\n\nThen one day the music stopped and the lights went dark\nLeft a quiet kind of empty sittin' on that part\nStill got the tickets and the stories and the sound\nBut it hits a little harder when the sun goes down\n\nKonocti Sunset burnin' gold and red\nSongs out on the water still ringin' in my head\nWe were young and lucky and didn't know just yet\nHow a place can leave and never let you forget\nNow I look across the lake and feel it in my chest\nEvery time that mountain catches fire in the west\nSome nights are gone but they never really set\nUnder a Konocti Sunset\n\nStill see the dock lights and the crowd in summer clothes\nStill hear the boat cuttin' through the evening glow\nEvery time that mountain catches evening light\nI swear I can hear one more Friday night\n\nKonocti Sunset burnin' gold and red\nAll those old songs still rollin' through my head\nNineteen-dollar nights and the best times we had yet\nBoat ride home beneath a sky I'll never forget\nNow I watch that mountain and I smile through the ache\nFor every memory that old lake still can make\nSome things close down but they never really left\nUnder a Konocti Sunset"
     }
+  },
+  "sameAs": [
+    "https://open.spotify.com/album/43gIZsPcU9enq6dcuZc3bm",
+    "https://music.apple.com/us/album/konocti-sunset-single/6777906246",
+    "https://music.amazon.com/albums/B0H4FZHJY1",
+    "https://music.youtube.com/watch?v=7a4y8uj7_po"
+  ],
+  "isPartOf": {
+    "@type": "MusicAlbum",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html"
   }
-  </script>
+}
+</script>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
+<!-- WebPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
+  "url": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html",
+  "name": "Konocti Sunset — Mycal | North Shore Kinda Heaven",
+  "description": "Konocti Sunset by Mycal from North Shore Kinda Heaven, a Clear Lake ballad about Konocti Harbor memories and boat-in summer nights.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": "https://music.mycal.net/#website"
+  },
+  "primaryImageOfPage": {
     "@type": "ImageObject",
-    "contentUrl": "https://music.mycal.net/albums/north-shore-kinda-heaven/images/konocti-sunset-cover.jpg",
-    "width": 1024,
-    "height": 1024,
-    "name": "Konocti Sunset",
-    "description": "Sunset over Mount Konocti from the North Shore of Clear Lake, with gold and red sky burning over silhouetted docks and calm water reflections.",
-    "creator": {
-      "@type": "Person",
-      "name": "Mycal",
-      "sameAs": "https://blog.mycal.net/about/#mycal"
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#cover"
+  },
+  "about": {
+    "@type": "MusicRecording",
+    "@id": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html#recording"
+  },
+  "datePublished": "2026-06-27",
+  "dateModified": "2026-06-27"
+}
+</script>
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://music.mycal.net/"
     },
-    "contentLocation": {
-      "@type": "Place",
-      "name": "Boat lift next to Indian Beach, North Shore of Clear Lake, California"
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "North Shore Kinda Heaven",
+      "item": "https://music.mycal.net/albums/north-shore-kinda-heaven/"
     },
-    "locationCreated": {
-      "@type": "Place",
-      "name": "Boat lift next to Indian Beach, North Shore of Clear Lake, California"
-    },
-    "copyrightHolder": {
-      "@type": "Person",
-      "name": "Mycal"
-    },
-    "copyrightYear": "2026"
-  }
-  </script>
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Konocti Sunset",
+      "item": "https://music.mycal.net/albums/north-shore-kinda-heaven/tracks/konocti-sunset.html"
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
   <header>
